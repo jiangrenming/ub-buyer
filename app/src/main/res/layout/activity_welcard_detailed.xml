@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    >
+
+    <!--<include layout="@layout/commom_title_bar"></include>-->
+    <com.ninetop.common.view.HeadView
+        android:id="@+id/hv_head"
+        android:layout_width="match_parent"
+        style="@style/title_height"
+        >
+    </com.ninetop.common.view.HeadView>
+    <!--<android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".MyActivity"
+        >
+    </android.support.v7.widget.RecyclerView>-->
+    <ListView
+        android:background="@color/white"
+        android:id="@+id/lv_welcard_detailed"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/line"
+        android:dividerHeight="1dp"
+        android:scrollbars="none"
+        android:listSelector="@android:color/transparent"
+        android:cacheColorHint="@android:color/transparent"
+        android:layout_marginTop="1dp"
+        >
+
+
+    </ListView>
+</LinearLayout>

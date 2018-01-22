@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+
+        <ImageView
+            android:id="@id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/back"
+            android:paddingRight="5dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="我的收藏"
+            android:textColor="@color/text_black"
+            style="@style/text_font_size_m"
+            />
+        <TextView
+            android:id="@+id/tv_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:text="编辑"
+            android:textColor="@color/text_black"
+            style="@style/text_font_size_ms"
+            />
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="#00FFFFFF"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            >
+
+            <LinearLayout
+                android:id="@+id/ll_product_info"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+                <TextView
+                    android:id="@+id/tv_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="3dp"
+                    android:gravity="center"
+                    android:text="商品"
+                    android:textColor="@color/text_red"
+                    style="@style/text_font_size_l"
+                    />
+                <View
+                    android:id="@+id/v_line_info"
+                    android:layout_width="33dp"
+                    android:layout_height="3dp"
+                    android:background="@color/text_red"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_seller_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginLeft="35dp"
+                android:gravity="center"
+                >
+                <TextView
+                    android:id="@+id/tv_Seller_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="3dp"
+                    android:gravity="center"
+                    android:text="联盟商户"
+                    android:textColor="@color/text_gray"
+                    style="@style/text_font_size_m"
+                    />
+                <View
+                    android:id="@+id/v_line_seller_detail"
+                    android:layout_width="55dp"
+                    android:layout_height="3dp"
+                    android:background="@color/text_red"
+                    android:visibility="invisible"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_shoper_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginLeft="35dp"
+                android:gravity="center"
+                >
+
+                <TextView
+                    android:id="@+id/tv_shoper_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="3dp"
+                    android:gravity="center"
+                    android:text="店铺"
+                    android:textColor="@color/text_gray"
+                    style="@style/text_font_size_m"/>
+
+                <View
+                    android:id="@+id/v_line_detail"
+                    android:layout_width="40dp"
+                    android:layout_height="3dp"
+                    android:background="@color/text_red"
+                    android:visibility="invisible"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_light"
+            android:layout_alignParentBottom="true"
+            />
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_mycollection_detail"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+    <Button
+        android:id="@+id/btn_cansel"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/text_red"
+        android:text="取消收藏"
+        android:textColor="@color/white"
+        style="@style/text_font_size_m"
+        android:visibility="gone"
+        />
+</LinearLayout>

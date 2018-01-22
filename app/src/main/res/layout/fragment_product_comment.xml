@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/gray_light"
+    >
+
+    <LinearLayout
+        android:id="@+id/ll_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/white"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="当前商品暂无评价"
+            android:textColor="@color/text_gray"
+            style="@style/text_font_size_s"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_comment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            >
+            <TextView
+                android:id="@+id/tv_comment_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/text_black"
+                style="@style/text_font_size_s"
+                />
+            <RatingBar
+                android:id="@+id/rb_score_star"
+                android:layout_width="wrap_content"
+                android:layout_height="11dp"
+                android:isIndicator="true"
+                style="@style/star_rating_bar"
+                />
+            <TextView
+                android:id="@+id/tv_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:textColor="@color/text_gray"
+                style="@style/text_font_size_s"
+                />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_light"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true"
+            >
+
+            <LinearLayout
+                android:id="@+id/ll_review_all"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+                <TextView
+                    android:id="@+id/tv_review_all"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/text_red"
+                    style="@style/text_font_size_l"
+                    />
+                <View
+                    android:id="@+id/v_line_all"
+                    android:layout_width="80dp"
+                    android:layout_height="2dp"
+                    android:background="@color/text_red"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_review_has_img"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                >
+                <TextView
+                    android:id="@+id/tv_review_has_img"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textColor="@color/text_black"
+                    style="@style/text_font_size_l"
+                    />
+                <View
+                    android:id="@+id/v_line_has_img"
+                    android:layout_width="80dp"
+                    android:layout_height="2dp"
+                    android:background="@color/text_red"
+                    android:visibility="invisible"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray_light"
+            android:layout_alignParentBottom="true"
+            />
+
+        <com.hykj.myviewlib.pulltorefresh.pullableview.PullToRefreshLayout
+            android:id="@+id/prl_refresh"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <com.hykj.myviewlib.pulltorefresh.pullableview.PullableListView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:fadingEdge="none"
+                android:overScrollMode="never"
+                android:scrollbars="none" />
+        </com.hykj.myviewlib.pulltorefresh.pullableview.PullToRefreshLayout>
+
+    </LinearLayout>
+</LinearLayout>
+

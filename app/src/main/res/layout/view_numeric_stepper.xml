@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_border_gray_radius"
+     >
+
+    <TextView
+        android:id="@+id/tv_div"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.66"
+        android:gravity="center"
+        android:text="@string/up_down_down"
+        android:textColor="@color/text_disable"
+        style="@style/text_font_size_ssm"
+        android:enabled="false"/>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/gray_light7"
+        />
+
+    <TextView
+        android:id="@+id/tv_number"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/up_down_number"
+        style="@style/text_font_size_ssm"
+        android:textColor="@color/text_black"/>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@color/gray_light7"
+        />
+
+    <TextView
+        android:id="@+id/tv_add"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="0.66"
+        android:gravity="center"
+        android:text="@string/up_down_up"
+        android:textColor="@color/text_black"/>
+</LinearLayout>

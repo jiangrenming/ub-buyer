@@ -1,0 +1,268 @@
+<resources>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <!--<item name="actionSheetStyle">@style/ActionSheetStyleiOS7</item>-->
+
+        <item name="font_size_sss">10sp</item>
+        <item name="font_size_ssm">11sp</item>
+        <item name="font_size_ss">12sp</item>
+        <item name="font_size_sm">13sp</item>
+        <item name="font_size_s">14sp</item>
+        <item name="font_size_ms">15sp</item>
+        <item name="font_size_m">16sp</item>
+        <item name="font_size_l">18sp</item>
+        <item name="font_size_x">20sp</item>
+        <item name="font_size_xx">22sp</item>
+        <item name="font_size_xxx">24sp</item>
+        <item name="bottom_btn_height">45dp</item>
+        <item name="bottom_btn_height_negative">-45dp</item>
+        <item name="title_height">45dp</item>
+        <item name="top_bar_height">35dp</item>
+        <item name="closing_account_bottom_height">75dp</item>
+        <item name="closing_account_bottom_height_negative">-75dp</item>
+        <item name="search_input_height">30dp</item>
+        <item name="small_image_size">25dp</item>
+        <item name="normal_image_size">45dp</item>
+        <item name="normal2_image_size">60dp</item>
+        <item name="ss_image_size">18dp</item>
+        <item name="sss_image_size">12dp</item>
+        <item name="normal_btn_width">100dp</item>
+        <item name="large_image_size">80dp</item>
+        <item name="popup_invite_width">240dp</item>
+        <item name="popup_invite_height">400dp</item>
+    </style>
+
+    <style name="AppThemeLarge" parent="AppBaseTheme">
+
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+        <!--<item name="actionSheetStyle">@style/ActionSheetStyleiOS7</item>-->
+
+        <item name="font_size_sss">16sp</item>
+        <item name="font_size_ssm">17sp</item>
+        <item name="font_size_ss">18sp</item>
+        <item name="font_size_sm">19sp</item>
+        <item name="font_size_s">20sp</item>
+        <item name="font_size_ms">21sp</item>
+        <item name="font_size_m">22sp</item>
+        <item name="font_size_l">24sp</item>
+        <item name="font_size_x">26sp</item>
+        <item name="font_size_xx">28sp</item>
+        <item name="font_size_xxx">30sp</item>
+        <item name="bottom_btn_height">135dp</item>
+        <item name="bottom_btn_height_negative">-135dp</item>
+        <item name="title_height">90dp</item>
+        <item name="top_bar_height">105dp</item>
+        <item name="closing_account_bottom_height">170dp</item>
+        <item name="closing_account_bottom_height_negative">-170dp</item>
+        <item name="search_input_height">90dp</item>
+        <item name="small_image_size">75dp</item>
+        <item name="normal_image_size">135dp</item>
+        <item name="normal2_image_size">180dp</item>
+        <item name="ss_image_size">54dp</item>
+        <item name="sss_image_size">36dp</item>
+        <item name="normal_btn_width">300dp</item>
+        <item name="large_image_size">240dp</item>
+
+        <item name="popup_invite_width">480dp</item>
+        <item name="popup_invite_height">800dp</item>
+    </style>
+
+    <style name="GuideTheme" parent="android:Theme.Light.NoTitleBar.Fullscreen" />
+
+    <style name="horizontal_layout">
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">#ffc8c7cc</item>
+    </style>
+    <!-- 星星控件 -->
+    <style name="myRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:minHeight">16dip</item>
+        <item name="android:maxHeight">16dip</item>
+    </style>
+    <!-- 横向进度条控件控件 -->
+    <style name="StyleProgressBarBlack" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:maxHeight">50dip</item>
+        <item name="android:minHeight">10dip</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:indeterminateDrawable">
+            @android:drawable/progress_indeterminate_horizontal
+        </item>
+    </style>
+    <!-- 横向进度条控件控件 -->
+    <style name="StyleProgressBarGray" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:maxHeight">50dip</item>
+        <item name="android:minHeight">10dip</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:indeterminateDrawable">
+            @android:drawable/progress_indeterminate_horizontal
+        </item>
+    </style>
+
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light.NoTitleBar" />
+
+    <style name="dialog" parent="android:Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+
+    <!-- 横向进度条控件控件 -->
+    <style name="MyStyleProgressBarGray" parent="@android:style/Widget.ProgressBar.Horizontal">
+        <item name="android:maxHeight">50dip</item>
+        <item name="android:minHeight">15dip</item>
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:indeterminateDrawable">
+            @android:drawable/progress_indeterminate_horizontal
+        </item>
+    </style>
+
+    <style name="RushDownTimerViewStyle">
+        <item name="android:layout_width">24dp</item>
+        <item name="android:layout_height">24dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="FlowLayoutStyle">
+        <item name="horizontalSpacing">10dp</item>
+        <item name="verticalSpacing">5dp</item>
+    </style>
+
+
+    <!-- 为相应的控件设置style -->
+    <style name="text_font_size_sss">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="text_font_size_ssm">
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="text_font_size_ss">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="text_font_size_sm">
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="text_font_size_s">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="text_font_size_ms">
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="text_font_size_m">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="text_font_size_sl">
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="text_font_size_l">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="text_font_size_x">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="text_font_size_xx">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="text_font_size_xxx">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="btn_bottom_margin_top" parent="btn_bottom_height">
+        <item name="android:layout_marginTop">-45dp</item>
+    </style>
+
+    <style name="btn_bottom_height" parent="text_font_size_m">
+        <item name="android:layout_height">45dp</item>
+    </style>
+
+    <style name="title_height">
+        <item name="android:layout_height">45dp</item>
+    </style>
+
+    <style name="img_small_layout">
+        <item name="android:layout_width">25dp</item>
+        <item name="android:layout_height">25dp</item>
+    </style>
+
+    <style name="img_normal_layout">
+        <item name="android:layout_width">45dp</item>
+        <item name="android:layout_height">45dp</item>
+    </style>
+
+    <style name="img_normal2_layout">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+    </style>
+
+    <style name="img_ss_layout">
+        <item name="android:layout_width">18dp</item>
+        <item name="android:layout_height">18dp</item>
+    </style>
+
+    <style name="img_sss_layout">
+        <item name="android:layout_width">12dp</item>
+        <item name="android:layout_height">12dp</item>
+    </style>
+
+    <style name="bottom_tab_layout">
+        <item name="android:layout_marginBottom">45dp</item>
+    </style>
+
+    <!--待完成-->
+
+
+    <!--  个人中心气泡的text样式 -->
+    <style name="bg_text_style">
+        <item name="android:layout_width">15dp</item>
+        <item name="android:layout_height">15dp</item>
+        <item name="android:background">@drawable/shape_red_for_text</item>
+        <item name="android:textSize">7sp</item>
+        <item name="android:textColor">@color/category_select</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginRight">-9dip</item>
+        <item name="android:layout_marginTop">-9dip</item>
+    </style>
+
+    <style name="star_rating_bar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/star_rating_bar</item>
+        <item name="android:minHeight">10dp</item>
+        <item name="android:minWidth">10dp</item>
+    </style>
+
+    <style name="my_pop_anim_style">
+        <item name="android:windowEnterAnimation">@anim/pop_window_show</item>
+        <!-- 指定显示的动画xml -->
+
+        <item name="android:windowExitAnimation">@anim/pop_window_hint</item>
+        <!-- 指定消失的动画xml -->
+    </style>
+
+    //下拉动画
+
+    <style name="SpinnerPopupWindowAnim">
+        <item name="android:windowEnterAnimation">@anim/ub_pull_down</item>
+        <item name="android:windowExitAnimation">@anim/ub_pull_up</item>
+    </style>
+
+</resources>

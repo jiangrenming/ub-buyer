@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+   
+    <attr name="rightPadding" format="dimension" />
+    <attr name="font_size_ss" format="dimension"/>
+    <attr name="font_size_ssm" format="dimension"/>
+    <attr name="font_size_sss" format="dimension"/>
+    <attr name="font_size_sm" format="dimension"/>
+    <attr name="font_size_s" format="dimension"/>
+    <attr name="font_size_ms" format="dimension"/>
+    <attr name="font_size_m" format="dimension"/>
+    <attr name="font_size_l" format="dimension"/>
+    <attr name="font_size_x" format="dimension"/>
+    <attr name="font_size_xx" format="dimension"/>
+    <attr name="font_size_xxx" format="dimension"/>
+    <attr name="bottom_btn_height" format="dimension"/>
+    <attr name="bottom_btn_height_negative" format="dimension"/>
+    <attr name="title_height" format="dimension"/>
+    <attr name="top_bar_height" format="dimension"/>
+    <attr name="closing_account_bottom_height" format="dimension"/>
+    <attr name="closing_account_bottom_height_negative" format="dimension"/>
+    <attr name="search_input_height" format="dimension"/>
+    <attr name="small_image_size" format="dimension"/>
+    <attr name="normal_image_size" format="dimension"/>
+    <attr name="normal_btn_width" format="dimension"/>
+    <attr name="normal2_image_size" format="dimension"/>
+    <attr name="ss_image_size" format="dimension"/>
+    <attr name="sss_image_size" format="dimension"/>
+    <attr name="large_image_size" format="dimension"/>
+    <attr name="popup_invite_width" format="dimension"/>
+    <attr name="popup_invite_height" format="dimension"/>
+    <!--<attr name="horizontalSpacing" format="dimension"></attr>-->
+    <!--<attr name="verticalSpacing" format="dimension"></attr>-->
+    <declare-styleable name="XNumberKeyboardView">
+
+        <!-- 删除按键的图标 -->
+        <attr name="xnkv_deleteDrawable" format="reference" />
+
+        <!-- 删除按键图标的宽度 -->
+        <attr name="xnkv_deleteWidth" format="dimension|reference" />
+
+        <!-- 删除按键图标的高度 -->
+        <attr name="xnkv_deleteHeight" format="dimension|reference" />
+
+        <!-- 删除按键图标的颜色 -->
+        <attr name="xnkv_deleteBackgroundColor" format="color|reference" />
+
+    </declare-styleable>
+    <declare-styleable name="SlidingMenu">
+        <attr name="rightPadding" />
+    </declare-styleable>
+    <declare-styleable name="RoundedImageView">
+        <attr name="corner_radius" format="dimension" />
+        <attr name="border_width" format="dimension" />
+        <attr name="border_color" format="color" />
+        <attr name="mutate_background" format="boolean" />
+        <attr name="oval" format="boolean" />
+        <attr name="android:scaleType" />
+    </declare-styleable>
+    <declare-styleable name="round_image_view">
+        <attr name="border_thickness2" format="dimension" />
+        <attr name="border_inside_color2" format="color" />
+        <attr name="border_outside_color2" format="color"/>
+    </declare-styleable>
+    
+    <declare-styleable name="ItemMyView">
+        <attr name="text" format="string|reference"/>
+        <attr name="src" format="reference|color|integer"/>
+        <attr name="iv_visibility" format="integer"/>
+        <attr name="text_size" format="dimension|reference"/>
+        <attr name="text_color" format="dimension|reference"/>
+    </declare-styleable>
+
+    <declare-styleable name="RatingBar" tools:ignore="ResourceName">
+        <attr name="starImageSize" format="dimension"/>
+        <attr name="starImageWidth" format="dimension"/>
+        <attr name="starImageHeight" format="dimension"/>
+        <attr name="starImagePadding" format="dimension"/>
+        <attr name="starCount" format="integer"/>
+        <attr name="starNum" format="integer"/>
+        <attr name="starEmpty" format="reference"/>
+        <attr name="starFill" format="reference"/>
+        <attr name="starHalf" format="reference"/>
+        <attr name="clickable" format="boolean"/>
+        <attr name="halfstart" format="boolean"/>
+    </declare-styleable>
+
+    <declare-styleable name="IndicatorView">
+        <attr name="color" format="color" />
+    </declare-styleable>
+
+
+    <!-- 标签控件 -->
+    <declare-styleable name="FlowLayout">
+        <attr name="horizontalSpacing" format="dimension" />
+        <attr name="verticalSpacing" format="dimension" />
+        <attr name="orientation" format="enum">
+            <enum name="horizontal" value="0" />
+            <enum name="vertical" value="1" />
+        </attr>
+        <attr name="debugDraw" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="FlowLayout_LayoutParams">
+        <attr name="layout_newLine" format="boolean" />
+        <attr name="layout_horizontalSpacing" format="dimension" />
+        <attr name="layout_verticalSpacing" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="ConvenientBanner">
+        <attr name="canLoop" format="boolean" />
+    </declare-styleable>
+</resources>

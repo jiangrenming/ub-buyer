@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.ninetop.common.view.HeadView
+        android:id="@+id/hv_head"
+        style="@style/title_height"
+        android:layout_width="match_parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray" />
+
+    <com.hykj.myviewlib.pulltorefresh.pullableview.PullToRefreshLayout
+        android:id="@+id/prl_refresh"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <com.hykj.myviewlib.pulltorefresh.pullableview.PullableListView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:fadingEdge="none"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
+    </com.hykj.myviewlib.pulltorefresh.pullableview.PullToRefreshLayout>
+</LinearLayout>

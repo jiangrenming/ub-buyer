@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rl_nocoupon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/iv_none"
+                android:layout_width="89dip"
+                android:layout_height="59dip"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="112dip"
+                android:src="@mipmap/user_coupon_none" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_none"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="26dip"
+                android:text="您还没有相关的优惠券哦~"
+                android:textColor="@color/a1a1a1"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+        <include layout="@layout/listview" />
+
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="171dp"
+    android:background="@android:color/white"
+    android:clipChildren="false"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipChildren="false"
+
+        >
+
+        <RelativeLayout
+            android:id="@+id/rl_stay_pay_money"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clipChildren="false">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <ImageView
+                    android:id="@+id/iv_stay_pay"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:src="@mipmap/daifukuan" />
+
+                <TextView
+                    style="@style/bg_text_style"
+                    android:layout_alignEnd="@+id/iv_stay_pay"
+                    android:layout_alignRight="@+id/iv_stay_pay"
+                    android:layout_alignTop="@+id/iv_stay_pay"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:visibility="gone" />
+
+                <TextView
+                    style="@style/text_font_size_s"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_stay_pay"
+                    android:layout_marginTop="5dip"
+                    android:gravity="center"
+                    android:text="待兑换"
+                    android:textColor="@color/text_black" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_stay_deliver"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:clipChildren="false">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <ImageView
+                    android:id="@+id/iv_send_goods"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:src="@mipmap/daifahuo"
+
+                    />
+
+                <TextView
+                    style="@style/bg_text_style"
+                    android:layout_alignEnd="@+id/iv_send_goods"
+                    android:layout_alignRight="@+id/iv_send_goods"
+                    android:layout_alignTop="@+id/iv_send_goods"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:visibility="gone"
+
+                    />
+
+                <TextView
+                    style="@style/text_font_size_s"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_send_goods"
+                    android:layout_marginTop="5dip"
+                    android:gravity="center"
+                    android:text="待发货"
+                    android:textColor="@color/text_black" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_stay_receive"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:clipChildren="false">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:clipChildren="false"
+                android:focusable="false">
+
+                <ImageView
+                    android:id="@+id/iv_recive_goods"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:src="@mipmap/daishouhuo" />
+
+                <TextView
+                    style="@style/bg_text_style"
+                    android:layout_alignEnd="@+id/iv_recive_goods"
+                    android:layout_alignRight="@+id/iv_recive_goods"
+                    android:layout_alignTop="@+id/iv_recive_goods"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:visibility="gone"
+
+                    />
+
+                <TextView
+                    style="@style/text_font_size_s"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_recive_goods"
+                    android:layout_marginTop="5dip"
+                    android:gravity="center"
+                    android:text="待收货"
+                    android:textColor="@color/text_black" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_review"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:clipChildren="false">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:clickable="false"
+                android:clipChildren="false"
+                android:focusable="false">
+
+                <ImageView
+                    android:id="@+id/iv_review"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:src="@mipmap/daiziqu" />
+
+                <TextView
+                    android:id="@+id/tv_review"
+                    style="@style/bg_text_style"
+                    android:layout_alignEnd="@+id/iv_review"
+                    android:layout_alignRight="@+id/iv_review"
+                    android:layout_alignTop="@+id/iv_review"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:visibility="gone"
+
+                    />
+
+                <TextView
+                    style="@style/text_font_size_s"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_review"
+                    android:layout_marginTop="5dip"
+                    android:gravity="center"
+                    android:text="待自取"
+                    android:textColor="@color/text_black" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_back_goods"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:clipChildren="false">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true">
+
+                <ImageView
+                    android:id="@+id/return_goods"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:src="@mipmap/yiwancheng" />
+
+                <TextView
+                    style="@style/bg_text_style"
+                    android:layout_alignEnd="@+id/return_goods"
+                    android:layout_alignRight="@+id/return_goods"
+                    android:layout_alignTop="@+id/return_goods"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:visibility="gone"
+
+                    />
+
+                <TextView
+                    style="@style/text_font_size_s"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/return_goods"
+                    android:layout_marginTop="5dip"
+                    android:gravity="center"
+                    android:text="已完成"
+                    android:textColor="@color/text_black" />
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light8" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipChildren="false"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/rl_shoucang1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clipChildren="false">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:clipChildren="false">
+
+                <ImageView
+                    android:id="@+id/iv_8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:src="@mipmap/wodshoucang" />
+
+                <TextView
+                    style="@style/text_font_size_s"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_8"
+                    android:layout_marginTop="5dip"
+                    android:gravity="center"
+                    android:text="我的收藏"
+                    android:textColor="@color/text_black" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/gray_light8" />
+
+        <RelativeLayout
+            android:id="@+id/rl_kuaisu_chongzhi1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clipChildren="false">
+
+            <RelativeLayout
+                android:id="@+id/rl_fast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:clipChildren="false">
+
+                <ImageView
+                    android:id="@+id/iv_7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:src="@mipmap/kuaisuchongzhi" />
+
+                <TextView
+                    style="@style/text_font_size_s"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_7"
+                    android:layout_marginTop="5dip"
+                    android:gravity="center"
+                    android:text="快速充值"
+                    android:textColor="@color/text_black" />
+
+            </RelativeLayout>
+
+            <TextView
+                style="@style/text_font_size_ss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rl_fast"
+                android:layout_marginTop="2dip"
+                android:gravity="center"
+                android:text="充值100赠送50积分"
+                android:textColor="@color/text_gray3"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="0.5dp"
+            android:layout_height="match_parent"
+            android:background="@color/gray_light8" />
+
+        <RelativeLayout
+            android:id="@+id/rl_fuli_duihuan1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:clipChildren="false"
+            android:visibility="gone">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:clipChildren="false">
+
+                <ImageView
+                    android:id="@+id/iv_6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:src="@mipmap/fuliduihuan" />
+
+                <TextView
+                    style="@style/text_font_size_s"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/iv_6"
+                    android:layout_marginTop="5dip"
+                    android:gravity="center"
+                    android:text="福利兑换"
+                    android:textColor="@color/text_black" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light8" />
+</LinearLayout>

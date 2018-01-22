@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DialogLib/DialogLib.iml" filepath="$PROJECT_DIR$/DialogLib/DialogLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HYTools/HYTools.iml" filepath="$PROJECT_DIR$/HYTools/HYTools.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyViewLib/MyViewLib.iml" filepath="$PROJECT_DIR$/MyViewLib/MyViewLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SelectAreaLib/SelectAreaLib.iml" filepath="$PROJECT_DIR$/SelectAreaLib/SelectAreaLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SelectTimeLib/SelectTimeLib.iml" filepath="$PROJECT_DIR$/SelectTimeLib/SelectTimeLib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pickerview/pickerview.iml" filepath="$PROJECT_DIR$/pickerview/pickerview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ub-buyer.iml" filepath="$PROJECT_DIR$/ub-buyer.iml" />
+    </modules>
+  </component>
+</project>

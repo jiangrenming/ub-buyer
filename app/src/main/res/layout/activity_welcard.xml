@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+  <!--  <include layout="@layout/commom_title_bar"></include>-->
+    <!--<com.ninetop.common.view.HeadWordView
+        android:id="@+id/hwv_title"
+        android:layout_width="match_parent"
+        android:layout_height="45dp">
+    </com.ninetop.common.view.HeadWordView>-->
+    <com.ninetop.common.view.HeadView
+        android:id="@+id/hv_title"
+        style="@style/title_height"
+        android:layout_width="match_parent" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dip"
+        android:background="@color/line"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:background="@color/white"
+        >
+
+        <EditText
+            android:id="@+id/et_input_number"
+            android:layout_width="match_parent"
+            android:layout_height="47dp"
+            android:hint="请输入16位卡号"
+            android:background="@color/gray_light9"
+            style="@style/text_font_size_s"
+            android:textCursorDrawable="@drawable/cursor_color"
+            android:layout_marginTop="45dp"
+            android:paddingLeft="10dp"
+            android:maxLength="16"
+            android:textColorHint="@color/gray_light4"
+            />
+
+        <Button
+            android:id="@+id/btn_charge"
+            android:layout_width="match_parent"
+            android:layout_height="53dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginBottom="35dp"
+            android:background="@color/text_red"
+            android:text="充值"
+            android:textColor="@color/white"
+            style="@style/text_font_size_sl"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/gray_light6"
+        />
+
+</LinearLayout>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="no_color">#00000000</color>
+    <color name="hint_color">#BBBBBB</color>
+    <color name="bar_text">#00D4C6</color>
+    <color name="province_line_border">#C7C7C7</color>
+    <color name="default_text">#737373</color>
+    <color name="normal_color">#47DCD2</color>
+    <color name="white">#FFFFFF</color>
+
+</resources>

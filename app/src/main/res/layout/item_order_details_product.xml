@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/line" />
+    <RelativeLayout
+        android:id="@+id/rl_content"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@android:color/white">
+
+        <ImageView
+            android:id="@+id/iv_my_order_image"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:background="@mipmap/img_defult" />
+
+        <TextView
+            android:id="@+id/tv_my_order_product_name"
+            style="@style/text_font_size_ss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/iv_my_order_image"
+            android:layout_marginLeft="15dp"
+            android:layout_toRightOf="@id/iv_my_order_image"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:paddingRight="15dp"
+            android:textColor="@color/text_black" />
+
+        <TextView
+            android:id="@+id/tv_RMB_icon"
+            style="@style/text_font_size_ss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_my_order_image"
+            android:layout_toRightOf="@+id/iv_my_order_image"
+            android:paddingLeft="15dp"
+            android:text="￥"
+            android:textColor="@color/text_red" />
+
+        <TextView
+            android:id="@+id/tv_my_order_product_price"
+            style="@style/text_font_size_s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_my_order_image"
+            android:layout_toRightOf="@+id/tv_RMB_icon"
+            android:textColor="@color/text_red" />
+
+        <TextView
+            android:id="@+id/tv_mul_icon"
+            style="@style/text_font_size_s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_my_order_image"
+            android:layout_toLeftOf="@+id/tv_my_order_product_count"
+            android:text="×"
+            android:textColor="@color/text_black" />
+
+        <TextView
+            android:id="@+id/tv_my_order_product_count"
+            style="@style/text_font_size_s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/iv_my_order_image"
+            android:layout_alignParentRight="true"
+            android:paddingRight="15dp"
+            android:textColor="@color/text_black" />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginLeft="15dp"
+        android:background="@color/line" />
+
+    <LinearLayout
+        android:id="@+id/ll_btn_function"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal" />
+
+        <Button
+            android:id="@+id/btn_refund"
+            android:layout_width="80dp"
+            android:layout_height="30dp"
+            android:layout_marginRight="15dp"
+            android:background="@mipmap/border_btn_gray"
+            android:textColor="@color/gray_light3"
+            style="@style/text_font_size_ss"
+             />
+
+    </LinearLayout>
+</LinearLayout>

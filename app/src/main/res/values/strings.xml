@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 微信分享 -->
+    <!--  -->
+    <!--  -->
+
+    <string name="app_name">佳优保</string>
+    <string name="action_settings">Settings</string>
+
+
+    <!-- for auto update start -->
+    <string name="newUpdateAvailable">发现新版本</string>
+    <string name="dialogPositiveButton">立即下载</string>
+    <string name="dialogNegativeButton">以后再说</string>
+    <string name="download_progress">正在下载:%1$d%%</string>
+    <string name="download_success">下载完成，点击安装</string>
+    <string name="login_edt_account_hint">请输入帐号</string>
+    <!-- for auto update end -->
+    <!--  -->
+    <!--下载更新-->
+    <string name="android_auto_update_dialog_title">发现新版本</string>
+    <string name="android_auto_update_dialog_btn_download">立即下载</string>
+    <string name="android_auto_update_dialog_btn_cancel">以后再说</string>
+    <string name="android_auto_update_download_progress">正在下载:%1$d%%</string>
+    <!--修改密码-->
+    <string name="modify_password">修改登录密码</string>
+    <string name="setting_pay_password">设置支付密码</string>
+    <string name="forget_password">忘记支付密码</string>
+    <!--消息-->
+    <string name="message_order_notify">订单通知</string>
+
+
+    <!--设置页面-->
+    <string name="setting_birthday">生日</string>
+    <string name="setting_username">昵称</string>
+    <string name="setting_input_hint">请输入</string>
+    <string name="setting_sex">性别</string>
+    <string name="setting_bind_phone">绑定手机</string>
+    <string name="setting_other_account">第三方账号</string>
+    <string name="setting_modify_password">修改密码</string>
+    <string name="setting_pay_password_setting">设置支付密码</string>
+    <string name="setting_save">保存</string>
+    <string name="setting_login_out">退出登录</string>
+
+    <string name="filter_code">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+    <string name="filter">0123456789.</string>
+    <string name="division">.</string>
+
+    <!--修改二-->
+    <!--添加地址-->
+    <string name="add_address_save">保存</string>
+    <string name="add_address_consignee">收货人</string>
+    <string name="add_address_mobile">联系电话</string>
+    <string name="add_address_city">省市区</string>
+    <string name="add_address_detail">街道、楼牌号等详情地址</string>
+    <string name="add_address_default">设为默认地址</string>
+    <string name="pay_we_chat_pay">微信支付</string>
+    <string name="pay_ali_pay">支付宝支付</string>
+    <string name="pay_money_pay">钱包支付</string>
+    <!--产品排序-->
+    <string name="product_sort_sales_volume">销量</string>
+    <string name="product_sort_price">价格</string>
+    <string name="product_sort_update">上新</string>
+    <!--支付方式-->
+    <string name="pattern_of_payment">支付方式</string>
+    <string name="pattern_of_payment_we_chat">微信支付</string>
+    <string name="pattern_of_payment_pay_pal">支付宝支付</string>
+    <string name="pattern_of_payment_money">钱包支付</string>
+    <string name="up_down_down">—</string>
+    <string name="up_down_number">1</string>
+    <string name="up_down_up">+</string>
+    <!--搜索页面-->
+    <string name="search_cancel">取消</string>
+    <string name="login_input_password_hint">请输入密码</string>
+    <string name="login_input_mobile">请输入手机号码</string>
+    <string name="login_get_code">获取验证码</string>
+    <!--其他-->
+    <string name="other_search">搜索</string>
+    <string name="address_manage_add">添加新地址</string>
+    <!--退款申请-->
+    <string name="refund_wait_seller_pay">等待商家付款</string>
+    <string name="refound_withdraw_the_claim">撤销申请</string>
+    <string name="refound_input_logistics_info">填写物流信息</string>
+    <!--意见反馈-->
+    <string name="comment_feedback_input_hint">U宝店商期待与您交流</string>
+    <string name="comment_feedback_font_lint">""500</string>
+    <!--裁剪图像-->
+    <string name="crop_photo_cancel">取消</string>
+    <string name="crop_photo_confirm">选取</string>
+    <!--设置支付密码-->
+    <string name="setting_pay_password_input_hint">输入6位支付密码</string>
+    <string name="setting_pay_password_sure">确定</string>
+
+    <!--消费账单-->
+    <string name="expense_account_not_use">未使用</string>
+    <string name="expense_account_lost_efficacy">已失效</string>
+    <!--登录页面-->
+    <string name="login_btn_login">登录</string>
+    <string name="login_fast_register">快速注册</string>
+    <string name="login_forget_password">忘记密码?</string>
+    <string name="login_other_login">其他登录方式</string>
+    <!--MainActivity-->
+    <string name="main_ub_shopping">积分商城</string>
+    <string name="main_seller">联盟商家</string>
+    <string name="main_shop_cart">购物车</string>
+    <string name="main_mine">我的</string>
+    <!--联盟商城-->
+    <string name="seller_search_default">优保控股杭州店</string>
+    <!--消息中心-->
+    <string name="message_center_notice">消息通知</string>
+    <!--修改昵称-->
+    <string name="modify_nickname_save">保存</string>
+    <!--网络请求-->
+    <string name="no_network_fail">网络请求失败</string>
+    <string name="no_network_check">请检查您的网络 重新加载吧</string>
+    <string name="no_network_loading_again">重新加载</string>
+    <!--确认下单-->
+    <string name="order_confirm_add_address">添加收货地址</string>
+    <string name="order_confirm_select">选择优惠券</string>
+    <string name="order_confirm_shop_num">共0件商品</string>
+    <string name="order_confirm_total">小计:</string>
+    <string name="order_confirm_total_price">合计:</string>
+    <string name="order_confirm_confirm">提交订单</string>
+    <!--选择优惠券-->
+    <string name="select_unused_red">不可使用的红包</string>
+    <!--U币商城-->
+    <string name="ub_shopping_recommended">为您推荐</string>
+    <string name="ub_shopping_hint">佳优保总店</string>
+    <!--联盟商家-->
+    <string name="ub_seller_recommended">为您推荐</string>
+    <!--商品详情-->
+    <string name="ub_shopping_shopping_detail_detail">详情</string>
+    <string name="ub_shopping_shopping_detail_shopping">商品</string>
+    <string name="ub_shopping_shopping_detail_appraise">评价</string>
+    <string name="ub_shopping_shopping_detail_add_shop_cart">加入购物车</string>
+    <string name="ub_shopping_shopping_detail_buy_now">立即购买</string>
+    <string name="ub_shopping_add_shop_cart_dialog_money">¥</string>
+    <string name="ub_shopping_add_shop_cart_dialog_left">还剩：</string>
+    <string name="ub_shopping_add_shop_cart_dialog_nuy_num">购买数量</string>
+    <string name="ub_shopping_add_shop_cart_dialog_sure">确定</string>
+    <string name="ub_shopping_add_shop_cart_dialog_add_shop_cart">加入购物车</string>
+    <string name="ub_shopping_add_shop_cart_dialog_buy_now">立即购买</string>
+    <string name="shopping_search_everyone_search">大家都在搜</string>
+    <string name="shopping_search_history_search">历史搜索</string>
+    <!--联盟商家-->
+    <string name="ub_seller_input_shopping">请输入商品或服务类型</string>
+    <!--注册-->
+    <string name="register_read_and_receive">我已阅读和接受</string>
+    <string name="register_service_contract">《服务协议》</string>
+    <string name="register_confirm_register">确认注册</string>
+    <string name="register_service_contract_content">您好！ 欢迎关注佳优保平台 （以下简称“本应用”）请您于正式注册之前仔细阅读下方协议内容，并确认已知悉其全部含义后，再履行相应注册程序。 一旦点击“注册”后，系统将默认您已同意并签署了本服务协议。 如果您有违反本协议的任何行为，我们有权依照违反情况随时单方限制、中止或终止向您提供本服务，并有权追究相关责任。 一、【隐私安全】 1. 隐私保护及免责声明 1.1 保护用户个人信息是我们的一项基本原则，我们将会采取合理的措施保护用户的个人信息。除法律法规规定的情形外，未经用户许可，我们不会向第三方公开、透露用户个人信息。 1.2 您个人信息的安全对我们来说非常重要。我们采取多种技术措施来确保您个人信息的安全。然而，对于互联网传输，或者电子储存来说，没有哪种方式是100%安全的，所以我们并不能绝对保证安全。如果您对本应用的安全有疑问，请联系我们。 1.3 为尊重用户个人隐私，我们保证不会公开、编辑或透露用户的注册资料等其他非公开内容。除非本团队在诚信的基础上认为透露这些信息在以下几种情况是必要的： 1.3.1 遵守有关法律规定，包括在国家有关机关查询时，提供用户在本应用中发布的信息内容及其发布时间、地址或者域名。 1.3.2 遵从我们的所有服务程序。 1.3.3 维护本我们的商标所有权。 1.3.4 在紧急情况下竭力维护用户个人和社会大众的隐私安全。 1.3.5 在我们认为必要的其他情况下。 2.账号安全 2.1 请牢记个人账户信息，保管好自己的账号和密码安全，并保证对自己即将实施的所有活动和事件负全责； 2.2 用户可随时对个人建立的账号信息进行修改（如头像、昵称等），如忘记密码，可及时联系我们，进行处理。 2.3 注册成功后，表示用户知晓并同意以下信息： 2.3.1 根据本应用用户注册页面的要求提供有效电子邮箱、有效手机号码等信息，设置账号及密码，用户应确保所提供全部信息的真实性、完整性和准确性。 2.3.2 同意后台自动接收并记录的用户手机客户端数据，包括但不限于IP地址、设备型号及登录时间等； 2.3.3 同意接收本应用 发送的与本应用管理、运营相关的电子邮件或短消息。 二、【协议细则】 1. 服务内容 1.1 本应用为用户提供相关服务信息，包括但不限于信息服务、广告服务、在线购买服务 等。 1.2 用户有权在本应用上查看其账号下的信息，有权应用本应用提供的功能进行操作； 1.3 用户有权按照本应用发布的活动规则参与本应用组织的在线活动； 1.4 本应用承诺为用户提供的其他服务； 1.5 应用的修改和升级：本应用保留随时为用户提供本应用的修改、升级版本的权利。应用升级更新会产生相应的数据流量费，由运营商收取。 2. 用户义务 2.1 用户在申请使用本应用时，必须提供真实的个人资料。如果因注册信息不真实而引起的问题及其后果，我们不承担任何责任。 2.2 除非用户已获得第三方授权，否则不得将第三方内容用于商业目的。 2.3 用户影响系统总体稳定性或完整性的操作可能会被暂停或终止，直到问题得到解决。 2.4 用户需遵循以下条款，并单独承担内容传输的全责—— （1）不散播不利于本应用的管理与稳定的信息； （2）不散播有损于本应用的荣誉与利益的信息； （3）不散播反对宪法所明确的基本原则的信息； （4）不散播危害国家安全、泄露国家秘密，颠覆国家政权，破坏国家统一的信息； （5）不散播损害国家荣誉和利益的信息； （6）不散播煽动民族仇恨，民族歧视，破坏社会稳定的信息； （7）不散播破坏国家宗教政策，宣扬邪教和封建迷信的信息； （8）不散播谣言，不扰乱社会秩序，不破坏社会稳定； （9）不传播淫秽、色情、赌博、暴力、凶杀、恐怖或者教唆犯罪； （10）不侮辱或者诽谤他人，不侵害他人合法权益； （11）不侵犯他人知识产权的，包括但不限于专利权、商标权、著作权； （12）不侵犯他人商业秘密的； （13）不散播含有法律、行政法规禁止的其他内容的信息。 3. 用户管理 3.1 用户可选择将本应用内的图文资讯等内容同步分享到其他社交平台（如微博、微信、空间等）； 3.2 用户在本应用内发表的任何内容的知识产权均归用户与本应用运营方共有，后者使用该内容时无需单独取得用户同意； 3.3 本应用有权评断用户发布的言论是否符合应用氛围，并对违反规定的内容进行删除。如对该项处置存在不同意见，用户可自行通过意见反馈的方式进行申诉。 4. 免责 4.1 任何通过本应用取得的信息资料的可靠性取决于用户自己，用户个人承担所有风险和责任。 4.2 本应用对所有用户投稿、发贴、评论等的内容或资料信息的完整性、真实性、合法性不承担任何责任。 4.3 用户通过本应用发布的内容有可能会被第三方复制、转载、修改，本应用没有保护你的知识产权义务。如果其他用户相关行为侵害了你的合法权益，你可以向我们投诉，我们将配合相关部门进行相应处理。 4.4 本应用不做任何类型的担保，不担保服务一定满足所有用户需求，不担保服务不受终端影响，对服务的及时性、安全性、出错发生率等均不做担保； 4.5 对于有违反本协议“用户义务”于“用户管理”细则或相关法律法规规定的行为，我们有权在不通知对方的情况下删除相应内容，并将配合相关法律部门进行查处。 4.6 本应用提供的服务中包括广告、在线购买支付，用户同意在使用过程中显示本应用与第三方供应商、 合作伙伴提供的广告和商品列表。除法律法规明确规定外，用户应自行对在本应用中进行的交易负责， 对用户因依该交易或前述广告商提供的内容而遭受的损失或损害，本应用不承担任何责任。 4.7 用户在使用本服务时，应当知晓并自行承担以下不可控的风险，包括但不限于： 4.7.1 由于网络不稳定导致的用户无法正常登陆或资料内容更新失败； 4.7.2 由于受到病毒、木马程序等攻击破坏，或其它不可抗力的因素而导致的信息丢失或泄露； 4.7.3 由于互联网的开放性，你的创意或发布的内容有可能被他人抄袭或复制； 4.7.4 其它无法控制或合理预见的情形。 5. 服务变更、中断或终止 5.1 本服务的所有权和运作权、一切解释权归本公司所有。我们提供的服务将按照其发布的章程、服务条款和操作规则严格执行。 5.2 我们有权在必要时修改服务条款，服务条款一旦发生变动，将会在相关页面上公布修改后的服务条款。如果不同意所改动的内容，用户应主动取消此项服务。如果用户继续使用服务，则视为接受服务条款的变动。行使修改或中断服务的权利而造成损失的，不需对用户或任何第三方负责。 5.3 如发生下列任何一种情形，本应用有权立即终止继续对其提供服务，注销其账号而无需通知用户，并要求其赔偿由此给本应用造成的损失： 5.3.1 用户提供的个人资料不真实； 5.3.2 用户违反本服务条款的规定； 5.3.3 在本应用内或利用本应用从事非法活动的 5.3.4 以技术手段干扰本应用的运营或干扰其他用户对本应用使用的 5.3.5 以虚构事实等方式恶意诋毁本应用 5.3.6 其他我们认为认为是符合整体服务需求的特殊情形。 6. 其他 6.1 郑重提醒用户注意本协议中免除本应用责任和限制用户权利的条款，请用户仔细阅读，自主考虑风险。 未成年人应在法定监护人的陪同下阅读本协议。 6.2 您使用本服务即视为您已阅读并同意受本协议的约束。我们有权在必要时修改本协议条款。您可以在相关服务页面查阅最新版本的条款。 6.3 本协议的成立、生效、履行、解释及纠纷解决，适用中华人民共和国大陆地区法律（不包括冲突法）。 6.4 若您和我们之间发生任何纠纷或争议，首先应友好协商解决；协商不成的，您同意将纠纷或争议提交本协议签订地有管辖权的人民法院管辖。 6.5 本协议所有条款的标题仅为阅读方便，本身并无实际涵义，不能作为本协议涵义解释的依据。 6.6 本协议条款无论因何种原因部分无效或不可执行，其余条款仍有效，对双方具有约束力。</string>
+    <string name="refund_refund_type">退款类型</string>
+    <string name="refund_refund_type_hint">请选择退款类型</string>
+    <string name="refund_refund_reason">退款原因</string>
+    <string name="refund_refund_reason_hint">请选择退款原因</string>
+    <string name="refund_refund_money">退款金额</string>
+    <string name="refund_refund_money_hint">最多不能超过xx元</string>
+    <string name="refund_refund_message">退款说明</string>
+    <string name="refund_refund_message_max_font">最多200字</string>
+    <string name="refund_refund_message_font">0/200</string>
+    <string name="refund_refund_message_font_max_hint">最多200字</string>
+    <string name="refund_refund_confirm">提交申请</string>
+    <!--确认下单-->
+    <string name="ub_shopping_confirm_order_pay">确认兑换</string>
+    <string name="ub_shopping_confirm_order_need_pay">实付:</string>
+    <string name="ub_shopping_confirm_order_ub_discount">积分抵扣</string>
+    <string name="pay_result_callback_msg">微信支付结果：%s</string>
+
+</resources>

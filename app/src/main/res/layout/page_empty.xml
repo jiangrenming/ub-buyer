@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:paddingBottom="150dp"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_order_icon"
+            android:layout_width="65dp"
+            android:layout_height="69dp"
+            android:layout_centerHorizontal="true"
+            android:src="@mipmap/order_icon" />
+
+        <TextView
+            android:id="@+id/tv_order_empty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/iv_order_icon"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="24dp"
+            android:text="还没有相关的订单哦，快去下一单吧~" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:layout_below="@id/tv_order_empty_text"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:background="@color/text_red"
+            android:text="去逛逛"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+</RelativeLayout>

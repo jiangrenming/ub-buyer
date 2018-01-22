@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.ninetop.common.view.HeadView
+        android:id="@+id/hv_head"
+        style="@style/title_height"
+        android:layout_width="match_parent" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/gray_light2"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/gray_light2" />
+
+            <RelativeLayout
+                android:id="@+id/rv_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/tv_address_add"
+                    style="@style/text_font_size_s"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/order_confirm_add_address"
+                    android:textColor="@color/text_black"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/rv_user_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tv_user_name"
+                        style="@style/text_font_size_s"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textColor="@color/text_black" />
+
+                    <TextView
+                        android:id="@+id/tv_user_mobile"
+                        style="@style/text_font_size_s"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="25dp"
+                        android:layout_marginStart="25dp"
+                        android:layout_toEndOf="@id/tv_user_name"
+                        android:layout_toRightOf="@id/tv_user_name"
+                        android:text=""
+                        android:textColor="@color/text_black" />
+
+                    <TextView
+                        android:id="@+id/tv_user_address"
+                        style="@style/text_font_size_ssm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/tv_user_mobile"
+                        android:layout_alignStart="@id/tv_user_mobile"
+                        android:layout_below="@+id/tv_user_mobile"
+                        android:layout_marginEnd="50dp"
+                        android:layout_marginRight="50dp"
+                        android:maxLines="2"
+                        android:text="" />
+
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="@string/app_name"
+                    android:src="@mipmap/arrow_next_page" />
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/gray_light2" />
+
+            <com.ninetop.common.view.ScrollViewWithListView
+                android:id="@+id/lv_product_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@color/gray_light" />
+
+            <RelativeLayout
+                android:id="@+id/rl_select_coupon"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp">
+
+                <TextView
+                    style="@style/text_font_size_ss"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/order_confirm_select"
+                    android:textColor="@color/text_black" />
+
+                <TextView
+                    android:id="@+id/tv_coupon"
+                    style="@style/text_font_size_ss"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:drawableEnd="@mipmap/arrow_next_page"
+                    android:drawablePadding="13dp"
+                    android:drawableRight="@mipmap/arrow_next_page"
+                    android:textColor="@color/text_red" />
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:background="@color/gray_light" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp">
+
+
+                <TextView
+                    android:id="@+id/tv_product_number"
+                    style="@style/text_font_size_ss"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/order_confirm_shop_num"
+                    android:textColor="@color/text_black"
+                    android:layout_toLeftOf="@+id/tv_total"
+                    android:layout_toStartOf="@+id/tv_total"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:id="@+id/tv_total"
+                    style="@style/text_font_size_ss"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_toLeftOf="@+id/tv_sum_price"
+                    android:layout_toStartOf="@+id/tv_sum_price"
+                    android:text="@string/order_confirm_total"
+                    android:textColor="@color/text_black" />
+
+                <TextView
+                    android:id="@+id/tv_sum_price"
+                    style="@style/text_font_size_ss"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:text=""
+                    android:textColor="@color/text_red" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="-45dp"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            tools:ignore="UselessParent">
+
+            <TextView
+                style="@style/text_font_size_ss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/order_confirm_total_price"
+                android:textColor="@color/text_black" />
+
+            <TextView
+                android:id="@+id/tv_total_price"
+                style="@style/text_font_size_ss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/text_red" />
+
+            <TextView
+                android:id="@+id/tv_submit_order"
+                style="@style/text_font_size_m"
+                android:layout_width="112dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
+                android:background="@color/text_red"
+                android:gravity="center"
+                android:text="@string/order_confirm_confirm"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

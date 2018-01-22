@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <com.ninetop.common.view.HeadView
+        android:layout_width="match_parent"
+        style="@style/title_height"
+        android:id="@+id/hv_head"
+        ></com.ninetop.common.view.HeadView>
+    <EditText
+        android:id="@+id/et_modify_nickname"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:lines="1"
+        android:maxLength="10"
+        android:paddingLeft="10dp"
+        />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:id="@+id/button"
+        style="@style/text_font_size_sl"
+        android:layout_marginTop="15dp"
+
+        android:background="@color/text_red"
+        android:layout_marginRight="15dp"
+        android:layout_marginLeft="15dp"
+        android:text="保存"
+        android:textColor="@color/white"
+        />
+</LinearLayout>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.ninetop.common.view.HeadView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/head_view"
+        />
+
+    <ListView
+        android:id="@+id/lv_address_manage"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        android:layout_marginTop="10dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="10dip"
+        android:listSelector="@android:color/transparent"
+        android:cacheColorHint="@android:color/transparent"
+        >
+    </ListView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="53dp"
+        android:background="@color/text_red"
+        android:text="@string/address_manage_add"
+        android:textColor="@color/white"
+        style="@style/text_font_size_sl"
+        android:id="@+id/button" />
+</LinearLayout>

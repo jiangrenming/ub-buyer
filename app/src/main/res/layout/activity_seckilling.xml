@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <com.ninetop.common.view.HeadView
+        android:id="@+id/hv_head"
+        android:layout_width="match_parent"
+        style="@style/title_height"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/gray_light"
+        />
+
+    <com.hykj.myviewlib.pulltorefresh.pullableview.PullToRefreshLayout
+        android:id="@+id/prl_refresh"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <com.hykj.myviewlib.pulltorefresh.pullableview.PullableListView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:fadingEdge="none"
+            android:overScrollMode="never"
+            android:scrollbars="none"
+            android:divider="@color/gray_light"
+            android:dividerHeight="0.5dp"
+            />
+    </com.hykj.myviewlib.pulltorefresh.pullableview.PullToRefreshLayout>
+
+</LinearLayout>

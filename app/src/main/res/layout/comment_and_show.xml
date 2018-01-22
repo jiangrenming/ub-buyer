@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/common_title_bar"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/line" />
+
+              <ListView
+                  android:id="@+id/lv_comment_and_show"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:listSelector="@android:color/transparent"
+                  android:cacheColorHint="@android:color/transparent"
+                  android:scrollbars="none"
+                  >
+              </ListView>
+
+        </LinearLayout>
+
+</LinearLayout>

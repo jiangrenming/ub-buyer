@@ -1,0 +1,132 @@
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@android:id/tabhost"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true">
+
+    <FrameLayout
+        android:id="@android:id/tabcontent"
+        style="@style/bottom_tab_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
+
+    <TabWidget
+        android:id="@android:id/tabs"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone"/>
+
+    <LinearLayout
+        style="@style/btn_bottom_margin_top"
+        android:layout_width="fill_parent"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <View
+            style="@style/horizontal_layout"
+            android:layout_gravity="bottom" />
+
+        <FrameLayout
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_horizontal"
+                android:baselineAligned="false"
+                android:background="@color/white">
+
+                <FrameLayout
+                    android:id="@+id/layout_1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/iv_index"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableTop="@drawable/ub_shopping"
+                        android:text="@string/main_ub_shopping"
+                        android:textColor="@drawable/order_type_selector"
+                        android:textSize="10sp"
+                        tools:ignore="SmallSp" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/layout_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/iv_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableTop="@drawable/ub_lian"
+                        android:text="@string/main_seller"
+                        android:textColor="@drawable/order_type_selector"
+                        android:textSize="10sp"
+                        tools:ignore="SmallSp" />
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/layout_3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/iv_shopcart"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableTop="@drawable/ub_gou"
+                        android:text="@string/main_shop_cart"
+                        android:textColor="@drawable/order_type_selector"
+                        android:textSize="10sp"
+                        tools:ignore="SmallSp"/>
+
+                    <TextView
+                        android:id="@+id/tv_cart_num"
+                        style="@style/bg_text_style"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="12dp"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginEnd="0dp"
+                        android:layout_marginTop="5dp"
+                        android:textSize="10sp"
+                        android:visibility="gone"
+                        tools:ignore="SmallSp"/>
+                </FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/layout_4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1">
+
+                    <TextView
+                        android:id="@+id/iv_user_center"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:drawableTop="@drawable/ub_wo"
+                        android:text="@string/main_mine"
+                        android:textColor="@drawable/order_type_selector"
+                        android:textSize="10sp"
+                        tools:ignore="SmallSp"/>
+                </FrameLayout>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+</TabHost>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:background="@color/white"
+        >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:paddingBottom="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="25dp"
+            android:paddingTop="5dp"
+            android:src="@mipmap/back"/>
+
+        <TextView
+            android:id="@+id/tv_seller_category_name"
+            style="@style/text_font_size_l"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="附近商家"
+            android:textColor="@color/text_black"
+            />
+
+        <ImageView
+            android:id="@+id/iv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="15dp"
+           android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/more"
+            />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:background="@color/ub_bg"
+        />
+    <com.hykj.myviewlib.pulltorefresh.pullableview.PullToRefreshLayout
+        android:id="@+id/prl_refresh"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <com.hykj.myviewlib.pulltorefresh.pullableview.PullableListView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:fadingEdge="none"
+            android:overScrollMode="never"
+            android:scrollbars="none" />
+    </com.hykj.myviewlib.pulltorefresh.pullableview.PullToRefreshLayout>
+
+
+</LinearLayout>

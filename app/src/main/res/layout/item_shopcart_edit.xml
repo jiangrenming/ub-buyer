@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@color/white"
+    >
+
+    <include layout="@layout/item_shopcart"/>
+
+    <RelativeLayout
+        android:id="@+id/item_right"
+        android:layout_width="60dp"
+        android:layout_height="match_parent"
+        android:background="@color/text_red" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:textColor="@color/white"
+            style="@style/text_font_size_s"
+            android:text="删除"
+            />
+    </RelativeLayout>
+</LinearLayout>

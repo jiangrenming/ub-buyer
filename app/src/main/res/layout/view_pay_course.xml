@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="5dp"
+    android:background="@color/white"
+    android:orientation="vertical" >
+       
+    <LinearLayout
+	    android:id="@+id/pay_we_chat_layout"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_margin="10dp"
+	    android:gravity="center_vertical"
+	    android:orientation="horizontal" >
+
+	    <ImageView
+	        android:layout_width="35dp"
+	        android:layout_height="35dp"
+	        android:scaleType="fitXY"
+			android:contentDescription="@string/app_name"/>
+	
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_marginRight="5dp"
+			android:layout_marginEnd="5dp"
+	        android:orientation="horizontal"
+	        android:gravity="end|center_vertical" >
+	
+	        <ImageView
+	            android:id="@+id/iv_1"
+	            style="@style/img_ss_layout"
+	            android:scaleType="fitXY"
+				android:contentDescription="@string/app_name"/>
+	    </LinearLayout>
+	</LinearLayout>
+	   
+	<View 
+	    android:layout_marginLeft="20dp"
+	    android:layout_marginRight="20dp"
+	    android:layout_width="match_parent"
+	    android:layout_height="0.5dp"
+	    android:background="@color/course_line"
+	    />
+	
+   <LinearLayout
+       android:id="@+id/pay_ali_pay_layout"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_margin="10dp"
+       android:gravity="center_vertical"
+       android:orientation="horizontal" >
+
+       <ImageView
+           style="@style/img_normal_layout"
+           android:layout_width="35dp"
+           android:layout_height="35dp"
+           android:scaleType="fitXY"
+		   android:contentDescription="@string/app_name"/>
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_marginRight="5dp"
+		   android:layout_marginEnd="5dp"
+           android:gravity="end|center_vertical"
+           android:orientation="vertical" >
+
+           <ImageView
+               android:id="@+id/iv_2"
+               style="@style/img_ss_layout"
+               android:scaleType="fitXY"
+			   android:contentDescription="@string/app_name"/>
+       </LinearLayout>
+   </LinearLayout>
+   
+   <View 
+	    android:layout_marginLeft="20dp"
+	    android:layout_marginRight="20dp"
+	    android:layout_width="match_parent"
+	    android:layout_height="0.5dp"
+	    android:background="@color/course_line"
+	    />
+	
+   <LinearLayout
+       android:id="@+id/pay_wallet_layout"
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:layout_margin="10dp"
+       android:gravity="center_vertical"
+       android:orientation="horizontal" >
+
+       <ImageView
+           style="@style/img_normal_layout"
+           android:layout_width="35dp"
+           android:layout_height="35dp"
+           android:scaleType="fitXY"
+		   android:contentDescription="@string/app_name"/>
+       
+       <TextView
+            android:id="@+id/tv_wallet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+		   android:layout_marginStart="5dp"
+            android:textColor="@color/course_default"
+            style="@style/text_font_size_s" />
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_marginRight="5dp"
+		   android:layout_marginEnd="5dp"
+           android:gravity="end|center_vertical"
+           android:orientation="vertical" >
+
+           <ImageView
+               android:id="@+id/iv_3"
+               style="@style/img_ss_layout"
+               android:scaleType="fitXY"
+			   android:contentDescription="@string/app_name"/>
+       </LinearLayout>
+   </LinearLayout>
+    
+</LinearLayout>

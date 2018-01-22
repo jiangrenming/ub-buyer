@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/coupon_enable"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="35dip"
+            >
+
+            <TextView
+                android:id="@+id/tv_mm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¥"
+                android:textColor="@color/category_select"
+                android:textSize="13sp"
+                />
+            <TextView
+                android:id="@+id/tv_money"
+                android:layout_toRightOf="@id/tv_mm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50"
+                android:textColor="@color/category_select"
+                android:textSize="23dip"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="120dip"
+            android:layout_centerVertical="true"
+            >
+            <TextView
+                android:id="@+id/tv_limeType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/text_black"
+                android:text="全场通用券"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dip"
+                android:gravity="center"
+                >
+                <ImageView
+                    android:layout_width="2dip"
+                    android:layout_height="2dip"
+                    android:background="@drawable/shape_round"
+                    />
+                <TextView
+                    android:id="@+id/tv_use_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="满100元可用"
+                    android:textSize="10sp"
+                    android:textColor="@color/gray_light5"
+                    android:layout_marginLeft="6dip"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dip"
+                android:gravity="center"
+                >
+                <ImageView
+                    android:layout_width="2dip"
+                    android:layout_height="2dip"
+                    android:background="@drawable/shape_round"
+                    />
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2016-09-01至2016-09-30"
+                    android:textSize="10sp"
+                    android:textColor="@color/gray_light5"
+                    android:layout_marginLeft="6dip"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+        
+        <ImageView
+            android:id="@+id/iv_select"
+            android:layout_width="17dip"
+            android:layout_height="17dip"
+            android:background="@drawable/select_bg"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dip"
+            android:layout_centerVertical="true"
+            android:visibility="gone"
+            />
+
+    </RelativeLayout>
+    
+</LinearLayout>

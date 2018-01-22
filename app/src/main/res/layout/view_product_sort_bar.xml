@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+	android:layout_height="40dp"
+	android:background="@color/white"
+	android:baselineAligned="false">
+
+	<LinearLayout
+		android:id="@+id/ll_sort_default"
+		android:layout_width="0dp"
+		android:layout_height="match_parent"
+		android:layout_weight="1"
+		android:gravity="center_vertical"
+		android:orientation="horizontal">
+
+		<TextView
+			android:id="@+id/tv_sort_default"
+			style="@style/text_font_size_s"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:text="@string/product_sort_update"
+			android:textColor="@color/text_red" />
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/ll_sort_quality"
+		android:layout_width="0dp"
+		android:layout_height="match_parent"
+		android:layout_weight="1"
+		android:gravity="center"
+		android:orientation="horizontal">
+
+		<TextView
+			android:id="@+id/tv_sort_quality"
+			style="@style/text_font_size_s"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/product_sort_price"
+			android:textColor="@color/gray_light4" />
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:gravity="center_vertical"
+			android:orientation="vertical">
+
+			<ImageView
+				android:id="@+id/iv_sort_quality_up"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:layout_marginBottom="2dp"
+				android:layout_marginLeft="3dp"
+				android:layout_marginStart="3dp"
+				android:src="@mipmap/category_order_up_normal"
+				android:contentDescription="@string/app_name"/>
+
+			<ImageView
+				android:id="@+id/iv_sort_quality_down"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:layout_marginLeft="3dp"
+				android:layout_marginStart="3dp"
+				android:src="@mipmap/category_order_down_normal"
+				android:visibility="visible"
+				android:contentDescription="@string/app_name"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/ll_sort_price"
+		android:layout_width="0dp"
+		android:layout_height="match_parent"
+		android:layout_weight="1"
+		android:gravity="center"
+		android:orientation="horizontal">
+
+		<TextView
+			android:id="@+id/tv_sort_price"
+			style="@style/text_font_size_s"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/product_sort_sales_volume"
+			android:textColor="@color/gray_light4" />
+
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:gravity="center_vertical"
+			android:orientation="vertical">
+
+			<ImageView
+				android:id="@+id/iv_sort_price_up"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:layout_marginBottom="2dp"
+				android:layout_marginLeft="3dp"
+				android:layout_marginStart="3dp"
+				android:src="@mipmap/category_order_up_normal"
+				android:contentDescription="@string/app_name"/>
+
+			<ImageView
+				android:id="@+id/iv_sort_price_down"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:layout_marginLeft="3dp"
+				android:layout_marginStart="3dp"
+				android:src="@mipmap/category_order_down_normal"
+				android:visibility="visible"
+				android:contentDescription="@string/app_name"/>
+
+		</LinearLayout>
+
+	</LinearLayout>
+
+</LinearLayout>

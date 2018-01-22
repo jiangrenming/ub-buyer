@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="bottom"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="15dp"
+        >
+        <ImageView
+            android:id="@+id/iv_product"
+            android:layout_width="61dp"
+            android:layout_height="61dp"
+            android:background="@drawable/bg_border_gray"
+            android:padding="1dp"
+            android:contentDescription="@string/app_name"/>
+
+        <LinearLayout
+            android:layout_toRightOf="@+id/iv_product"
+            android:layout_toEndOf="@id/iv_product"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ub_shopping_add_shop_cart_dialog_money"
+                    android:textColor="@color/text_red"
+                    style="@style/text_font_size_s"/>
+
+                <TextView
+                    android:id="@+id/tv_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="@color/text_red"
+                    style="@style/text_font_size_l"
+                    />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_stock"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/ub_shopping_add_shop_cart_dialog_left"
+                android:textColor="@color/text_black"
+                style="@style/text_font_size_ss"
+                />
+            <TextView
+                android:id="@+id/tv_prop_selected"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/text_black"
+                style="@style/text_font_size_ss"
+                />
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_prop_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingEnd="0dp"
+            android:paddingRight="0dp"
+            android:paddingStart="10dp"
+            android:paddingBottom="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:src="@mipmap/close_btn"
+            android:contentDescription="@string/app_name"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/gray_light2"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:scrollbars="none">
+        <LinearLayout
+            android:id="@+id/ll_prop_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            >
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/gray_light2"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:text="@string/ub_shopping_add_shop_cart_dialog_nuy_num"
+        android:textColor="@color/text_black"
+        style="@style/text_font_size_s"
+        />
+
+    <com.ninetop.common.view.NumericStepperView
+        android:id="@+id/nsv_number"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="120dp"
+        android:layout_height="33dp">
+
+    </com.ninetop.common.view.NumericStepperView>
+
+    <TextView
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/ub_shopping_add_shop_cart_dialog_sure"
+        android:textColor="@color/white"
+        style="@style/text_font_size_m"
+        android:background="@color/text_red"
+        android:visibility="gone"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/rv_show_shop_cart"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:visibility="gone"
+            >
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/gray_light"
+                />
+            <ImageView
+                android:id="@+id/iv_cart"
+                android:layout_width="24dp"
+                android:layout_height="22dp"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/icon_shop_cart"
+                android:contentDescription="@string/app_name"/>
+
+            <TextView
+                android:id="@+id/tv_cart_num"
+                style="@style/bg_text_style"
+                android:layout_alignRight="@+id/iv_cart"
+                android:layout_alignEnd="@+id/iv_cart"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="-15dp"
+                android:layout_marginStart="-15dp"
+                android:textSize="10sp"
+                android:visibility="gone"
+                tools:ignore="SmallSp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_shopcart_add"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/ub_shopping_add_shop_cart_dialog_add_shop_cart"
+            android:textColor="@color/white"
+            style="@style/text_font_size_m"
+            android:gravity="center"
+            android:background="@color/text_red_light"
+            />
+
+        <TextView
+            android:id="@+id/tv_buy_now"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/ub_shopping_add_shop_cart_dialog_buy_now"
+            android:textColor="@color/white"
+            style="@style/text_font_size_m"
+            android:gravity="center"
+            android:background="@color/text_red"
+            />
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="65dp">
+        <TextView
+            android:id="@+id/tv_detailed_recharge_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_black"
+            android:paddingLeft="15dp"
+            android:paddingTop="15dp"
+            style="@style/text_font_size_s"
+            android:text="礼品卡充值"
+            />
+        <TextView
+            android:id="@+id/tv_detailed_recharge_time"
+            android:layout_below="@id/tv_detailed_recharge_name"
+            android:layout_marginTop="7dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/gray_light5"
+            android:paddingLeft="15dp"
+            style="@style/text_font_size_sss"
+            android:text="2016-11-02 13:17:12"
+            />
+
+        <TextView
+            android:id="@+id/tv_detailed_recharge_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="15dp"
+            android:text="+100"
+            android:textColor="@color/text_red"
+            />
+    </RelativeLayout>
+</LinearLayout>

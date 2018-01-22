@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/coupon_disable"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="35dip"
+            >
+
+            <TextView
+                android:id="@+id/tv_mm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¥"
+                android:textColor="@color/d0d0d0"
+                android:textSize="13sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_money"
+                android:layout_toRightOf="@id/tv_mm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="50"
+                android:textColor="@color/d0d0d0"
+                android:textSize="23sp"
+                />
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginLeft="120dip"
+            android:layout_centerVertical="true"
+            >
+            <TextView
+                android:id="@+id/tv_limeType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="14sp"
+                android:textColor="@color/d0d0d0"
+                android:text="全场通用券"
+                />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dip"
+                android:gravity="center"
+                >
+                <ImageView
+                    android:layout_width="2dip"
+                    android:layout_height="2dip"
+                    android:background="@drawable/shape_round"
+                    />
+                <TextView
+                    android:id="@+id/tv_use_money"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="满100元可用"
+                    android:textSize="10sp"
+                    android:textColor="@color/d0d0d0"
+                    android:layout_marginLeft="6dip"
+                    />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dip"
+                android:gravity="center"
+                >
+                <ImageView
+                    android:layout_width="2dip"
+                    android:layout_height="2dip"
+                    android:background="@drawable/shape_round"
+                    />
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2016-09-01至2016-09-30"
+                    android:textSize="10sp"
+                    android:textColor="@color/d0d0d0"
+                    android:layout_marginLeft="6dip"
+                    />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/iv_select"
+            android:layout_width="60dip"
+            android:layout_height="60dip"
+            android:src="@mipmap/expired_icon"
+            android:layout_marginLeft="66dip"
+            android:layout_centerVertical="true"
+            />
+
+    </RelativeLayout>
+
+</LinearLayout>

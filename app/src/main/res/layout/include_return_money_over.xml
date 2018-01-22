@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:background="@color/white"
+    android:padding="15dip"
+    android:layout_marginTop="10dip"
+    android:id="@+id/over"
+    android:layout_height="104dip">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <ImageView
+            android:layout_width="18dip"
+            android:layout_height="18dip"
+            android:src="@mipmap/ok"
+            />
+
+        <TextView
+            android:id="@+id/tv_close_successful"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/text_font_size_s"
+            android:textColor="@color/text_black"
+            android:text="退款成功"
+            android:layout_marginLeft="10dip"
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/ll_successful"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dip"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="退款金额:"
+                style="@style/text_font_size_ss"
+                android:textColor="@color/gray_light4"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_success_return_money_count"
+                android:text="50"
+                style="@style/text_font_size_ss"
+                android:textColor="@color/text_black"
+                android:layout_marginLeft="5dip"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dip"
+
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="退款时间:"
+                style="@style/text_font_size_ss"
+                android:textColor="@color/gray_light4"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_success_return_money_time"
+                android:text="50"
+                style="@style/text_font_size_ss"
+                android:textColor="@color/text_black"
+                android:layout_marginLeft="5dip"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dip"
+        android:id="@+id/ll_close_reaon"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="关闭原因:"
+            style="@style/text_font_size_ss"
+            android:textColor="@color/gray_light4"
+            />
+        <TextView
+            android:id="@+id/tv_close_reason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/text_font_size_ss"
+            android:textColor="@color/text_black"
+            android:layout_marginLeft="5dip"
+            />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/rl_question"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="@null"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp">
+
+        <TextView
+            android:id="@+id/tv_question_id"
+            style="@style/text_font_size_s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginStart="15dp"
+            android:text=""
+            android:textColor="@color/text_black_light" />
+
+        <TextView
+            android:id="@+id/tv_question_name"
+            style="@style/text_font_size_s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/tv_question_id"
+            android:layout_toRightOf="@+id/tv_question_id"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text=""
+            android:textColor="@color/text_black_light" />
+
+        <TextView
+            android:id="@+id/tv_question"
+            style="@style/text_font_size_s"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_question_id"
+            android:layout_toEndOf="@+id/tv_question_id"
+            android:layout_toRightOf="@+id/tv_question_id"
+            android:text=""
+            android:textColor="@color/text_gray" />
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/logistics"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dip"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="15dip">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/text_font_size_ss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="物流方式:"
+            android:textColor="@color/text_black" />
+
+        <TextView
+            android:id="@+id/tv_logistics_style"
+            style="@style/text_font_size_ss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:text="韵达快递"
+            android:textColor="@color/gray_light4" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/text_font_size_ss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="物流单号:"
+            android:textColor="@color/text_black"
+
+            />
+
+        <TextView
+            style="@style/text_font_size_ss"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dip"
+            android:text=""
+            android:textColor="@color/gray_light4" />
+
+    </LinearLayout>
+
+    <TextView
+        style="@style/text_font_size_ss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:text="商家在消费者发起维权的7天之内不做任何处理，则自动同意退款至余额中"
+        android:textColor="@color/gray_light4" />
+
+
+</LinearLayout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="优惠券"
+        android:textColor="@color/text_black_light"
+        style="@style/text_font_size_s"
+        />
+
+
+    <ListView
+        android:id="@+id/lv_coupon_list"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scrollbars="none"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:dividerHeight="15dp"
+        android:background="@color/white"
+        >
+
+
+    </ListView>
+
+    <TextView
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="完成"
+        android:textColor="@color/white"
+        style="@style/text_font_size_m"
+        android:background="@color/text_red"
+        />
+</LinearLayout>

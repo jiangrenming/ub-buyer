@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/gray_light6">
+
+      <!--  <GridView
+            android:id="@+id/gv_second_category"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/listview_stroke_bg"
+            android:cacheColorHint="@android:color/transparent"
+            android:horizontalSpacing="2dp"
+            android:listSelector="@android:color/transparent"
+            android:numColumns="2"
+            android:scrollbars="none"
+            android:verticalSpacing="2dp">-->
+
+        <com.ninetop.common.view.ProductSortBarView
+            android:id="@+id/psb_bar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginBottom="10dp"
+            />
+
+            <com.hykj.myviewlib.pulltorefresh.pullableview.PullToRefreshLayout
+                android:id="@+id/prl_refresh"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <com.hykj.myviewlib.pulltorefresh.pullableview.PullAbleGridView
+                    android:id="@+id/gv_second_category"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:fadingEdge="none"
+                    android:overScrollMode="never"
+                    android:scrollbars="none"
+                    android:background="@drawable/list_view_stroke_bg"
+                    android:cacheColorHint="@android:color/transparent"
+                    android:horizontalSpacing="2dp"
+                    android:listSelector="@android:color/transparent"
+                    android:numColumns="2"
+                    android:verticalSpacing="2dp"
+                    />
+            </com.hykj.myviewlib.pulltorefresh.pullableview.PullToRefreshLayout>
+
+        <!--  </GridView>-->
+    </LinearLayout>
+</LinearLayout>
