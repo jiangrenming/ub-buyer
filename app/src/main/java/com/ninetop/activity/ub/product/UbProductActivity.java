@@ -186,6 +186,12 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
         listData = new ArrayList<>();
         productListAdapter = new UbProductListTwoAdapter(UbProductActivity.this, listProduct);
         vpSellerList.setAdapter(productListAdapter);
+        Bundle bundle = this.getIntent().getExtras();
+        if (bundle == null) {
+            return;
+        }
+        franchiseeId = bundle.getInt(IntentExtraKeyConst.FRANCHID);
+        franchiseeName = bundle.getString(IntentExtraKeyConst.FRANCHNAME);
     }
 
     private void initViewPaper() {
@@ -615,7 +621,7 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
             selectedFranchiseeName = dataList.get(pos).name;
             type = 1;
             franchiseeChangeHandle();
-
+            Log.i("获取点击列表id=",franchiseeId+"");
             if (!isLogin()) {
                 return;
             }
@@ -630,12 +636,7 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
     }
 
     private void franchiseeChangeHandle() {
-        Bundle bundle = this.getIntent().getExtras();
-        if (bundle == null) {
-            return;
-        }
-        franchiseeId = bundle.getInt(IntentExtraKeyConst.FRANCHID);
-        franchiseeName = bundle.getString(IntentExtraKeyConst.FRANCHNAME);
+
         if (type == 1) {
             tvProduct.setText(selectedFranchiseeName);
         } else {

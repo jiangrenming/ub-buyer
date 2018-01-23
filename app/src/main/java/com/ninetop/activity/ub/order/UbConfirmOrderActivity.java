@@ -115,7 +115,7 @@ public class UbConfirmOrderActivity extends BaseActivity {
     private List<Map> shopCartList;
 
     private List<Map> productList;
-    private int frieeID;
+    private String frieeID;
 
     @Override
     protected int getLayoutId() {
@@ -146,7 +146,7 @@ public class UbConfirmOrderActivity extends BaseActivity {
         } else if ("buy".equals(orderFrom)) {
             amount = getIntentValue(IntentExtraKeyConst.ORDER_AMOUNT);
             skuId = getIntentValue(IntentExtraKeyConst.ORDER_SKUID);
-
+            frieeID = getIntentValue(IntentExtraKeyConst.FRANCHISEEID);
         }
 
         String jsonData = getIntentValue(IntentExtraKeyConst.JSON_DATA);
@@ -174,7 +174,6 @@ public class UbConfirmOrderActivity extends BaseActivity {
         for (int i = 0; i < mainList.size(); i++) {
             dataList = mainList.get(i).attrList;
             sellerName = mainList.get(i).franchiseeName;
-            frieeID = mainList.get(i).franchiseeId;
         }
         if (dataList != null) {
             MainAdapter adapter = new MainAdapter(this, dataList);
@@ -399,7 +398,7 @@ public class UbConfirmOrderActivity extends BaseActivity {
 
     //提货地址修改
     private void changeAddressInfo() {
-        ubProductService.postFrnchiseeInfo(String.valueOf(frieeID),new CommonResultListener<UbConfirmOrderAddressChangeBean>(this) {
+        ubProductService.postFrnchiseeInfo(frieeID,new CommonResultListener<UbConfirmOrderAddressChangeBean>(this) {
             @Override
             public void successHandle(UbConfirmOrderAddressChangeBean result) throws JSONException {
                 Log.i("获取的自取地址=",result.toString());

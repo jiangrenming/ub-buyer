@@ -15,6 +15,7 @@ import com.ninetop.UB.product.New.SingleProductSkuBean;
 import com.ninetop.UB.product.New.SingleSkuBean;
 import com.ninetop.UB.product.UbProductService;
 import com.ninetop.activity.ub.order.UbConfirmOrderActivity;
+import com.ninetop.activity.ub.util.StatusBarUtil;
 import com.ninetop.common.AssembleHelper;
 import com.ninetop.common.IntentExtraKeyConst;
 import com.ninetop.common.constant.SkuPropStatusEnum;
@@ -69,13 +70,15 @@ public class UbProductSelectInfoDetailDialog {
     Map<String, FlowLayout> propMap = new HashMap<>();
     private AlertDialog dialog;
     Map<FlowLayout, List<TextView>> propValueMap = new HashMap<>();
+    private String freeId;
 
     public UbProductSelectInfoDetailDialog(UbProductInfoActivity activity, UbProductService ubProductService
-            , int id, String mainIcon) {
+            , int id, String mainIcon, String franchiseeid) {
         this.activity = activity;
         this.ubProductService = ubProductService;
         this.id = id;
         this.mainIcon = mainIcon;
+        this.freeId = franchiseeid;
     }
 
     public void showDialog() {
@@ -142,7 +145,7 @@ public class UbProductSelectInfoDetailDialog {
         amount = nsv_number.getValue();
         final List<Map> productList = new ArrayList<>();
         final Map<String, Integer> map = new HashMap<>();
-        map.put("franchiseeId", FRANCHISEEID);
+        map.put("franchiseeId", Integer.valueOf(freeId));
         map.put("skuId", skuId);
         map.put("amount", amount);
         productList.add(map);
@@ -159,6 +162,7 @@ public class UbProductSelectInfoDetailDialog {
                 intent.putExtra(IntentExtraKeyConst.ORDER_FROM, "buy");
                 intent.putExtra(IntentExtraKeyConst.ORDER_SKUID, skuId + "");
                 intent.putExtra(IntentExtraKeyConst.ORDER_AMOUNT, amount + "");
+                intent.putExtra(IntentExtraKeyConst.FRANCHISEEID, freeId);
                 activity.startActivity(intent);
                 activity.finish();
             }

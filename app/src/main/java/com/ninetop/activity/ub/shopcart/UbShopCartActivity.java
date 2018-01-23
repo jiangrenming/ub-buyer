@@ -1,6 +1,7 @@
 package com.ninetop.activity.ub.shopcart;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -82,6 +83,7 @@ public class UbShopCartActivity extends TabBaseActivity {
     boolean isSelectAll = false;
     boolean isEdit = false;
     private ShopCartItemListBean mBean;
+    //private List<Integer> frieeIds = new ArrayList<>();
 
     @Override
     protected int getLayoutId() {
@@ -101,11 +103,12 @@ public class UbShopCartActivity extends TabBaseActivity {
         ubProductService.getShopList("", new CommonResultListener<List<UbShopCartBean>>(this) {
             @Override
             public void successHandle(List<UbShopCartBean> result) throws JSONException {
+                mainList = result;
                 for (int i = 0; i < result.size(); i++) {
                     UbShopCartBean bean = result.get(i);
-                    dataList = bean.shopCartItemList;
+                     dataList = bean.shopCartItemList;
                     franchiseeId = bean.franchiseeId;
-                    mainList = result;
+                    Log.i("购物车数据id=",bean.franchiseeId+"");
                 }
                 dataChangeHandle();
                 if (dataList == null || dataList.size() == 0) {
@@ -161,8 +164,7 @@ public class UbShopCartActivity extends TabBaseActivity {
                     int shopCartId = bean.shopCartId;
                     int amount = bean.amount;
                     int skuId = bean.skuId;
-
-                    map.put("franchiseeId", 1);
+                    map.put("franchiseeId",1);
                     map.put("shopcartId", shopCartId);
                     map.put("amount", amount);
                     map.put("skuId", skuId);
@@ -302,6 +304,7 @@ public class UbShopCartActivity extends TabBaseActivity {
             @Override
             public void successHandle(JSONObject result) throws JSONException {
                 String dataString = result.getString("data");
+                Log.i("购物车里的数据",dataString);
                 Intent intent = new Intent(UbShopCartActivity.this, UbConfirmOrderActivity.class);
                 Gson gson = new Gson();
                 String cartListJsonString = gson.toJson(productList);
@@ -412,11 +415,13 @@ public class UbShopCartActivity extends TabBaseActivity {
                     ImageView imageView = (ImageView) v;
                     if (isSelected((ImageView) v)) {
                         for (ShopCartItemListBean bean : mainBean.shopCartItemList) {
+                            Log.i("选中的id=",bean.franchiseeId+"");
                             addSelectedItem(bean);
                         }
                         imageView.setImageResource(R.mipmap.edit_select);
                     } else {
                         for (ShopCartItemListBean bean : mainBean.shopCartItemList) {
+                            bean.franchiseeId = mainBean.franchiseeId;
                             removeSelectedItem(bean);
                         }
                         imageView.setImageResource(R.mipmap.edit_unselect);
@@ -502,7 +507,7 @@ public class UbShopCartActivity extends TabBaseActivity {
         public View getView(final int position, View convertView, ViewGroup parent) {
             final HolderView holdeView;
             final ShopCartItemListBean itemBean = dataList.get(position);
-
+            Log.i("单个选择的字段",itemBean.toString());
             if (convertView == null) {
                 holdeView = new HolderView();
                 convertView = LayoutInflater.from(activity).inflate(R.layout.item_shopcart, parent, false);
@@ -656,6 +661,7 @@ public class UbShopCartActivity extends TabBaseActivity {
                     //购物车选择 or批量选择
                     boolean contains = selectList.contains(itemBean);
                     if (!contains) {
+                        Log.i("单项选择的id=",itemBean.franchiseeId+"");
                         selectList.add(itemBean);
                         holdeView.iv_select.setImageResource(R.mipmap.edit_select);
                     } else {

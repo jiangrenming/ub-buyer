@@ -134,6 +134,7 @@ public class UbProductInfoActivity extends BaseActivity {
     private void getProductDetail() {
         String proId = getIntentValue(IntentExtraKeyConst.PRODUCT_ID);
         franchiseeid = getIntentValue(IntentExtraKeyConst.FRANCHISEEID);
+
         id = Integer.parseInt(proId);
         ubProductService.getProductDetail(id, 1, "", new CommonResultListener<UbProductDetailBean>(this) {
             @Override
@@ -343,6 +344,7 @@ public class UbProductInfoActivity extends BaseActivity {
                 intent.putExtra(IntentExtraKeyConst.ORDER_FROM, "buy");
                 intent.putExtra(IntentExtraKeyConst.ORDER_SKUID, skuId + "");
                 intent.putExtra(IntentExtraKeyConst.ORDER_AMOUNT, amount + "");
+                intent.putExtra(IntentExtraKeyConst.FRANCHISEEID, franchiseeid + "");
                 startActivity(intent);
 
             }
@@ -357,7 +359,7 @@ public class UbProductInfoActivity extends BaseActivity {
 
     //商品规格选择
     protected void showDialog2() {
-        detailDialog = new UbProductSelectInfoDetailDialog(UbProductInfoActivity.this, ubProductService, id, mainIcon);
+        detailDialog = new UbProductSelectInfoDetailDialog(UbProductInfoActivity.this, ubProductService, id, mainIcon,franchiseeid);
         detailDialog.showDialog();
         detailDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
             @Override
