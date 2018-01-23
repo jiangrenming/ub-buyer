@@ -206,7 +206,7 @@ public class UbConfirmOrderActivity extends BaseActivity {
         tvTotalPrice.setText(String.valueOf(totalProductPay));
         tvUCut.setText(String.valueOf(ubPay).substring(0, String.valueOf(ubPay).indexOf(".")));
         tvBalance.setText(FormatUtil.formatMoney(balancePay));
-        tvNeedPay.setText(String.valueOf(ubPay));
+        tvNeedPay.setText(String.valueOf(totalProductPay));
     }
 
     private void getOrderInfo() {
