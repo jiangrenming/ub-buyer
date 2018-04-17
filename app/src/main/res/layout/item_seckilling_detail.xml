@@ -50,7 +50,7 @@
             android:textColor="@color/text_gray"
             style="@style/text_font_size_ss"
             />
-        <com.ninetop.common.view.ProgressBarView
+        <youbao.shopping.ninetop.common.view.ProgressBarView
             android:id="@+id/pbv_ratio"
             android:layout_width="50dp"
             android:layout_height="6dp"

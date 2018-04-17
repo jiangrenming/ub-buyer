@@ -1,4 +1,4 @@
-package com.bigkoo.convenientbanner.holder;
+package youbao.shopping.bigkoo.convenientbanner.holder;
 
 /**
  * Created by Sai on 15/12/14.

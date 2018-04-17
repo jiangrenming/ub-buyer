@@ -1,51 +1,55 @@
 apply plugin: 'com.android.application'
 android {
+    compileSdkVersion 25
+    buildToolsVersion '25.0.0'
+    defaultConfig {
+        applicationId "youbao.shopping"
+        minSdkVersion 14
+        targetSdkVersion 25
+        versionCode 9
+        versionName "V_2.0.9"
+        multiDexEnabled true
+
+    }
+    buildTypes {
+        release {
+            // 是否进行混淆
+            minifyEnabled false
+            // 混淆文件的位置
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
     signingConfigs {
         debug {
-            storeFile file("F:/KeyStore/buyer/debug.keystore")
+        //    storeFile file("C:/Users/Administrator/Desktop/ub-buyer/app/debug.keystore")
             storePassword "android"
             keyAlias "androiddebugkey"
             keyPassword "android"
+
         }
         //发布版的keystore
         release {
-            storeFile file("F:/KeyStore/buyer/keystore_release.jks")
+  //          storeFile file("C:/Users/Administrator/Desktop/ub-buyer/app/keystores.jks")
             storePassword "huishe"
-            keyAlias "buyer_release"
+            keyAlias "key"
             keyPassword "huishe"
-        }
-        compileSdkVersion 24
-        buildToolsVersion "25.0.0"
-        defaultConfig {
-            applicationId "youbao.shopping"
-            minSdkVersion 14
-            targetSdkVersion 24
-            versionCode
-            versionName "1.0"
-            testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-            multiDexEnabled = true
 
         }
-        buildTypes {
-            release {
-                minifyEnabled false
-                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            }
-            debug {
-                minifyEnabled false
-            }
-            signingConfigs {
-                debug {
-                    storeFile file('debug.keystore')
-                    storePassword "android"
-                    keyAlias "androiddebugkey"
-                    keyPassword "android"
-                }
-            }
-        }
+
+
         lintOptions {
             checkReleaseBuilds false
             abortOnError false
+        }
+        dexOptions {
+            javaMaxHeapSize "4g"
         }
     }
     repositories {
@@ -72,7 +76,29 @@ android {
         compile 'com.githang:status-bar-compat:latest.integration'
         compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.1.6'
     }
+    productFlavors {
+    }
+//    packagingOptions {
+//        exclude 'META-INF/NOTICE'
+//        exclude 'META-INF/LICENSE'
+//        exclude 'META-INF/DEPENDENCIES'
+//    }
+//    compileOptions {
+//        targetCompatibility 1.8
+//        sourceCompatibility 1.8
+//    }
 }
 dependencies {
     compile files('libs/AMap_Search_V5.5.0_20171107.jar')
+    compile files('libs/SocialSDK_QQ_Simplify.jar')
+    compile files('libs/SocialSDK_WeChat_Simplify.jar')
+    compile files('libs/umeng-common-1.4.4.jar')
+    compile files('libs/umeng_shareboard_widget.jar')
+    compile files('libs/umeng_social_api.jar')
+    compile files('libs/umeng_social_net.jar')
+    compile files('libs/umeng_social_shareboard.jar')
+    compile files('libs/umeng_social_tool.jar')
+    //    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.8.0@aar'
+    //    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
+    compile 'com.github.Andy-13:ZbPermission:1.0.0'
 }

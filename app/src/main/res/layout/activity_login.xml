@@ -60,13 +60,27 @@
             android:layout_marginRight="15dp"
             android:background="@color/gray_light8" />
 
-        <com.ninetop.common.view.PwdEditText
+        <youbao.shopping.ninetop.common.view.PwdEditText
             android:id="@+id/pet_password"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
     </LinearLayout>
-
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="19dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:text="佳优保提倡：热爱祖国 孝顺父母 敬业诚信"
+    android:textColor="#FF0000"
+    android:textSize="16sp" />
+</LinearLayout>
 
     <Button
         android:id="@+id/btn_login"
@@ -111,23 +125,7 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="19dp"
-        android:orientation="horizontal">
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="一.不热爱祖国者;   二.不孝顺父母者;    三.不讲诚信者;
-不得下载佳优保APP"
-            android:textColor="@color/text_gray"
-            android:textSize="14sp" />
 
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"

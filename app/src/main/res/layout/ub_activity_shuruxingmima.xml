@@ -5,7 +5,7 @@
     android:background="@color/ub_bg"
     android:orientation="vertical">
 
-    <com.ninetop.common.view.HeadView
+    <youbao.shopping.ninetop.common.view.HeadView
         android:id="@+id/hv_head"
         style="@style/title_height"
         android:layout_width="match_parent" />
@@ -16,6 +16,7 @@
         android:orientation="vertical">
 
         <RelativeLayout
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginLeft="15dp"
@@ -74,7 +75,7 @@
                 android:textColor="@color/text_red" />
         </RelativeLayout>
 
-        <com.ninetop.common.view.PwdEditText
+        <youbao.shopping.ninetop.common.view.PwdEditText
             android:id="@+id/pet_new_password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -82,7 +83,7 @@
             android:layout_marginRight="15dp"
             android:layout_marginTop="10dp" />
 
-        <com.ninetop.common.view.PwdEditText
+        <youbao.shopping.ninetop.common.view.PwdEditText
             android:id="@+id/pet_old_password"
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -103,7 +104,6 @@
         android:layout_weight="1" />
 
     <Button
-
         android:id="@+id/btn_login"
         style="@style/text_font_size_l"
         android:layout_width="fill_parent"

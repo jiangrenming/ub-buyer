@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
   <!--  <include layout="@layout/commom_title_bar"></include>-->
-    <com.ninetop.common.view.HeadView
+    <youbao.shopping.ninetop.common.view.HeadView
         android:id="@+id/hv_title"
         style="@style/title_height"
         android:layout_width="match_parent"/>
@@ -22,7 +23,7 @@
         android:orientation="vertical"
         >
 
-        <com.ninetop.common.view.MobileEditText
+        <youbao.shopping.ninetop.common.view.MobileEditText
             android:id="@+id/met_mobile"
             android:layout_height="50dp"
             android:layout_width="match_parent"/>

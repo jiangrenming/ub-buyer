@@ -48,7 +48,7 @@
         android:layout_height="0.5dp"
         android:background="@color/gray" />
 
-    <com.ninetop.UB.cartshop.ChildListView
+    <youbao.shopping.ninetop.UB.cartshop.ChildListView
         android:id="@+id/listview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

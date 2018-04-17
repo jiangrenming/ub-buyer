@@ -3,7 +3,7 @@ version = "2.1.0"
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "20.0.0"
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         minSdkVersion 9

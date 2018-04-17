@@ -7,7 +7,7 @@
 
     >
 
-    <com.ninetop.common.view.HeadView
+    <youbao.shopping.ninetop.common.view.HeadView
         android:id="@+id/hv_head"
         style="@style/title_height"
         android:layout_width="match_parent"
@@ -180,7 +180,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        ></View>
+        />
 
     <Button
         android:id="@+id/btn_already"

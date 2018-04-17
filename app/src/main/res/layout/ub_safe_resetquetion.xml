@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ub_bg"
+    android:orientation="vertical">
+
+    <youbao.shopping.ninetop.common.view.HeadView
+        android:id="@+id/hv_head"
+        style="@style/title_height"
+        android:layout_width="match_parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/line" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/text_font_size_s"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="15dp"
+            android:gravity="center_vertical"
+            android:text="为了您资金安全重置安全问题"
+            android:textColor="@color/text_gray" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_click11"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:id="@+id/tv_qestion1"
+                    style="@style/text_font_size_ms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="请点击选择问题一"
+                    android:textColor="@color/text_black" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:src="@mipmap/arrow_next_page" />
+
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/et_q1"
+                style="@style/text_font_size_ms"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/white"
+                android:hint="请输入您的答案"
+                android:paddingLeft="15dp"
+                android:textColorHint="@color/text_gray3" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_click22"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:id="@+id/tv_qestion2"
+                    style="@style/text_font_size_ms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="请点击选择问题二"
+                    android:textColor="@color/text_black" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:src="@mipmap/arrow_next_page" />
+
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/et_q2"
+                style="@style/text_font_size_ms"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/white"
+                android:hint="请输入您的答案"
+                android:paddingLeft="15dp"
+                android:textColorHint="@color/text_gray3" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_click33"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/white"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:id="@+id/tv_qestion3"
+                    style="@style/text_font_size_ms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="请点击选择问题三"
+                    android:textColor="@color/text_black" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="15dp"
+                    android:src="@mipmap/arrow_next_page" />
+
+
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/et_q3"
+                style="@style/text_font_size_ms"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/white"
+                android:hint="请输入您的答案"
+                android:paddingLeft="15dp"
+                android:textColorHint="@color/text_gray3" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_confirm"
+            style="@style/text_font_size_m"
+            android:layout_width="fill_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/bg_border_gray_radius_select2"
+            android:text="确定"
+            android:textColor="@color/text_black" />
+
+        <LinearLayout
+            android:id="@+id/ll_reset_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/text_font_size_s"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="不再安全?"
+                android:textColor="@color/text_gray" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/text_font_size_s"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="重设您的安全提示问题"
+                    android:textColor="@color/text_red" />
+
+                <View
+                    android:layout_width="140dp"
+                    android:layout_height="1dp"
+                    android:background="@color/text_red" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -53,13 +53,13 @@
                 android:background="@color/gray_light4"
                 />
         </LinearLayout>
-        <com.ninetop.common.view.ScrollViewWithListView
+        <youbao.shopping.ninetop.common.view.ScrollViewWithListView
             android:id="@+id/lv_recommend_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scrollbars="none"
             >
-        </com.ninetop.common.view.ScrollViewWithListView>
+        </youbao.shopping.ninetop.common.view.ScrollViewWithListView>
 
     </LinearLayout>
 </ScrollView>

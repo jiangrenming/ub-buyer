@@ -5,7 +5,7 @@
     android:orientation="vertical" 
     android:background="@color/white">
     
-    <com.ninetop.common.view.HeadSearchView
+    <youbao.shopping.ninetop.common.view.HeadSearchView
         android:id="@+id/hsv_search"
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -35,7 +35,7 @@
             android:textColor="@color/text_gray"
             />
 
-        <com.ninetop.common.view.FlowLayout
+        <youbao.shopping.ninetop.common.view.FlowLayout
             android:id="@+id/ll_search_tag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             >
-        </com.ninetop.common.view.FlowLayout>
+        </youbao.shopping.ninetop.common.view.FlowLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"

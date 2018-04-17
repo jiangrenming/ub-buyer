@@ -6,7 +6,7 @@
     android:background="@color/gray_light2"
     android:orientation="vertical">
 
-    <com.ninetop.common.view.HeadView
+    <youbao.shopping.ninetop.common.view.HeadView
         android:id="@+id/hv_head"
         android:layout_width="match_parent"
         style="@style/title_height"
@@ -50,7 +50,7 @@
                     android:src="@mipmap/icon_new_user"
                     android:contentDescription="@string/app_name"/>
             </LinearLayout>
-            <com.ninetop.common.view.ScrollViewWithListView
+            <youbao.shopping.ninetop.common.view.ScrollViewWithListView
                 android:id="@+id/lv_gift"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

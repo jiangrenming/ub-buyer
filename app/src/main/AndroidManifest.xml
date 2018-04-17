@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="youbao.shopping"
-    android:versionCode="1"
-    android:versionName="0.1">
+    tools:targetApi="11"
+    android:versionCode="9"
+    android:versionName="V_2.0.9">
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="25"
+    tools:overrideLibrary="com.hykj.myviewlib,com.bigkoo.pickerview,
+    android.support.design,android.support.v7.appcompat,android.support.v4,android.support.fragment,
+    android.support.mediacompat,android.support.coreutils,android.support.graphics.drawable,
+    android.support.v7.recyclerview,android.support.coreui,android.support.compat,com.jungly.gridpasswordview,
+    butterknife,com.lzy.okgo,android.support.multidex,io.github.xudaojie.qrcodelib,com.githang.statusbar,
+    android.support.constraint" />
+
     <!-- <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> -->
     <!-- <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
@@ -41,13 +53,18 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
     <uses-permission android:name="android.permission.GET_TASKS" />
 
+    <!--8.0安装需要的权限-->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+
     <application
-        android:name="com.ninetop.base.MyApplication"
+        android:name="youbao.shopping.ninetop.base.MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ub"
         android:label="@string/app_name"
         android:screenOrientation="portrait"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
         <!-- 设置key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
@@ -55,96 +72,111 @@
         <!-- 定位需要的服务 -->
         <service android:name="com.amap.api.location.APSService" />
         <!-- meta-data需要写在application中 -->
-        <activity android:name="com.ninetop.base.StartActivity">
+        <activity android:name="youbao.shopping.ninetop.base.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
+
+        <service android:name="youbao.shopping.ninetop.update.DownloadService"
+            android:exported="true"/>
+
         <activity
-            android:name="com.ninetop.activity.user.LoginActivity"
+            android:name="youbao.shopping.ninetop.activity.user.LoginActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.MainActivity"
+            android:name="youbao.shopping.ninetop.activity.MainActivity"
+            android:screenOrientation="portrait"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.ub.seller.SellerNearActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.seller.SellerNearActivity"
             android:launchMode="singleTask" />
-        <activity android:name="com.ninetop.activity.ub.product.UbProductActivity" />
+        <activity android:name="youbao.shopping.ninetop.activity.ub.product.UbProductActivity" />
         <!-- 优保商家联盟alfa -->
         <activity
-            android:name="com.ninetop.activity.ub.seller.UbSellerActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.seller.UbSellerActivity"
             android:launchMode="singleTask"
             android:windowSoftInputMode="adjustPan|stateVisible" />
         <!-- Ubao商品搜索结果 -->
         <activity
-            android:name="com.ninetop.activity.ub.product.UbProductAllCategoryActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.product.UbProductAllCategoryActivity"
             android:launchMode="singleTask" />
         <!-- Uba商家分类 -->
         <activity
-            android:name="com.ninetop.activity.ub.seller.SellerCategoryActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.seller.SellerCategoryActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.ub.banner.UbWebViewActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.banner.UbWebViewActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.index.IndexActivity"
+            android:name="youbao.shopping.ninetop.activity.index.IndexActivity"
             android:launchMode="singleTask" />
         <!-- Ubao商品分类结果 -->
         <activity
-            android:name="com.ninetop.activity.ub.product.ProductCategoryActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.product.ProductCategoryActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.ub.seller.SellerPaySuccessActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.seller.SellerPaySuccessActivity"
             android:launchMode="singleTask" />
         <!-- 注册 -->
         <activity
-            android:name="com.ninetop.activity.user.RegisterActivity"
+            android:name="youbao.shopping.ninetop.activity.user.RegisterActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.ub.shopcart.UbShopCartActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.shopcart.UbShopCartActivity"
             android:launchMode="singleTask" />
         <!-- &lt;!&ndash;购物车&ndash;&gt; -->
         <!-- <activity android:name="com.ninetop.activity.ub.shopcart.UbshopcartActivity"></activity> -->
         <!-- 分类 -->
         <activity
-            android:name="com.ninetop.activity.product.CategoryProductActivity"
+            android:name="youbao.shopping.ninetop.activity.product.CategoryProductActivity"
             android:launchMode="singleTask" />
         <!-- 个人中心 -->
         <activity
-            android:name="com.ninetop.activity.user.UserCenterActivity"
+            android:name="youbao.shopping.ninetop.activity.user.UserCenterActivity"
             android:launchMode="singleTask" />
         <!-- 二级分类 -->
         <activity
-            android:name="com.ninetop.activity.product.CategorySecondActivity"
+            android:name="youbao.shopping.ninetop.activity.product.CategorySecondActivity"
             android:launchMode="singleTask" />
 
         <!-- 福利卡 -->
         <activity
-            android:name="com.ninetop.activity.user.WelCardActivity"
+            android:name="youbao.shopping.ninetop.activity.user.WelCardActivity"
             android:launchMode="singleTask" />
         <!-- 福利卡明细 -->
         <activity
-            android:name="com.ninetop.activity.user.WelCardDetailedActivity"
+            android:name="youbao.shopping.ninetop.activity.user.WelCardDetailedActivity"
             android:launchMode="singleTask" />
         <!-- 我的订单 -->
         <activity
-            android:name="com.ninetop.activity.product.MyOrderActivity"
+            android:name="youbao.shopping.ninetop.activity.product.MyOrderActivity"
             android:launchMode="singleTask" />
         <!-- 订单详情 -->
         <activity
-            android:name="com.ninetop.activity.product.OrderDetailsActivity"
+            android:name="youbao.shopping.ninetop.activity.product.OrderDetailsActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.ub.order.UbMyOrderDetailActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.order.UbMyOrderDetailActivity"
             android:launchMode="singleTask" />
         <!-- 退款处理中 -->
         <activity
-            android:name="com.ninetop.activity.user.RefundBeingProcessed"
+            android:name="youbao.shopping.ninetop.activity.user.RefundBeingProcessed"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.ub.usercenter.myWallet.MyBInfoWalletActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.usercenter.myWallet.MyBInfoWalletActivity"
             android:launchMode="singleTask" />
         <!-- &lt;!&ndash;&ndash;&gt; -->
         <!-- <activity -->
@@ -152,66 +184,66 @@
         <!-- &gt;   </activity> -->
         <!-- ubao城市选择 -->
         <activity
-            android:name="com.ninetop.activity.ub.usercenter.SelectedCityActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.usercenter.SelectedCityActivity"
             android:launchMode="singleTask" />
         <!-- ubao收藏 -->
         <activity
-            android:name="com.ninetop.activity.ub.usercenter.mycollection.MyCollectionActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.usercenter.mycollection.MyCollectionActivity"
             android:launchMode="singleTask" />
         <!-- ubao订单确认 -->
         <activity
-            android:name="com.ninetop.activity.ub.order.UbConfirmPayActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.order.UbConfirmPayActivity"
             android:launchMode="singleTask" />
         <!-- ubao收藏 -->
         <activity
-            android:name="com.ninetop.activity.ub.order.UbConfirmOrderActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.order.UbConfirmOrderActivity"
             android:launchMode="singleTask" />
         <!-- ubao支付成功 -->
         <!-- ubao我的余额 -->
         <activity
-            android:name="com.ninetop.activity.ub.usercenter.UbAccountBalanceActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.usercenter.UbAccountBalanceActivity"
             android:launchMode="singleTask" />
         <!-- ubaoU币中心 -->
         <activity
-            android:name="com.ninetop.activity.ub.usercenter.ReChargeActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.usercenter.ReChargeActivity"
             android:launchMode="singleTask" />
         <!-- ubaoU币中心 -->
         <!-- ubaoU币明细 -->
         <activity
-            android:name="com.ninetop.activity.ub.usercenter.myWallet.MyUInfoWalletActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.usercenter.myWallet.MyUInfoWalletActivity"
             android:launchMode="singleTask" />
-        <!--<activity android:name="com.ninetop.zxing.CaptureActivity" />-->
+        <!-- <activity android:name="com.ninetop.zxing.CaptureActivity" /> -->
         <!-- ubaoU币中心 -->
         <!-- ubao联盟商家 -->
         <!-- ubaoKTV商家 -->
         <!-- ubao修改昵称 -->
         <activity
-            android:name="com.ninetop.activity.ub.usercenter.ModifyNicknameActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.usercenter.ModifyNicknameActivity"
             android:launchMode="singleTask" />
         <!-- ubaoKTV商家联系客服 -->
         <activity
-            android:name="com.ninetop.activity.ub.usercenter.OnlineKeFuActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.usercenter.OnlineKeFuActivity"
             android:launchMode="singleTask" />
         <!-- ubaoKTV商家 -->
         <!-- ubao商家详情 -->
         <activity
-            android:name="com.ninetop.activity.ub.seller.SellerDetailActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.seller.SellerDetailActivity"
             android:launchMode="singleTask" />
         <!-- ubaoKTV商家 -->
         <activity
-            android:name="com.ninetop.activity.ub.seller.SellerSearchInfoActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.seller.SellerSearchInfoActivity"
             android:launchMode="singleTask" />
         <!-- ubao商品信息 -->
         <activity
-            android:name="com.ninetop.activity.ub.product.UbProductInfoActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.product.UbProductInfoActivity"
             android:launchMode="singleTask" />
         <!-- ubao商家支付 -->
         <activity
-            android:name="com.ninetop.activity.ub.seller.SellerPayActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.seller.SellerPayActivity"
             android:launchMode="singleTask" />
         <!-- ubao消费账单 -->
         <activity
-            android:name="com.ninetop.activity.ub.usercenter.ConSumeOrderActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.usercenter.ConSumeOrderActivity"
             android:launchMode="singleTask" />
         <!-- ubao我的收藏 -->
         <!-- ubao我的收藏 -->
@@ -219,255 +251,264 @@
         <!-- ubao在线客服 -->
         <!-- ubao我要合作 -->
         <activity
-            android:name="com.ninetop.activity.ub.usercenter.ConnectWithActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.usercenter.ConnectWithActivity"
             android:launchMode="singleTask" />
         <!-- ubao我的平台 -->
         <activity
-            android:name="com.ninetop.activity.ub.usercenter.AboutPlatActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.usercenter.AboutPlatActivity"
             android:launchMode="singleTask" />
         <!-- ubao我的钱包 -->
         <activity
-            android:name="com.ninetop.activity.ub.usercenter.UbMyWalletActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.usercenter.UbMyWalletActivity"
             android:launchMode="singleTask" />
         <!-- 问题验证 -->
         <activity
-            android:name="com.ninetop.activity.ub.question.QuestionActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.question.QuestionActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.ub.question.QuestionListActivity"
-            android:launchMode="singleTask" />
-        <!-- ubaoU币中心 -->
-        <activity
-            android:name="com.ninetop.activity.ub.product.UbProductSearchResultActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.question.QuestionListActivity"
             android:launchMode="singleTask" />
         <!-- ubaoU币中心 -->
         <activity
-            android:name="com.ninetop.activity.ub.usercenter.myWallet.MyUWalletActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.product.UbProductSearchResultActivity"
+            android:launchMode="singleTask" />
+        <!-- ubaoU币中心 -->
+        <activity
+            android:name="youbao.shopping.ninetop.activity.ub.usercenter.myWallet.MyUWalletActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.ub.usercenter.myWallet.MyBWalletActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.usercenter.myWallet.MyBWalletActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.ub.order.UbPaySuccessActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.order.UbPaySuccessActivity"
             android:launchMode="singleTask" />
         <!-- ubao福利兑换 -->
         <activity
-            android:name="com.ninetop.activity.ub.usercenter.GoodChangeActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.usercenter.GoodChangeActivity"
             android:launchMode="singleTask" />
         <!-- ubao福利兑换 -->
         <activity
-            android:name="com.ninetop.activity.ub.usercenter.BangDingShouJiActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.usercenter.BangDingShouJiActivity"
             android:launchMode="singleTask" />
         <!-- ubao第三方绑定 -->
         <activity
-            android:name="com.ninetop.activity.ub.usercenter.ThirdActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.usercenter.ThirdActivity"
             android:launchMode="singleTask" />
         <!-- ubao问题验证 -->
         <!-- ubao修改密码 -->
         <activity
-            android:name="com.ninetop.activity.ub.usercenter.ModifyPasswordActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.usercenter.ModifyPasswordActivity"
             android:launchMode="singleTask" />
         <!-- ubao修改密码 -->
-        <!--<activity-->
-        <!--android:name="com.ninetop.activity.ub.usercenter.MyCenerInfoActivity"-->
-        <!--android:launchMode="singleTask" />-->
+        <!-- <activity -->
+        <!-- android:name="com.ninetop.activity.ub.usercenter.MyCenerInfoActivity" -->
+        <!-- android:launchMode="singleTask" /> -->
         <!-- 退货处理中 -->
         <activity
-            android:name="com.ninetop.activity.user.ScaleReturnActivity"
+            android:name="youbao.shopping.ninetop.activity.user.ScaleReturnActivity"
             android:launchMode="singleTask" />
         <!-- 退款中 -->
         <activity
-            android:name="com.ninetop.activity.user.RefundBeing"
+            android:name="youbao.shopping.ninetop.activity.user.RefundBeing"
             android:launchMode="singleTask" />
         <!-- 退款详情 -->
         <activity
-            android:name="com.ninetop.activity.user.RefundDetailsActivity"
+            android:name="youbao.shopping.ninetop.activity.user.RefundDetailsActivity"
             android:launchMode="singleTask" />
         <!-- 评价晒单 -->
         <activity
-            android:name="com.ninetop.activity.product.CommentAndShowActivity"
+            android:name="youbao.shopping.ninetop.activity.product.CommentAndShowActivity"
             android:launchMode="singleTask" />
         <!-- 设置密码 -->
         <activity
-            android:name="com.ninetop.activity.user.SettingPasswordActivity"
+            android:name="youbao.shopping.ninetop.activity.user.SettingPasswordActivity"
             android:launchMode="singleTask" />
         <!-- 账号安全 -->
         <activity
-            android:name="com.ninetop.activity.user.AccountGuardActivity"
+            android:name="youbao.shopping.ninetop.activity.user.AccountGuardActivity"
             android:launchMode="singleTask" />
         <!-- 修改登录密码 -->
         <activity
-            android:name="com.ninetop.activity.user.ModifyLoginPwdActivity"
+            android:name="youbao.shopping.ninetop.activity.user.ModifyLoginPwdActivity"
             android:launchMode="singleTask" />
         <!-- 意见反馈 -->
         <activity
-            android:name="com.ninetop.activity.user.CommentFeedbackActivity"
+            android:name="youbao.shopping.ninetop.activity.user.CommentFeedbackActivity"
             android:launchMode="singleTask" />
         <!-- 验证身份 -->
         <activity
-            android:name="com.ninetop.activity.user.ConfirmIDActivity"
+            android:name="youbao.shopping.ninetop.activity.user.ConfirmIDActivity"
             android:launchMode="singleTask" />
         <!-- 修改昵称 -->
         <activity
-            android:name="com.ninetop.activity.user.ModifyNicknameActivity"
+            android:name="youbao.shopping.ninetop.activity.user.ModifyNicknameActivity"
             android:launchMode="singleTask" />
         <!-- 个人资料 -->
         <activity
-            android:name="com.ninetop.activity.user.PersonalDataActivity"
+            android:name="youbao.shopping.ninetop.activity.user.PersonalDataActivity"
             android:launchMode="singleTask" />
         <!-- 系统设置 -->
         <activity
-            android:name="com.ninetop.activity.user.SystemSettingsActivity"
+            android:name="youbao.shopping.ninetop.activity.user.SystemSettingsActivity"
             android:launchMode="singleTask" />
         <!-- 确认密码 -->
         <activity
-            android:name="com.ninetop.activity.user.ConfirmPwdActivity"
+            android:name="youbao.shopping.ninetop.activity.user.ConfirmPwdActivity"
             android:launchMode="singleTask" />
         <!-- 优惠券 -->
         <activity
-            android:name="com.ninetop.activity.user.CouponActivity"
+            android:name="youbao.shopping.ninetop.activity.user.CouponActivity"
             android:launchMode="singleTask" />
         <!-- 申请退款 -->
         <activity
-            android:name="com.ninetop.activity.user.ApplyForRefundActivity"
+            android:name="youbao.shopping.ninetop.activity.user.ApplyForRefundActivity"
             android:launchMode="singleTask" />
         <!-- 填写退货物流界面 -->
         <activity
-            android:name="com.ninetop.activity.user.FillInReturnGoods"
+            android:name="youbao.shopping.ninetop.activity.user.FillInReturnGoods"
             android:launchMode="singleTask" />
         <!-- 查看物流 -->
         <activity
-            android:name="com.ninetop.activity.user.SeeLogistic"
+            android:name="youbao.shopping.ninetop.activity.user.SeeLogistic"
             android:launchMode="singleTask" />
         <!-- //地址管理 -->
         <activity
-            android:name="com.ninetop.activity.user.AddressManagerActivity"
+            android:name="youbao.shopping.ninetop.activity.user.AddressManagerActivity"
             android:launchMode="singleTask" />
         <!-- //添加地址 -->
         <activity
-            android:name="com.ninetop.activity.user.AddAddressActivity"
+            android:name="youbao.shopping.ninetop.activity.user.AddAddressActivity"
             android:launchMode="singleTask" />
         <!-- //退款界面 -->
         <activity
-            android:name="com.ninetop.activity.user.ReturnGoodsActivity"
+            android:name="youbao.shopping.ninetop.activity.user.ReturnGoodsActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.user.ForgetPasswordActivity"
+            android:name="youbao.shopping.ninetop.activity.user.ForgetPasswordActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.ub.product.ProductSearchActivity"
+            android:name="youbao.shopping.ninetop.activity.ub.product.ProductSearchActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.product.ProductSearchResultActivity"
+            android:name="youbao.shopping.ninetop.activity.product.ProductSearchResultActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.product.ProductDetailActivity"
+            android:name="youbao.shopping.ninetop.activity.product.ProductDetailActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.index.MessageActivity"
+            android:name="youbao.shopping.ninetop.activity.index.MessageActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.index.MessageNoticeActivity"
+            android:name="youbao.shopping.ninetop.activity.index.MessageNoticeActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.index.MessageOrderActivity"
+            android:name="youbao.shopping.ninetop.activity.index.MessageOrderActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.index.NewUserActivity"
+            android:name="youbao.shopping.ninetop.activity.index.NewUserActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.index.SaleActivity"
+            android:name="youbao.shopping.ninetop.activity.index.SaleActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name="com.ninetop.activity.user.RegisterProtocolActivity"
+            android:name="youbao.shopping.ninetop.activity.user.RegisterProtocolActivity"
             android:launchMode="singleTask" />
-        <!--<activity-->
-        <!--android:name="com.ninetop.activity.ub.product.RoutePlanActivity"-->
-        <!--android:launchMode="singleTask" />-->
+        <!-- <activity -->
+        <!-- android:name="com.ninetop.activity.ub.product.RoutePlanActivity" -->
+        <!-- android:launchMode="singleTask" /> -->
 
-        <service
-            android:name="com.ninetop.common.version.DownloadService"
-            android:exported="true" />
         <!-- //7.15上传图片剪切 -->
-        <activity android:name="com.ninetop.activity.ub.usercenter.UbSystemSetActivity" />
-        <activity android:name="com.ninetop.activity.ub.usercenter.Camera.ClipImageActivity" />
-        <activity android:name="com.ninetop.activity.order.pay.PaySuccessActivity" />
-        <activity android:name="com.ninetop.activity.order.pay.OrderPayActivity" />
-        <activity android:name="com.ninetop.activity.order.OrderConfirmActivity" />
-        <activity android:name="com.ninetop.activity.order.OrderCouponSelectorActivity" />
-        <!--<activity android:name="com.ninetop.activity.user.BalancesActivity" />-->
-        <activity android:name="com.ninetop.activity.NoNetworkActivity" />
-        <activity android:name="com.ninetop.activity.index.WebViewActivity" />
-        <activity android:name="com.ninetop.activity.product.ProductSaleDetailActivity" />
-        <activity android:name="com.ninetop.activity.order.OrderSecKillConfirmActivity" />
+        <activity android:name="youbao.shopping.ninetop.activity.ub.usercenter.UbSystemSetActivity" />
+        <activity android:name="youbao.shopping.ninetop.activity.ub.usercenter.Camera.ClipImageActivity" />
+        <activity android:name="youbao.shopping.ninetop.activity.order.pay.PaySuccessActivity" />
+        <activity android:name="youbao.shopping.ninetop.activity.order.pay.OrderPayActivity" />
+        <activity android:name="youbao.shopping.ninetop.activity.order.OrderConfirmActivity" />
+        <activity android:name="youbao.shopping.ninetop.activity.order.OrderCouponSelectorActivity" />
+        <!-- <activity android:name="com.ninetop.activity.user.BalancesActivity" /> -->
+        <activity android:name="youbao.shopping.ninetop.activity.NoNetworkActivity" />
+        <activity android:name="youbao.shopping.ninetop.activity.index.WebViewActivity" />
+        <activity android:name="youbao.shopping.ninetop.activity.product.ProductSaleDetailActivity" />
+        <activity android:name="youbao.shopping.ninetop.activity.order.OrderSecKillConfirmActivity" />
         <!-- 微信回调 -->
-        <activity android:name="com.youbao.shopping.wxapi.WXPayEntryActivity"
-            android:exported="true"
-            android:launchMode="singleTop" />
+        <activity
+        android:name="youbao.shopping.wxapi.WXPayEntryActivity"
+        android:exported="true"
+        android:launchMode="singleTop"/>
 
-        <provider
-            android:name="android.support.v4.content.FileProvider"
-            android:authorities="youbao.shopping.fileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
+        <!--<provider-->
+        <!--android:name="android.support.v4.content.FileProvider"-->
+        <!--android:authorities="youbao.shopping.fileProvider"-->
+        <!--android:exported="false"-->
+        <!--android:grantUriPermissions="true">-->
+        <!--<meta-data-->
+        <!--android:name="android.support.FILE_PROVIDER_PATHS"-->
+        <!--android:resource="@xml/file_paths"/>-->
+        <!--</provider>-->
+        <!--<activity-->
+        <!--android:name="com.youbao.shopping.wxapi.WXEntryActivity"-->
+        <!--android:exported="true"-->
+        <!--android:launchMode="singleTop" />-->
         <!-- 友盟第三方登录 -->
         <meta-data
             android:name="UMENG_APPKEY"
-            android:value="596495c93eae25565c000c4f" />
+            android:value="5ab9d46bf43e4878b2000224" />
 
-        <!--<activity
-            android:name=".wxapi.WXEntryActivity"
+            <activity
+            android:name="youbao.shopping.wxapi.WXEntryActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:exported="true"
             android:screenOrientation="portrait"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
-        <activity
-            android:name="com.umeng.qq.tencent.AuthActivity"
-            android:launchMode="singleTask"
-            android:noHistory="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:scheme="tencent1106151272" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name="com.umeng.qq.tencent.AssistActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
+        <!--<activity-->
+            <!--android:name="com.umeng.qq.tencent.AuthActivity"-->
+            <!--android:launchMode="singleTask"-->
+            <!--android:noHistory="true">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.VIEW" />-->
+                <!--<category android:name="android.intent.category.DEFAULT" />-->
+                <!--<category android:name="android.intent.category.BROWSABLE" />-->
+                <!--<data android:scheme="tencent1106151272" />-->
+            <!--</intent-filter>-->
+        <!--</activity>-->
+        <!--<activity-->
+            <!--android:name="com.umeng.qq.tencent.AssistActivity"-->
+            <!--android:configChanges="orientation|keyboardHidden|screenSize"-->
+            <!--android:screenOrientation="portrait"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar" />-->
+
         <service
-            android:name="com.ninetop.update.DownloadService"
+            android:name="youbao.shopping.ninetop.update.DownloadService"
             android:exported="true" />
 
-        <receiver
-            android:name="com.ninetop.update.AppInstallReceiver"
-            android:label="@string/app_name">
-            <intent-filter>
-                <action android:name="android.intent.action.PACKAGE_ADDED" />
-                <action android:name="android.intent.action.PACKAGE_REPLACED" />
-                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+        <!--<receiver-->
+            <!--android:name="youbao.shopping.ninetop.update.AppInstallReceiver"-->
+            <!--android:label="@string/app_name">-->
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.PACKAGE_ADDED" />-->
+                <!--<action android:name="android.intent.action.PACKAGE_REPLACED" />-->
+                <!--<action android:name="android.intent.action.PACKAGE_REMOVED" />-->
 
-                <data android:scheme="package" />
-            </intent-filter>
-        </receiver>
+                <!--<data android:scheme="package" />-->
+            <!--</intent-filter>-->
+        <!--</receiver>-->
 
-        <activity android:name="com.ninetop.activity.order.ExpressQueryActivity" />
-        <activity android:name="com.ninetop.activity.ub.product.SellerServiceActivity" />
-
+        <activity android:name="youbao.shopping.ninetop.activity.order.ExpressQueryActivity" />
+        <activity android:name="youbao.shopping.ninetop.activity.ub.product.SellerServiceActivity" />
         <activity android:name="io.github.xudaojie.qrcodelib.CaptureActivity" />
-        <activity android:name="com.ninetop.activity.ub.product.route.activity.RouteActivity" />
-        <activity android:name="com.ninetop.activity.ub.product.route.activity.BusRouteDetailActivity" />
-        <activity android:name="com.ninetop.activity.ub.product.route.activity.DriveRouteDetailActivity" />
-        <activity android:name="com.ninetop.activity.ub.product.route.activity.WalkRouteDetailActivity" />
+        <activity android:name="youbao.shopping.ninetop.activity.ub.product.route.activity.RouteActivity" />
+        <activity android:name="youbao.shopping.ninetop.activity.ub.product.route.activity.BusRouteDetailActivity" />
+        <activity android:name="youbao.shopping.ninetop.activity.ub.product.route.activity.DriveRouteDetailActivity" />
+        <activity android:name="youbao.shopping.ninetop.activity.ub.product.route.activity.WalkRouteDetailActivity" />
+        <activity
+            android:name="youbao.shopping.ninetop.activity.ub.product.UbProductShareActivity"
+            android:label="@string/title_activity_ub_product_share"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name="youbao.shopping.ninetop.activity.user.MyRewardsActivity"
+            android:label="@string/title_activity_ub_product_share"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity android:name=".ninetop.activity.user.ResetQuestionActivity" />
     </application>
 
 </manifest>

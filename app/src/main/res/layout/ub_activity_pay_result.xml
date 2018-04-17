@@ -226,15 +226,15 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        ></View>
+        />
+
     <Button
         android:id="@+id/btn_contact_platform"
         style="@style/text_font_size_m"
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:background="@color/text_red"
         android:text="查看订单"
-        android:textColor="@color/white"
-        />
+        android:textColor="@color/white" />
 
 </LinearLayout>

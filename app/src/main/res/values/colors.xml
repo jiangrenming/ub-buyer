@@ -48,4 +48,10 @@
     <color name="phone_bg">#f6f6f6</color>
     <color name="blue">#4c90f9</color>
     <color name="grey"> #ebebeb</color>
+
+    <color name="yellow1">#f4a100</color>
+
+    <color name="common_bg_color">#F2F2FD</color>
+    <color name="press_btn_color">#ddd</color>
+
 </resources>

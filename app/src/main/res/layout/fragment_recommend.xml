@@ -17,7 +17,7 @@
             android:background="@color/white"
             android:orientation="vertical">
 
-            <com.bigkoo.convenientbanner.ConvenientBanner
+            <youbao.shopping.bigkoo.convenientbanner.ConvenientBanner
                 android:id="@+id/cb_banner"
                 android:layout_width="match_parent"
                 android:layout_height="250dp" />
@@ -103,7 +103,7 @@
 
         </LinearLayout>
 
-        <com.ninetop.common.view.MyHorizontalScrollView
+        <youbao.shopping.ninetop.common.view.MyHorizontalScrollView
             android:id="@+id/hsv_seckill"
             android:layout_width="match_parent"
             android:layout_height="160dp"
@@ -117,7 +117,7 @@
                 android:background="@color/white"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"/>
-        </com.ninetop.common.view.MyHorizontalScrollView>
+        </youbao.shopping.ninetop.common.view.MyHorizontalScrollView>
 
 
         <View
@@ -139,7 +139,7 @@
             android:layout_height="1dp"
             android:background="@color/gray_light2" />
 
-        <com.ninetop.common.view.LinearLayoutListView
+        <youbao.shopping.ninetop.common.view.LinearLayoutListView
             android:id="@+id/lv_recommend_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -150,7 +150,7 @@
             android:layout_height="10dp"
             android:background="@color/gray_light2" />
 
-        <com.ninetop.common.view.LinearLayoutListView
+        <youbao.shopping.ninetop.common.view.LinearLayoutListView
             android:id="@+id/lv_category_list"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

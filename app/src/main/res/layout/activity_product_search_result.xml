@@ -72,7 +72,7 @@
             android:src="@mipmap/more" />
     </LinearLayout>
 
-    <com.ninetop.common.view.ProductSortBarView
+    <youbao.shopping.ninetop.common.view.ProductSortBarView
         android:id="@+id/psb_bar"
         android:layout_width="match_parent"
         android:layout_height="40dp"

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.ninetop.activity.ub.util.MyScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<youbao.shopping.ninetop.activity.ub.util.MyScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scorll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,12 +11,14 @@
     android:scrollbars="none">
 
     <LinearLayout
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/white"
         android:orientation="vertical">
 
-        <com.bigkoo.convenientbanner.ConvenientBanner
+        <youbao.shopping.bigkoo.convenientbanner.ConvenientBanner
             android:id="@+id/cb_banner"
             android:layout_width="match_parent"
             android:layout_height="220dp" />
@@ -28,7 +31,10 @@
             <android.support.v4.view.ViewPager
                 android:id="@+id/viewPager"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
             <LinearLayout
                 android:id="@+id/points"
@@ -45,10 +51,25 @@
             android:layout_height="match_parent"
             android:background="@color/ub_bg"
             android:orientation="vertical">
+            <LinearLayout
+                android:background="@color/gray_light9"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/main_iv_share"
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center|center_vertical"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:src="@drawable/main_share" />
+            </LinearLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="30dp"
                 android:gravity="center">
 
                 <ImageView
@@ -56,7 +77,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:background="@mipmap/icon_recommended"
-                    android:contentDescription="@string/app_name"/>
+                    android:contentDescription="@string/app_name" />
 
                 <TextView
                     style="@style/text_font_size_s"
@@ -69,7 +90,7 @@
                     android:textColor="@color/text_black" />
             </RelativeLayout>
 
-            <com.ninetop.common.view.ScrollViewWithListView
+            <youbao.shopping.ninetop.common.view.ScrollViewWithListView
                 android:id="@+id/vp_seller_list"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -78,4 +99,4 @@
                 android:scrollbars="none" />
         </LinearLayout>
     </LinearLayout>
-</com.ninetop.activity.ub.util.MyScrollView>
+</youbao.shopping.ninetop.activity.ub.util.MyScrollView>

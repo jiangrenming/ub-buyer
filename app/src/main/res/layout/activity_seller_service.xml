@@ -4,9 +4,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.ninetop.activity.ub.product.SellerServiceActivity">
+    tools:context="youbao.shopping.ninetop.activity.ub.product.SellerServiceActivity">
 
-    <com.ninetop.common.view.HeadView
+    <youbao.shopping.ninetop.common.view.HeadView
         android:id="@+id/hv_head"
         style="@style/title_height"
         android:layout_width="match_parent" />
@@ -19,5 +19,21 @@
     <WebView
         android:id="@+id/web_service"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="297dp"
+        android:layout_weight="1.00" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="0.001"
+        />
+
+
+    <Button
+        android:id="@+id/btn_customerservicenumber"
+        style="@style/text_font_size_m"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/text_red"
+        android:text="客服电话"
+        android:textColor="@color/white" />
 </LinearLayout>

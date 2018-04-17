@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="360dp">
 
-            <com.bigkoo.convenientbanner.ConvenientBanner
+            <youbao.shopping.bigkoo.convenientbanner.ConvenientBanner
                 android:id="@+id/cb_banner"
                 android:layout_width="match_parent"
                 android:layout_height="360dp"
@@ -231,7 +231,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="5dp"
-            android:background="@color/ub_bg"></View>
+            android:background="@color/ub_bg"/>
 
         <LinearLayout
             android:id="@+id/ll_more"

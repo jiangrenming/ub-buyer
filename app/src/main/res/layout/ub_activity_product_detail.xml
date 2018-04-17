@@ -5,7 +5,10 @@
     android:background="@color/white"
     >
 
-    <include layout="@layout/ub_product_info"/>
+    <include layout="@layout/ub_product_info"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <LinearLayout
         android:layout_width="match_parent"

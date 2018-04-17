@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:clipChildren="false">
 
-    <com.ninetop.common.view.HeadView
+    <youbao.shopping.ninetop.common.view.HeadView
         android:id="@+id/hv_head"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

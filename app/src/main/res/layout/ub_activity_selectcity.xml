@@ -7,7 +7,7 @@
 
     >
 
-    <com.ninetop.common.view.HeadView
+    <youbao.shopping.ninetop.common.view.HeadView
         android:id="@+id/hv_head"
         style="@style/title_height"
         android:layout_width="match_parent" />
@@ -66,6 +66,7 @@
             android:textColor="@color/text_black" />
 
         <TextView
+            android:id="@+id/tv_currentcity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/dangqian"

@@ -1,4 +1,4 @@
-package com.bigkoo.convenientbanner;
+package youbao.shopping.bigkoo.convenientbanner;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -13,11 +13,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.bigkoo.convenientbanner.adapter.CBPageAdapter;
-import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
-import com.bigkoo.convenientbanner.listener.CBPageChangeListener;
-import com.bigkoo.convenientbanner.listener.OnItemClickListener;
-import com.bigkoo.convenientbanner.view.CBLoopViewPager;
+import youbao.shopping.bigkoo.convenientbanner.adapter.CBPageAdapter;
+import youbao.shopping.bigkoo.convenientbanner.holder.CBViewHolderCreator;
+import youbao.shopping.bigkoo.convenientbanner.listener.CBPageChangeListener;
+import youbao.shopping.bigkoo.convenientbanner.listener.OnItemClickListener;
+import youbao.shopping.bigkoo.convenientbanner.view.CBLoopViewPager;
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;

@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="360dp">
 
-            <com.bigkoo.convenientbanner.ConvenientBanner
+            <youbao.shopping.bigkoo.convenientbanner.ConvenientBanner
                 android:id="@+id/cb_banner"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />

@@ -4,11 +4,11 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
-    <com.ninetop.common.view.HeadView
+    <youbao.shopping.ninetop.common.view.HeadView
         android:layout_width="match_parent"
         style="@style/title_height"
         android:id="@+id/hv_head"
-        ></com.ninetop.common.view.HeadView>
+        />
     <EditText
         android:id="@+id/et_modify_nickname"
         android:layout_width="match_parent"

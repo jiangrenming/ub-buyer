@@ -22,7 +22,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
-        <com.ninetop.common.view.HeadView
+        <youbao.shopping.ninetop.common.view.HeadView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/head_view"

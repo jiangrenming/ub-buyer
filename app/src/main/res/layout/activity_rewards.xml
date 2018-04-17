@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <youbao.shopping.ninetop.common.view.HeadView
+        android:id="@+id/hv_head"
+        android:layout_width="match_parent"
+        style="@style/title_height" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp"
+        android:background="@drawable/share_title"
+        android:scaleType="fitStart"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/tv_share_jiangli"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="bottom|left"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+
+    <ListView
+        android:dividerHeight="10dip"
+        android:background="@color/transparent"
+        android:divider="@null"
+        android:cacheColorHint="@color/transparent"
+        android:listSelector="@color/transparent"
+        android:scrollbars="none"
+        android:id="@+id/lv_rewards"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

@@ -5,76 +5,76 @@
               android:layout_height="wrap_content"
               android:layout_marginTop="5dp"
     >
-    <com.ninetop.common.view.ItemImgView
+    <youbao.shopping.ninetop.common.view.ItemImgView
         android:id="@+id/ll_blance"
         android:layout_width="match_parent"
         ll:text="我的钱包"
         ll:src="@mipmap/daifukuan"
         android:layout_height="55dip">
-    </com.ninetop.common.view.ItemImgView>
+    </youbao.shopping.ninetop.common.view.ItemImgView>
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/gray_light8"
         android:layout_marginLeft="15dip"
-        ></View>
-    <com.ninetop.common.view.ItemImgView
+        />
+    <youbao.shopping.ninetop.common.view.ItemImgView
         android:id="@+id/ll_address_manage"
         android:layout_width="match_parent"
         ll:text="地址管理"
         ll:src="@mipmap/dizhiguanli"
         android:layout_height="55dip">
-    </com.ninetop.common.view.ItemImgView>
+    </youbao.shopping.ninetop.common.view.ItemImgView>
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/gray_light8"
         android:layout_marginLeft="15dip"
-        ></View>
-    <com.ninetop.common.view.ItemImgView
+        />
+    <youbao.shopping.ninetop.common.view.ItemImgView
         android:id="@+id/ll_xiaofeizhangdan"
         android:layout_width="match_parent"
         ll:text="消费账单"
         ll:src="@mipmap/xiaofeizhangd"
         android:layout_height="55dip">
-    </com.ninetop.common.view.ItemImgView>
+    </youbao.shopping.ninetop.common.view.ItemImgView>
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/gray_light8"
         android:layout_marginLeft="15dip"
-        ></View>
-    <com.ninetop.common.view.ItemImgView
+        />
+    <youbao.shopping.ninetop.common.view.ItemImgView
         android:id="@+id/ll_lianxikefu"
         android:layout_width="match_parent"
         ll:text="联系客服"
         ll:src="@mipmap/lianxikefu"
         android:layout_height="55dip">
-    </com.ninetop.common.view.ItemImgView>
+    </youbao.shopping.ninetop.common.view.ItemImgView>
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/gray_light8"
         android:layout_marginLeft="15dip"
-        ></View>
-    <com.ninetop.common.view.ItemImgView
+        />
+    <youbao.shopping.ninetop.common.view.ItemImgView
         android:id="@+id/ll_guanyupingtai"
         android:layout_width="match_parent"
         ll:text="关于平台"
         ll:src="@mipmap/guanyupingtai"
         android:layout_height="55dip">
-    </com.ninetop.common.view.ItemImgView>
+    </youbao.shopping.ninetop.common.view.ItemImgView>
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/gray_light8"
         android:layout_marginLeft="15dip"
-        ></View>
-    <com.ninetop.common.view.ItemImgView
+        />
+    <youbao.shopping.ninetop.common.view.ItemImgView
         android:id="@+id/ll_woayaohezuo"
         android:layout_width="match_parent"
         ll:text="我要合作"
         ll:src="@mipmap/hezuo"
         android:layout_height="55dip">
-    </com.ninetop.common.view.ItemImgView>
+    </youbao.shopping.ninetop.common.view.ItemImgView>
 </LinearLayout>

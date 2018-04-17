@@ -1,10 +1,10 @@
-package com.bigkoo.convenientbanner;
+package youbao.shopping.bigkoo.convenientbanner;
 
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.bigkoo.convenientbanner.holder.Holder;
+import youbao.shopping.bigkoo.convenientbanner.holder.Holder;
 import com.nostra13.universalimageloader.core.ImageLoader;
 
 /**

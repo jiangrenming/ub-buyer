@@ -5,7 +5,7 @@
     android:background="@color/ub_bg"
     android:orientation="vertical">
 
-    <com.ninetop.common.view.HeadView
+    <youbao.shopping.ninetop.common.view.HeadView
         android:id="@+id/hv_head"
         style="@style/title_height"
         android:layout_width="match_parent"/>
@@ -42,7 +42,6 @@
         android:background="@color/gray_light2" />
 
     <RelativeLayout
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/white"
@@ -100,7 +99,6 @@
         android:background="@color/gray_light2" />
 
     <RelativeLayout
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/white"

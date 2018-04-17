@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_share"
+        android:layout_width="match_parent"
+        android:layout_height="1280dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+    <youbao.shopping.ninetop.common.view.HeadView
+        android:id="@+id/hv_head"
+        android:layout_width="match_parent"
+        style="@style/title_height" >
+        <TextView
+            android:id="@+id/tv_share_fuli"
+            android:layout_marginRight="10dp"
+            android:text="奖励明细"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+             />
+        </youbao.shopping.ninetop.common.view.HeadView>
+    <LinearLayout
+        android:id="@+id/ll_share"
+        android:orientation="horizontal"
+        android:layout_weight="0.16"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:weightSum="1">
+
+        <RelativeLayout
+            android:id="@+id/rl_share"
+            android:layout_width="match_parent"
+            android:layout_height="159dp"
+            android:background="@drawable/share_title"
+            android:clickable="true"
+            android:scaleType="fitStart">
+
+        </RelativeLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="1dp"
+        android:layout_weight="0.03"
+        android:gravity="center"
+        android:text="您的邀请码是："
+        android:textColor="#222222"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:id="@+id/tv_invitationCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="#ca170f"
+        android:textSize="60dp" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="0.13"
+        android:scaleType="centerInside"
+        android:src="@drawable/share_explain" />
+
+    <Button
+        android:layout_weight="0.05"
+        android:layout_gravity="center"
+        android:id="@+id/btn_share"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@drawable/shape_button_red"
+        android:textColor="@color/white"
+        android:text="立即分享"
+        android:textSize="28dp" />
+
+
+</LinearLayout>

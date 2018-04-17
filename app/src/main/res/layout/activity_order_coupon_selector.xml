@@ -6,7 +6,7 @@
     android:background="@color/gray_light"
     android:orientation="vertical">
 
-    <com.ninetop.common.view.HeadView
+    <youbao.shopping.ninetop.common.view.HeadView
         android:id="@+id/hv_head"
         android:layout_width="match_parent"
         style="@style/title_height"
@@ -23,7 +23,7 @@
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         >
-        <com.ninetop.common.view.ScrollViewWithListView
+        <youbao.shopping.ninetop.common.view.ScrollViewWithListView
             android:id="@+id/lv_coupon_valid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
             style="@style/text_font_size_ss"
             android:textColor="@color/text_black"
             />
-        <com.ninetop.common.view.ScrollViewWithListView
+        <youbao.shopping.ninetop.common.view.ScrollViewWithListView
             android:id="@+id/lv_coupon_invalid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

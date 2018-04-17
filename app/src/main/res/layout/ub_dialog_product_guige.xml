@@ -115,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:orientation="vertical"></LinearLayout>
+                android:orientation="vertical"/>
         </ScrollView>
 
         <View
@@ -145,7 +145,7 @@
                 android:layout_weight="1"
                 android:gravity="center" />
 
-            <com.ninetop.common.view.NumericStepperView
+            <youbao.shopping.ninetop.common.view.NumericStepperView
                 android:id="@+id/nsv_number"
                 android:layout_width="120dp"
                 android:layout_height="33dp" />

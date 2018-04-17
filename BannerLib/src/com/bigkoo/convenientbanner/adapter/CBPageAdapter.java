@@ -1,13 +1,13 @@
-package com.bigkoo.convenientbanner.adapter;
+package youbao.shopping.bigkoo.convenientbanner.adapter;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.bigkoo.convenientbanner.R;
-import com.bigkoo.convenientbanner.holder.CBViewHolderCreator;
-import com.bigkoo.convenientbanner.holder.Holder;
-import com.bigkoo.convenientbanner.view.CBLoopViewPager;
+import youbao.shopping.bigkoo.convenientbanner.R;
+import youbao.shopping.bigkoo.convenientbanner.holder.CBViewHolderCreator;
+import youbao.shopping.bigkoo.convenientbanner.holder.Holder;
+import youbao.shopping.bigkoo.convenientbanner.view.CBLoopViewPager;
 
 import java.util.List;
 

@@ -77,7 +77,7 @@
                 android:layout_alignParentRight="true"
                 android:textColor="@color/text_gray" />
 
-            <com.ninetop.common.view.NumericStepperView
+            <youbao.shopping.ninetop.common.view.NumericStepperView
                 android:id="@+id/nsv_number"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
@@ -100,7 +100,7 @@
                 android:layout_marginTop="10dp"
                 android:orientation="vertical">
 
-                <com.ninetop.common.view.NumericStepperView
+                <youbao.shopping.ninetop.common.view.NumericStepperView
                     android:id="@+id/nsv_number_edit"
                     android:layout_width="100dp"
                     android:layout_height="30dp"
