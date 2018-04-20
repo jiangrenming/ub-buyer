@@ -75,6 +75,7 @@ public class ProductService extends BaseService {
 
     public void getProductHTMLContent(String code, ResultListener<String> resultListener){
         get(UrlConstant.PRODUCT_HTML_CONTENT + "/" + code, null, new BaseResponseListener(context, resultListener) {
+            @Override
             public void success(JSONObject jsonObject) throws JsonSyntaxException, JSONException {
                 JSONObject dataJson = jsonObject.getJSONObject("data");
                 String content = dataJson.getString("htmlConent");

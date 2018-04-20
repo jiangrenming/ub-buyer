@@ -28,38 +28,19 @@ import youbao.shopping.ninetop.service.impl.UpdateService;
 import youbao.shopping.R;
 
 public class StartActivity extends BaseActivity {
-    private static final String TAG = "StartActivity";
 
+    private static final String TAG = "StartActivity";
     private static final int BAI_DU_READ_PHONE_STATE = 100;
-//    private UpdateService updateService;
 
 
     public StartActivity() {
-//        updateService = new UpdateService(this);
     }
-
-//    private final BroadcastReceiver apkInstallListener = new BroadcastReceiver() {
-//
-//        @Override
-//        public void onReceive(Context context, Intent intent) {
-//
-//            if (Intent.ACTION_PACKAGE_ADDED.equals(intent.getAction())) {
-//                Log.i("TAG", "有应用被安装");
-//            } else if (Intent.ACTION_PACKAGE_REMOVED.equals(intent.getAction())) {
-//                Log.i("TAG", "有应用被删除");
-//            } else if (Intent.ACTION_PACKAGE_REPLACED.equals(intent.getAction())) {
-//                Log.i("TAG", "有应用被替换");
-//            }
-//
-//        }
-//    };
 
     @Override
     protected void onStart() {
         super.onStart();
 
     }
-
 
 
     @SuppressLint("InlinedApi")
@@ -74,46 +55,11 @@ public class StartActivity extends BaseActivity {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);// 无标题
         super.onCreate(savedInstanceState);
         setContentView(getLayoutId());
-//        updateService.update(new CommonResultListener<UpdateBean>(this) {
-//            @Override
-//            public void successHandle(UpdateBean updateBean) throws JSONException {
-//                int isUpdate = updateBean.getForceUpdate();
-//                String versionRemark = updateBean.getVersionRemark();
-////                String downloadUrl = updateBean.getDownloadUrl();
-//                String downloadUrl = "http://app-global.pgyer.com/f84234c7929e0f50a966966bc55c7d0a.apk?e=1508399301&attname=app-release.apk&token=6fYeQ7_TVB5L0QSzosNFfw2HU8eJhAirMF5VxV9G:0CelXON5yk4jpYHH4bfkSCIzDGA=&sign=c7eb915b0417a5e31b30dd6d5b26d538&t=59e858c5";
-//                String versionCode = updateBean.getVersionCode();
-//                int versionInt = updateBean.getVersionInt();
-//                int versionCodeNow = AppUtils.getVersionCode(StartActivity.this);
-//                if (versionInt > versionCodeNow) {
-//                    if (isUpdate == 0) {
-//                        UpdateDialog.show(StartActivity.this, versionRemark, downloadUrl);
-//                        ToastUtils.showCenter(StartActivity.this, "不强制更新");
-//                    } else if (isUpdate == 1) {
-//                        ToastUtils.showCenter(StartActivity.this, "强制更新");
-//                        UpdateDialog.showForceUpdate(StartActivity.this, versionRemark, downloadUrl);
-//                    } else {
-//                        ToastUtils.showCenter(StartActivity.this, "暂时无法获取更新状态");
-//                    }
-//                } else {
-//                    ToastUtils.showCenter(StartActivity.this, "没有版本信息");
-//                }
-//
-//            }
-//        });
-//        registerSDCardListener();
         if (Build.VERSION.SDK_INT >= 23) {
-//            //检查权限
-//            int permissionCheck = ContextCompat.checkSelfPermission(StartActivity.this,Manifest.permission.WRITE_CALENDAR);
-//            //请求权限
-////            ActivityCompat.requestPermissions(StartActivity.this, new String[]{Manifest.permission.READ_CONTACTS}, REQUEST_CODE);
             getPermission();
         } else {
             startAnimation();
         }
-
-//        ZbPermission.with(StartActivity.this)
-//                .addRequestCode(REQUEST_CONTACT)
-
     }
 
     @Override
@@ -121,15 +67,6 @@ public class StartActivity extends BaseActivity {
         return R.layout.activity_start;
     }
 
-//    //注册监听
-//    private void registerSDCardListener() {
-//        IntentFilter intentFilter = new IntentFilter(Intent.ACTION_MEDIA_MOUNTED);
-//        intentFilter.addAction(Intent.ACTION_PACKAGE_ADDED);
-//        intentFilter.addAction(Intent.ACTION_PACKAGE_REMOVED);
-//        intentFilter.addAction(Intent.ACTION_PACKAGE_REPLACED);
-//        intentFilter.addDataScheme("package");
-//        registerReceiver(apkInstallListener, intentFilter);
-//    }
 
     private void getPermission() {
         if (Build.VERSION.SDK_INT >= 23) {
@@ -189,18 +126,6 @@ public class StartActivity extends BaseActivity {
                     splashIv.setScaleX(value);
                     splashIv.setScaleY(value);
                 } else {
-//                    if (isUpdate) {
-//                        ToastUtils.showCenter(StartActivity.this, "更新", 2000);
-//                        if (isInstall) {
-//                            ToastUtils.showCenter(StartActivity.this, "安装", 2000);
-//                        } else {
-//                            goToActivity();
-//                            ToastUtils.showCenter(StartActivity.this, "安装失败", 2000);
-//                        }
-//                    } else {
-//                        ToastUtils.showCenter(StartActivity.this, "取消更新", 2000);
-//                        goToActivity();
-//                    }
                     goToActivity();
                 }
             }
@@ -219,6 +144,5 @@ public class StartActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        unregisterReceiver(apkInstallListener);
     }
 }

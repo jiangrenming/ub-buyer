@@ -6,21 +6,15 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-
-import youbao.shopping.bigkoo.convenientbanner.ConvenientBanner;
 import youbao.shopping.ninetop.UB.UbUserCenterService;
 import youbao.shopping.ninetop.UB.UbUserInfo;
 import youbao.shopping.ninetop.activity.ub.product.route.util.ToastUtil;
 import youbao.shopping.ninetop.activity.user.MyRewardsActivity;
 import youbao.shopping.ninetop.base.BaseActivity;
-
 import com.google.gson.Gson;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.exception.HttpException;
@@ -28,7 +22,6 @@ import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.http.ResponseInfo;
 import com.lidroid.xutils.http.callback.RequestCallBack;
 import com.lidroid.xutils.http.client.HttpRequest;
-import com.lidroid.xutils.util.LogUtils;
 import com.umeng.socialize.ShareAction;
 import com.umeng.socialize.UMShareAPI;
 import com.umeng.socialize.UMShareListener;
@@ -36,21 +29,14 @@ import com.umeng.socialize.bean.SHARE_MEDIA;
 import com.umeng.socialize.media.UMImage;
 import com.umeng.socialize.media.UMWeb;
 import com.umeng.socialize.shareboard.ShareBoardConfig;
-
-import org.json.JSONException;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import youbao.shopping.R;
 import youbao.shopping.ninetop.base.GlobalInfo;
-import youbao.shopping.ninetop.bean.seller.SellerDetailBean;
 import youbao.shopping.ninetop.bean.user.ShareBean;
-import youbao.shopping.ninetop.common.constant.UrlConstant;
-import youbao.shopping.ninetop.common.util.DialogUtil;
 import youbao.shopping.ninetop.common.view.HeadView;
 import youbao.shopping.ninetop.config.AppConfig;
 import youbao.shopping.ninetop.service.impl.UserService;
-import youbao.shopping.ninetop.service.listener.CommonResultListener;
 
 public class UbProductShareActivity extends BaseActivity {
 
@@ -78,7 +64,6 @@ public class UbProductShareActivity extends BaseActivity {
         ubUserCenterService = new UbUserCenterService(this);
         userService = new UserService(this);
         initShare();
-//        scrollToPosition();
     }
 
     @Override
@@ -93,18 +78,6 @@ public class UbProductShareActivity extends BaseActivity {
     }
     private Handler handler = new Handler();
 
-//    /**
-//     * 滑动到指定位置
-//     */
-//    private void scrollToPosition() {
-//        handler.post(new Runnable() {
-//
-//            @Override
-//            public void run() {
-//                slv_share.scrollTo(0, lv_share.getHeight()*1/2);
-//            }
-//        });
-//    }
 
     private String TAG ="UbProductShareActivity";
 

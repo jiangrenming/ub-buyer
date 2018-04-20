@@ -107,7 +107,7 @@ public class UbSellerService extends BaseService {
         }));
     }
 
-    //联盟商家具体分类入口
+    //联盟商家分类
     public void getSellerCategoryFirst(ResultListener<List<SellerCategoryBean>> resultListener) {
         get(UrlConstant.SELLER_CATEGORY_LIST, null, new CommonResponseListener<List<SellerCategoryBean>>(context,
                 resultListener, new TypeToken<List<SellerCategoryBean>>() {

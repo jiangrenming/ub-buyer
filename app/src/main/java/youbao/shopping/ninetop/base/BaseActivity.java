@@ -7,13 +7,9 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 import android.widget.TextView;
-
-import com.lidroid.xutils.ViewUtils;
 import youbao.shopping.ninetop.activity.ub.util.StatusBarUtil;
 import youbao.shopping.ninetop.common.util.ToastUtils;
-
 import java.util.Map;
-
 import butterknife.ButterKnife;
 import youbao.shopping.R;
 
@@ -32,27 +28,9 @@ public abstract class BaseActivity extends AppCompatActivity implements Viewable
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(getLayoutId());
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) { // 沉浸状态栏
-//            Window window = getWindow();
-//            window.setFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS,
-//                    WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-//        }
-//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-//        StatusBarCompat.init(this, getBgColor()); // 填充
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//            WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
-//            layoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | layoutParams.flags);
-//        }
-//        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-      // StatusBarCompat.init(this, getBgColor()); // 填充
-      //  setStatusBar();
-        //getBgColor();
         loadingAction = new LoadingAction(this);
-
         initSoft();
-        ViewUtils.inject(this);
         ButterKnife.bind(this);
         initView();
         initListener();
@@ -70,7 +48,6 @@ public abstract class BaseActivity extends AppCompatActivity implements Viewable
      * @return
      */
     protected int getBgColor(){
-      //  return Color.parseColor("#CCCCCC");
         return Color.argb(200,222,38,40);
     }
 
@@ -93,15 +70,18 @@ public abstract class BaseActivity extends AppCompatActivity implements Viewable
      * 显示提示
      * @param message
      */
+    @Override
     public void showToast(String message){
         ToastUtils.showCenter(this, message);
     }
 
+    @Override
     public void startActivity(Class clazz){
         Intent intent = new Intent(this, clazz);
         this.startActivity(intent);
     }
 
+    @Override
     public void startActivity(Class clazz, Map<String, String> map){
         Intent intent = new Intent(this, clazz);
         if(map != null) {
@@ -115,20 +95,24 @@ public abstract class BaseActivity extends AppCompatActivity implements Viewable
     /**
      * 等待提示框
      */
+    @Override
     public void addLoading() {
         loadingAction.add();
     }
     /**
      * 等待框消失
      */
+    @Override
     public void removeLoading() {
         loadingAction.remove();
     }
 
+    @Override
     public String getIntentValue(String key){
         return getIntent().getStringExtra(key);
     }
 
+    @Override
     public void refresh(){
         initView();
         initListener();
@@ -169,6 +153,7 @@ public abstract class BaseActivity extends AppCompatActivity implements Viewable
         }
     }
 
+    @Override
     public BaseActivity getTargetActivity(){
         return this;
     }

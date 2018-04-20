@@ -11,7 +11,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hykj.myviewlib.tab.PagerSlidingTabStrip;
-import com.lidroid.xutils.view.annotation.ViewInject;
+
+import butterknife.BindView;
 import youbao.shopping.ninetop.activity.ub.product.ProductSearchActivity;
 import youbao.shopping.ninetop.base.BaseActivity;
 import youbao.shopping.ninetop.bean.product.category.SecondCategoryBean;
@@ -32,20 +33,16 @@ import static youbao.shopping.ninetop.common.IntentExtraKeyConst.SECONDCATEGORIE
  * @Description:二级分类界面--商品列表
  */
 public class CategorySecondActivity extends BaseActivity implements View.OnClickListener {
-    @ViewInject(R.id.vp_index)
-    private ViewPager vp_index;
-
-    @ViewInject(R.id.iv_icon_back)
-    private ImageView iv_icon_back;
-
-    @ViewInject(R.id.iv_common_icon)
-    private ImageView iv_common_icon;
-
-    @ViewInject(R.id.tv_title)
-    private TextView tv_title;
-
-    @ViewInject(R.id.pst_tab)
-    private PagerSlidingTabStrip pstTab;
+    @BindView(R.id.vp_index)
+     ViewPager vp_index;
+    @BindView(R.id.iv_icon_back)
+     ImageView iv_icon_back;
+    @BindView(R.id.iv_common_icon)
+     ImageView iv_common_icon;
+    @BindView(R.id.tv_title)
+     TextView tv_title;
+    @BindView(R.id.pst_tab)
+     PagerSlidingTabStrip pstTab;
 
     private int id;
 

@@ -78,15 +78,6 @@ android {
     }
     productFlavors {
     }
-//    packagingOptions {
-//        exclude 'META-INF/NOTICE'
-//        exclude 'META-INF/LICENSE'
-//        exclude 'META-INF/DEPENDENCIES'
-//    }
-//    compileOptions {
-//        targetCompatibility 1.8
-//        sourceCompatibility 1.8
-//    }
 }
 dependencies {
     compile files('libs/AMap_Search_V5.5.0_20171107.jar')
@@ -98,7 +89,5 @@ dependencies {
     compile files('libs/umeng_social_net.jar')
     compile files('libs/umeng_social_shareboard.jar')
     compile files('libs/umeng_social_tool.jar')
-    //    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.8.0@aar'
-    //    compile 'com.jakewharton.rxbinding:rxbinding:0.4.0'
     compile 'com.github.Andy-13:ZbPermission:1.0.0'
 }

@@ -2,6 +2,7 @@ package youbao.shopping.ninetop.service;
 
 import android.app.Activity;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.google.gson.JsonSyntaxException;
 import com.lzy.okgo.OkGo;
@@ -125,6 +126,7 @@ public abstract class BaseService {
             suffix = "?";
         }
         String urlParam = suffix + map2UrlParamString(baseParam);
+        Log.i("拼接请求的路径",AppConfig.BASE_URL + url + urlParam);
         OkGo.post(AppConfig.BASE_URL + url + urlParam).upJson(jsonObject).tag(url).execute(new DefaultJsonObjectCallback(responseListener));
     }
     //get没有body 也没有json
