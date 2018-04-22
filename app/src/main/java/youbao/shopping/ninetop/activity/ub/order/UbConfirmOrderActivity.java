@@ -398,6 +398,14 @@ public class UbConfirmOrderActivity extends BaseActivity {
 
     //提货地址修改
     private void changeAddressInfo() {
+
+        List<UbMainOrderBean> franchiseeList = ubBean.franchiseeList;
+        if (franchiseeList.size() >  0){
+            for (int i = 0 ;i < franchiseeList.size() ;i++){
+                 frieeID = String.valueOf(franchiseeList.get(i).franchiseeId);
+            }
+        }
+        Log.i("自体的地址：",frieeID);
         ubProductService.postFrnchiseeInfo(frieeID,new CommonResultListener<UbConfirmOrderAddressChangeBean>(this) {
             @Override
             public void successHandle(UbConfirmOrderAddressChangeBean result) throws JSONException {

@@ -20,6 +20,15 @@ public class ShopCartItemListBean implements Serializable {
     public int skuId;
     public List<SingleSkuBean> attrList;
     public  int franchiseeId;
+    public  boolean isShoperItemSelect;
+
+    public boolean isShoperItemSelect() {
+        return isShoperItemSelect;
+    }
+
+    public void setShoperItemSelect(boolean shoperItemSelect) {
+        isShoperItemSelect = shoperItemSelect;
+    }
 
     public int getAmount() {
         return amount;

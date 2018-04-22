@@ -140,36 +140,38 @@
                 />
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/ll_totol_price"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_vertical"
-            >
+            android:gravity="center_vertical">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="积分:"
-                />
+                android:text="积分:" />
+
             <TextView
                 android:id="@+id/tv_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:textColor="@color/red"
-                />
+                android:textColor="@color/red" />
+
             <TextView
-                android:layout_marginLeft="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
                 android:text="(不含运费)"
 
                 />
 
 
         </LinearLayout>
-           <LinearLayout
+
+        <LinearLayout
                android:layout_width="0dp"
                android:layout_height="match_parent"
                android:layout_weight="0.6"

@@ -37,15 +37,19 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import okhttp3.Response;
 import youbao.shopping.R;
 
+import static android.R.attr.key;
 import static android.R.attr.value;
+import static youbao.shopping.ninetop.adatper.product.OrderFragmentEnum.map;
 import static youbao.shopping.ninetop.config.AppConfig.BASE_IMAGE_URL;
 
 
@@ -72,18 +76,20 @@ public class UbShopCartActivity extends TabBaseActivity {
     TextView tvPay;
     @BindView(R.id.iv_back)
     ImageView ivBack;
-    private int franchiseeId;
-    private ShopCartItemAdapter shopcartItemAdapter;
+    //private int franchiseeId;
+  //  private ShopCartItemAdapter shopcartItemAdapter;
     private ShopCartMainAdapter shopcartMainAdapter;
     private UbProductService ubProductService;
     private List<UbShopCartBean> mainList = new ArrayList<>();
     private List<UbShopCartBean> selectedMainList = new ArrayList<>();
     private List<ShopCartItemListBean> selectedList = new ArrayList<>();
-    private List<ShopCartItemListBean> dataList = new ArrayList<>();
+  //  private List<ShopCartItemListBean> dataList = new ArrayList<>();
     boolean isSelectAll = false;
     boolean isEdit = false;
     private ShopCartItemListBean mBean;
     //private List<Integer> frieeIds = new ArrayList<>();
+    //存储店铺id对应的商品
+    private  Map<Integer,List<ShopCartItemListBean>> shopers =  new HashMap<>();
 
     @Override
     protected int getLayoutId() {
@@ -105,20 +111,17 @@ public class UbShopCartActivity extends TabBaseActivity {
             public void successHandle(List<UbShopCartBean> result) throws JSONException {
                 mainList = result;
                 for (int i = 0; i < result.size(); i++) {
-                    UbShopCartBean bean = result.get(i);
-                     dataList = bean.shopCartItemList;
-                    franchiseeId = bean.franchiseeId;
-                    Log.i("购物车数据id=",bean.franchiseeId+"");
+                      UbShopCartBean bean = result.get(i);
+                    List<ShopCartItemListBean> shopCartItemList = bean.shopCartItemList;
+                    for (int j = 0 ;j< shopCartItemList.size();j++){
+                        shopCartItemList.get(j).setFranchiseeId(bean.franchiseeId);
+                        shopCartItemList.get(j).setShoperItemSelect(false);
+                    }
+                    shopers.put(bean.franchiseeId,shopCartItemList);
                 }
                 dataChangeHandle();
-                if (dataList == null || dataList.size() == 0) {
-                    //        ivEdit.setVisibility(View.GONE);
-                    return;
-                }
 
                 shopcartMainAdapter = new ShopCartMainAdapter(UbShopCartActivity.this, mainList);
-                shopcartItemAdapter = new ShopCartItemAdapter(UbShopCartActivity.this, dataList);
-//                lvCartList.setRightViewWidth(Tools.dip2px(UbShopCartActivity.this, 60));
                 lvCartList.setRightViewWidth(Tools.dip2px(UbShopCartActivity.this, 0));
                 lvCartList.setAdapter(shopcartMainAdapter);
                 shopcartMainAdapter.setSelectList(selectedMainList);
@@ -164,7 +167,7 @@ public class UbShopCartActivity extends TabBaseActivity {
                     int shopCartId = bean.shopCartId;
                     int amount = bean.amount;
                     int skuId = bean.skuId;
-                    map.put("franchiseeId",1);
+                    map.put("franchiseeId",bean.getFranchiseeId());
                     map.put("shopcartId", shopCartId);
                     map.put("amount", amount);
                     map.put("skuId", skuId);
@@ -186,10 +189,6 @@ public class UbShopCartActivity extends TabBaseActivity {
     }
 
     protected void addSelectedItem(ShopCartItemListBean bean) {
-        if (selectedList == null) {
-            selectedList = new ArrayList<>();
-        }
-
         if (!selectedList.contains(bean)) {
             selectedList.add(bean);
         }
@@ -208,13 +207,20 @@ public class UbShopCartActivity extends TabBaseActivity {
     private void selectedAll() {
         selectedList.clear();
         if (!isSelectAll) {
-            //赋值
-            selectedList.addAll(dataList);
+            for (List<ShopCartItemListBean> shoper : shopers.values()){
+                for (int i =0 ; i <shoper.size() ;i++){
+                    selectedList.add(shoper.get(i)) ;
+                }
+            }
             ivSelectAll.setImageResource(R.mipmap.edit_select);
             isSelectAll = true;
         } else {
             ivSelectAll.setImageResource(R.mipmap.edit_unselect);
             isSelectAll = false;
+            for (List<ShopCartItemListBean> list :shopers.values()){
+                selectedList.removeAll(list);
+            }
+
         }
         if (shopcartMainAdapter != null) {
             shopcartMainAdapter.notifyDataSetInvalidated();
@@ -223,7 +229,7 @@ public class UbShopCartActivity extends TabBaseActivity {
     }
 
     private void setStatus() {
-        if (dataList == null || dataList.size() == 0)
+        if (shopers == null || shopers.size() == 0)
             return;
 
         if (!isEdit) {
@@ -244,7 +250,7 @@ public class UbShopCartActivity extends TabBaseActivity {
     }
 
     private void dataChangeHandle() {
-        if (dataList == null || dataList.size() == 0) {
+        if (shopers == null || shopers.size() == 0) {
             llNoData.setVisibility(View.VISIBLE);
             llPay.setVisibility(View.GONE);
             lvCartList.setVisibility(View.GONE);
@@ -264,10 +270,7 @@ public class UbShopCartActivity extends TabBaseActivity {
         }
         tvPrice.setText(Math.round(Double.valueOf(totalPrice))+"");
     }
-
-//    protected void addItemSelected() {
-//
-//    }
+    
 
     @Override
     public boolean intercept() {
@@ -276,21 +279,36 @@ public class UbShopCartActivity extends TabBaseActivity {
 
     private void changeShopcartCount() {
         int cartNum = 0;
-        if (dataList != null && dataList.size() > 0) {
-            for (ShopCartItemListBean cartItem : dataList) {
-                cartNum += cartItem.amount;
+        if (shopers != null && shopers.size() > 0) {
+            for (List<ShopCartItemListBean> values :shopers.values()){
+                if (values.size() > 0){
+                    for (int i =0 ;i <values.size() ;i++){
+                        cartNum += values.get(i).amount;
+                    }
+                }
             }
         }
         ActivityActionHelper.changeMainCartNum(this, cartNum);
     }
 
     private void selectedChangeHandle() {
-        if (dataList != null && dataList.size() == selectedList.size()) {
-            ivSelectAll.setImageResource(R.mipmap.edit_select);
-            isSelectAll = true;
-        } else {
-            ivSelectAll.setImageResource(R.mipmap.edit_unselect);
-            isSelectAll = false;
+        Log.i("被选中的数量是：",selectedList.size()+"/总长度："+shopers.size());
+        int cartNum = 0;
+        if (shopers != null && shopers.size() > 0) {
+            for (List<ShopCartItemListBean> values :shopers.values()){
+                if (values.size() > 0){
+                    for (int i =0 ;i <values.size() ;i++){
+                        cartNum += values.get(i).amount;
+                    }
+                }
+            }
+            if (cartNum == selectedList.size()){
+                ivSelectAll.setImageResource(R.mipmap.edit_select);
+                isSelectAll = true;
+            }else {
+                ivSelectAll.setImageResource(R.mipmap.edit_unselect);
+                isSelectAll = false;
+            }
         }
         if (shopcartMainAdapter != null) {
             shopcartMainAdapter.notifyDataSetInvalidated();
@@ -387,18 +405,6 @@ public class UbShopCartActivity extends TabBaseActivity {
                 holderMain = (HolderMain) convertView.getTag();
             }
             holderMain.tv_sellerName.setText(mainBean.franchiseeName);
-            holderMain.iv_edit.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (isEditStatus) {
-                        ivEdit.setImageResource(R.mipmap.shopcar_delete_grey_copy);
-                        shopcartItemAdapter.setIsEditStatus(true);
-                    } else {
-                        shopcartItemAdapter.setIsEditStatus(false);
-                        ivEdit.setImageResource(R.mipmap.shopcar_delete_grey);
-                    }
-                }
-            });
             final ShopCartItemAdapter adapter = new ShopCartItemAdapter(activity, mainBean.shopCartItemList);
             adapter.setIsEditStatus(!isEditStatus);
             adapter.setSelectList(selectedList);
@@ -413,32 +419,53 @@ public class UbShopCartActivity extends TabBaseActivity {
                 @Override
                 public void onClick(View v) {
                     ImageView imageView = (ImageView) v;
-                    if (isSelected((ImageView) v)) {
-                        for (ShopCartItemListBean bean : mainBean.shopCartItemList) {
-                            Log.i("选中的id=",bean.franchiseeId+"");
-                            addSelectedItem(bean);
-                        }
-                        imageView.setImageResource(R.mipmap.edit_select);
-                    } else {
+                    boolean selected = isSelected(mainBean);
+                    Log.i("商户是否被选中",selected+"");
+                    if (selected) {
+                        imageView.setImageResource(R.mipmap.edit_unselect);
                         for (ShopCartItemListBean bean : mainBean.shopCartItemList) {
                             bean.franchiseeId = mainBean.franchiseeId;
                             removeSelectedItem(bean);
                         }
-                        imageView.setImageResource(R.mipmap.edit_unselect);
+                    } else {
+                        imageView.setImageResource(R.mipmap.edit_select);
+                        for (ShopCartItemListBean bean : mainBean.shopCartItemList) {
+                            Log.i("选中的id=",bean.franchiseeId+"");
+                            bean.setShoperItemSelect(true);
+                            addSelectedItem(bean);
+                        }
                     }
                     selectedChangeHandle();
-                    adapter.notifyDataSetInvalidated();
+                    adapter.notifyDataSetChanged();
+                }
+            });
+            holderMain.iv_edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (isEditStatus) {
+                        ivEdit.setImageResource(R.mipmap.shopcar_delete_grey_copy);
+                        adapter.setIsEditStatus(true);
+                    } else {
+                        adapter.setIsEditStatus(false);
+                        ivEdit.setImageResource(R.mipmap.shopcar_delete_grey);
+                    }
                 }
             });
             return convertView;
         }
 
-        private boolean isSelected(ImageView imageView) {
-            if (imageView.getDrawable().getCurrent().getConstantState().
-                    equals(getResources().getDrawable(R.mipmap.edit_unselect).getConstantState())) {
-                return true;
+        private  boolean isSelected(UbShopCartBean mainBean){
+
+            boolean isSelect = false;
+            for (int i = 0; i< selectedList.size() ;i++){
+                    if (selectedList.get(i).getFranchiseeId() == mainBean.franchiseeId){
+                        if (selectedList.get(i).isShoperItemSelect()){
+                            isSelect = true;
+                        }
+                    }
+
             }
-            return false;
+            return  isSelect;
         }
 
         private boolean isSelectedList(List<ShopCartItemListBean> beanList) {
@@ -539,15 +566,8 @@ public class UbShopCartActivity extends TabBaseActivity {
             }
             holdeView.tv_name.setText(itemBean.productName);
             holdeView.tv_price.setText(Math.round(Double.valueOf(itemBean.productPrice)) + "");
-
-//                    for(SingleSkuBean bean:itemBean.attrList){
-//                        String nameProp=bean.attrName+":"+bean.attrValue;
-//
-//                        holdeView.tv_prop.setText(nameProp);
-//                    }
             holdeView.tv_prop.setText(AssembleHelper.assembleSkuUb(itemBean.attrList));
             holdeView.tv_num.setText(TextConstant.MULTIPLY + itemBean.amount);
-            //    holdeView.nsv_number.setValue(itemBean.amount);
             holdeView.nsv_number_edit.setValue(itemBean.amount);
             Tools.ImageLoaderShow(activity, BASE_IMAGE_URL + itemBean.icon, holdeView.iv_product_image);
             holdeView.iv_select.setImageResource(R.mipmap.edit_unselect);
@@ -566,7 +586,7 @@ public class UbShopCartActivity extends TabBaseActivity {
                     final int value = itemBean.amount;
                     itemBean.amount = num;
 
-                    ubProductService.postShopcartCount(franchiseeId, itemBean, new ResultListener<String>() {
+                    ubProductService.postShopcartCount(itemBean.franchiseeId, itemBean, new ResultListener<String>() {
                         @Override
                         public void successHandle(String result) {
                             refreshPrice();
@@ -662,6 +682,7 @@ public class UbShopCartActivity extends TabBaseActivity {
                     boolean contains = selectList.contains(itemBean);
                     if (!contains) {
                         Log.i("单项选择的id=",itemBean.franchiseeId+"");
+                        itemBean.setShoperItemSelect(true);
                         selectList.add(itemBean);
                         holdeView.iv_select.setImageResource(R.mipmap.edit_select);
                     } else {
