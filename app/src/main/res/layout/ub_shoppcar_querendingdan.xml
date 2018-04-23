@@ -181,7 +181,7 @@
             android:background="@color/white"
             android:orientation="vertical">
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/tv_chiness_name"
                 style="@style/text_font_size_l"
                 android:layout_width="match_parent"
@@ -190,7 +190,7 @@
                 android:layout_marginRight="15dp"
                 android:gravity="center_vertical"
                 android:text=""
-                android:textColor="@color/text_gray" />
+                android:textColor="@color/text_gray" />-->
 
             <youbao.shopping.ninetop.common.view.ScrollViewWithListView
                 android:id="@+id/lv_product_list"

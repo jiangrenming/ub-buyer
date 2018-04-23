@@ -1,15 +1,19 @@
 package youbao.shopping.ninetop.activity.ub.order;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -21,6 +25,7 @@ import youbao.shopping.ninetop.UB.product.UbOrder.UbMainOrderBean;
 import youbao.shopping.ninetop.UB.product.UbOrder.UbOrderBean;
 import youbao.shopping.ninetop.UB.product.UbOrder.UbPreOrderBean;
 import youbao.shopping.ninetop.UB.product.UbProductService;
+import youbao.shopping.ninetop.activity.ub.product.UbProductActivity;
 import youbao.shopping.ninetop.activity.user.AddressManagerActivity;
 import youbao.shopping.ninetop.base.BaseActivity;
 import youbao.shopping.ninetop.base.GlobalInfo;
@@ -29,6 +34,7 @@ import youbao.shopping.ninetop.common.LoginAction;
 import youbao.shopping.ninetop.common.constant.TextConstant;
 import youbao.shopping.ninetop.common.util.FormatUtil;
 import youbao.shopping.ninetop.common.util.Tools;
+import youbao.shopping.ninetop.common.util.UbComfirmDialog;
 import youbao.shopping.ninetop.common.view.HeadView;
 import youbao.shopping.ninetop.common.view.ScrollViewWithListView;
 import youbao.shopping.ninetop.service.listener.CommonResultListener;
@@ -52,7 +58,7 @@ import static youbao.shopping.ninetop.config.AppConfig.BASE_IMAGE_URL;
  * Created by huangjinding on 2017/6/15.
  */
 
-public class UbConfirmOrderActivity extends BaseActivity {
+public class UbConfirmOrderActivity extends BaseActivity implements UbComfirmDialog.skipAddress{
     @BindView(R.id.hv_head)
     HeadView hvHead;
     @BindView(R.id.tv_home)
@@ -89,8 +95,8 @@ public class UbConfirmOrderActivity extends BaseActivity {
     TextView tvNeedPay;
     @BindView(R.id.lv_product_list)
     ScrollViewWithListView lvProductList;
-    @BindView(R.id.tv_chiness_name)
-    TextView tvSellerName;
+  /*  @BindView(R.id.tv_chiness_name)
+    TextView tvSellerName;*/
     @BindView(R.id.tv_address_add)
     TextView tvAddressAdd;
     @BindView(R.id.ll_user_info)
@@ -99,23 +105,18 @@ public class UbConfirmOrderActivity extends BaseActivity {
     TextView pay_money;
 
     private static final int SELECT_ADDRESS = 1;
-    private List<UbOrderBean> dataList;
-
-
     private UbPreOrderBean ubBean;
     private String addressId;
     private String orderFrom;
     private String amount;
     private String skuId;
-    //    private String shopcartId;
-    private String sellerName;
     private int takeType = 0; //0:快递;1:自提
     private UbProductService ubProductService;
 
     private List<Map> shopCartList;
-
+    List<UbMainOrderBean> mainList ;
     private List<Map> productList;
-    private String frieeID;
+    private String detailsFrieeID;
 
     @Override
     protected int getLayoutId() {
@@ -130,32 +131,24 @@ public class UbConfirmOrderActivity extends BaseActivity {
         if (orderFrom == null) {
             return;
         }
-
-        String productJsonData = getIntentValue(IntentExtraKeyConst.PRODUCT_LIST);
-        Gson typeGSon = new Gson();
-        TypeToken<List<Map>> productType = new TypeToken<List<Map>>() {
-        };
-        productList = typeGSon.fromJson(productJsonData, productType.getType());
-
+        Gson gson = new Gson();
         if ("cart".equals(orderFrom)) {
             String cartJsonData = getIntentValue(IntentExtraKeyConst.SHOPCART_LIST);
-            Gson gson = new Gson();
-            TypeToken<List<Map>> typeToken = new TypeToken<List<Map>>() {
-            };
+            TypeToken<List<Map>> typeToken = new TypeToken<List<Map>>() {};
             shopCartList = gson.fromJson(cartJsonData, typeToken.getType());
         } else if ("buy".equals(orderFrom)) {
             amount = getIntentValue(IntentExtraKeyConst.ORDER_AMOUNT);
             skuId = getIntentValue(IntentExtraKeyConst.ORDER_SKUID);
-            frieeID = getIntentValue(IntentExtraKeyConst.FRANCHISEEID);
+            detailsFrieeID = getIntentValue(IntentExtraKeyConst.FRANCHISEEID);
+            String productJsonData = getIntentValue(IntentExtraKeyConst.PRODUCT_LIST);
+            TypeToken<List<Map>> productType = new TypeToken<List<Map>>() {};
+            productList = gson.fromJson(productJsonData, productType.getType());
         }
-
         String jsonData = getIntentValue(IntentExtraKeyConst.JSON_DATA);
         if (jsonData == null || jsonData.length() == 0) {
             return;
         }
-        Gson gson = new Gson();
-        TypeToken<UbPreOrderBean> typeToken = new TypeToken<UbPreOrderBean>() {
-        };
+        TypeToken<UbPreOrderBean> typeToken = new TypeToken<UbPreOrderBean>() {};
         ubBean = gson.fromJson(jsonData, typeToken.getType());
         if (ubBean != null && ubBean.addressOwner != null && ubBean.addressOwner.length() > 0) {
             tvAddressAdd.setVisibility(View.GONE);
@@ -168,26 +161,20 @@ public class UbConfirmOrderActivity extends BaseActivity {
             tvAddressAdd.setVisibility(View.VISIBLE);
             llUserInfo.setVisibility(View.GONE);
         }
-
-        List<UbMainOrderBean> mainList = ubBean.franchiseeList;
-
-        for (int i = 0; i < mainList.size(); i++) {
-            dataList = mainList.get(i).attrList;
-            sellerName = mainList.get(i).franchiseeName;
-        }
-        if (dataList != null) {
-            MainAdapter adapter = new MainAdapter(this, dataList);
+       mainList = ubBean.franchiseeList;
+        if (mainList != null &&mainList.size() > 0){
+            MainAdapter adapter = new MainAdapter(this, mainList);
             lvProductList.setAdapter(adapter);
-
         }
-
-        tvSellerName.setText(sellerName);
         setPriceTextValue(true);
-
         selectTag(0);
         hvHead.setTitle("确认下单");
     }
 
+    @Override
+    public void changeAddress() {
+        selectTag(0);
+    }
     @SuppressLint("SetTextI18n")
     private void setPriceTextValue(boolean home) {
         double logisticsCost = getDoubleValue(ubBean.logisticsCost);
@@ -219,6 +206,7 @@ public class UbConfirmOrderActivity extends BaseActivity {
         });
     }
 
+    private UbComfirmDialog dialog ;
     @OnClick({R.id.rl_home, R.id.rl_shopper, R.id.rl_change_address, R.id.btn_confirm_pay})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -227,6 +215,11 @@ public class UbConfirmOrderActivity extends BaseActivity {
                 break;
             case R.id.rl_shopper:
                 selectTag(1);
+                if (mainList != null && mainList.size() > 1){
+                    dialog = new UbComfirmDialog(UbConfirmOrderActivity.this);
+                    dialog.setSkipAddress(this);
+                    dialog.show();
+                }
                 break;
             case R.id.rl_change_address:
                 Intent intent = new Intent(this, AddressManagerActivity.class);
@@ -235,6 +228,8 @@ public class UbConfirmOrderActivity extends BaseActivity {
                 break;
             case R.id.btn_confirm_pay:
                 orderConfirm();
+                break;
+            default:
                 break;
         }
     }
@@ -316,11 +311,10 @@ public class UbConfirmOrderActivity extends BaseActivity {
             Map<String, String> map = new HashMap<>();
             map.put("amount", amount);
             map.put("skuId", skuId);
-            String franchiseeId = GlobalInfo.franchiseeId;
-            if (TextUtils.isEmpty(franchiseeId)) {
-                franchiseeId = "1";
+            if (TextUtils.isEmpty(detailsFrieeID)) {
+                detailsFrieeID = "1";
             }
-            map.put("franchiseeId", franchiseeId);
+            map.put("franchiseeId", detailsFrieeID);
             List<Map> productList = new ArrayList<>();
             productList.add(map);
             buyNowSubmit(addressNewId, productList);
@@ -398,8 +392,8 @@ public class UbConfirmOrderActivity extends BaseActivity {
 
     //提货地址修改
     private void changeAddressInfo() {
-
         List<UbMainOrderBean> franchiseeList = ubBean.franchiseeList;
+        String frieeID = null;
         if (franchiseeList.size() >  0){
             for (int i = 0 ;i < franchiseeList.size() ;i++){
                  frieeID = String.valueOf(franchiseeList.get(i).franchiseeId);
@@ -450,26 +444,27 @@ public class UbConfirmOrderActivity extends BaseActivity {
         tvAddressName.setText(ubAddressBean.name);
         tvAddressMobile.setText(ubAddressBean.mobile);
         tvAddressDetail.setText(ubAddressBean.addr_detail);
-
         getOrderInfo();
     }
 
+
+
     private class MainAdapter extends BaseAdapter {
         UbConfirmOrderActivity activity;
-        List<UbOrderBean> dataList;
-        public MainAdapter(UbConfirmOrderActivity activity, List<UbOrderBean> dataList) {
+        List<UbMainOrderBean> mainList;
+        public MainAdapter(UbConfirmOrderActivity activity, List<UbMainOrderBean> dataList) {
             this.activity = activity;
-            this.dataList = dataList;
+            this.mainList = dataList;
         }
 
         @Override
         public int getCount() {
-            return dataList.size();
+            return mainList.size();
         }
 
         @Override
         public Object getItem(int position) {
-            return dataList.get(position);
+            return mainList.get(position);
         }
 
         @Override
@@ -484,6 +479,63 @@ public class UbConfirmOrderActivity extends BaseActivity {
             if (convertView == null) {
                 holderView = new HolderView();
                 convertView = LayoutInflater.from(activity).inflate(R.layout.ub_item_order, parent,false);
+                holderView.tv_chiness_name = (TextView)convertView.findViewById(R.id.tv_chiness_name);
+                holderView.items = (ScrollViewWithListView) convertView.findViewById(R.id.items_);
+                convertView.setTag(holderView);
+            } else {
+                holderView = (HolderView) convertView.getTag();
+            }
+            UbMainOrderBean ubMainOrderBean = mainList.get(position);
+            String franchiseeName = ubMainOrderBean.franchiseeName;
+            List<UbOrderBean> attrList = ubMainOrderBean.attrList;
+            if (attrList != null && attrList.size() >0 ){
+                holderView.tv_chiness_name.setVisibility(View.VISIBLE);
+                if (!TextUtils.isEmpty(franchiseeName)){
+                    holderView.tv_chiness_name.setText(franchiseeName);
+                }
+                MainItemsAdapter adapter = new MainItemsAdapter(attrList,activity);
+                holderView.items.setAdapter(adapter);
+            }else {
+                holderView.tv_chiness_name.setVisibility(View.GONE);
+            }
+            return convertView;
+        }
+        class HolderView {
+            TextView tv_chiness_name;
+            ListView items;
+        }
+    }
+
+    private class MainItemsAdapter extends BaseAdapter{
+
+        private  List<UbOrderBean> datas ;
+        Context mContext;
+        public MainItemsAdapter( List<UbOrderBean> datas,UbConfirmOrderActivity activity){
+            this.datas = datas;
+            this.mContext = activity;
+        }
+
+        @Override
+        public int getCount() {
+            return datas.size();
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return datas.get(position);
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            MyHolderView holderView;
+            if (convertView == null) {
+                holderView = new MyHolderView();
+                convertView = LayoutInflater.from(mContext).inflate(R.layout.item_layout, parent,false);
                 holderView.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
                 holderView.tv_number = (TextView) convertView.findViewById(R.id.tv_number);
                 holderView.tv_price = (TextView) convertView.findViewById(R.id.tv_price);
@@ -491,18 +543,17 @@ public class UbConfirmOrderActivity extends BaseActivity {
                 holderView.iv_image_product = (ImageView) convertView.findViewById(R.id.iv_product_image);
                 convertView.setTag(holderView);
             } else {
-                holderView = (HolderView) convertView.getTag();
+                holderView = (MyHolderView) convertView.getTag();
             }
-            final UbOrderBean bean = dataList.get(position);
-            holderView.tv_name.setText(bean.productName);
-            holderView.tv_number.setText(TextConstant.MULTIPLY + bean.amount);
-            holderView.tv_prop.setText(bean.getProductSkuName() + "");
-            holderView.tv_price.setText(Math.round((Double.valueOf(bean.getUnitPrice())))+"");
-            Tools.ImageLoaderShow(activity, BASE_IMAGE_URL + bean.getProductIcon(), holderView.iv_image_product);
+            UbOrderBean ubOrderBean = datas.get(position);
+            holderView.tv_name.setText(ubOrderBean.productName);
+            holderView.tv_number.setText(TextConstant.MULTIPLY + ubOrderBean.amount);
+            holderView.tv_prop.setText(ubOrderBean.getProductSkuName() + "");
+            holderView.tv_price.setText(Math.round((Double.valueOf(ubOrderBean.getUnitPrice())))+"");
+            Tools.ImageLoaderShow(mContext, BASE_IMAGE_URL + ubOrderBean.getProductIcon(), holderView.iv_image_product);
             return convertView;
         }
-
-        class HolderView {
+        class MyHolderView {
             TextView tv_name;
             TextView tv_prop;
             TextView tv_price;
@@ -511,5 +562,19 @@ public class UbConfirmOrderActivity extends BaseActivity {
         }
     }
 
+
+    @Override
+    public void onBackPressed() {
+        if (dialog != null && dialog.isShowing()){
+            try {
+                dialog.dismiss();
+                Log.i("是否走这里","");
+                selectTag(0);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+        super.onBackPressed();
+    }
 }
 

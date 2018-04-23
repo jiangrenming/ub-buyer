@@ -317,18 +317,6 @@ public class UbProductInfoActivity extends BaseActivity {
         map.put("skuId", skuId);
         map.put("amount", amount);
         productList.add(map);
-//        Intent intent=new Intent(UbProductInfoActivity.this,UbConfirmOrderActivity.class);
-//        startActivity(intent);
-//        String receiverId=getIntentValue(IntentExtraKeyConst.ADDRESS_ID);
-//        int id=Integer.parseInt(receiverId);
-        //orderType订单来源：0表示立即兑换，1表示购物车    takeType提货方式0:快递;1:自提
-//        ubProductService.postEMSOrder(0, 0, 0, "", productList, new CommonResultListener<List<UbPreOrderBean>>(this) {
-//            @Override
-//            public void successHandle(List<UbPreOrderBean> result) throws JSONException {
-//                Intent intent=new Intent(UbProductInfoActivity.this,UbConfirmOrderActivity.class);
-//                startActivity(intent);
-//            }
-//        });
         //报服务器数据返回异常，采用第二种方案，用json
         Gson gson = new Gson();
         final String jsonBeanString = gson.toJson(productList);

@@ -47,6 +47,7 @@ import butterknife.OnClick;
 import okhttp3.Response;
 import youbao.shopping.R;
 
+import static android.R.attr.borderlessButtonStyle;
 import static android.R.attr.key;
 import static android.R.attr.value;
 import static youbao.shopping.ninetop.adatper.product.OrderFragmentEnum.map;
@@ -76,18 +77,14 @@ public class UbShopCartActivity extends TabBaseActivity {
     TextView tvPay;
     @BindView(R.id.iv_back)
     ImageView ivBack;
-    //private int franchiseeId;
-  //  private ShopCartItemAdapter shopcartItemAdapter;
     private ShopCartMainAdapter shopcartMainAdapter;
     private UbProductService ubProductService;
     private List<UbShopCartBean> mainList = new ArrayList<>();
     private List<UbShopCartBean> selectedMainList = new ArrayList<>();
     private List<ShopCartItemListBean> selectedList = new ArrayList<>();
-  //  private List<ShopCartItemListBean> dataList = new ArrayList<>();
     boolean isSelectAll = false;
     boolean isEdit = false;
     private ShopCartItemListBean mBean;
-    //private List<Integer> frieeIds = new ArrayList<>();
     //存储店铺id对应的商品
     private  Map<Integer,List<ShopCartItemListBean>> shopers =  new HashMap<>();
 
@@ -112,7 +109,7 @@ public class UbShopCartActivity extends TabBaseActivity {
                 mainList = result;
                 for (int i = 0; i < result.size(); i++) {
                       UbShopCartBean bean = result.get(i);
-                    List<ShopCartItemListBean> shopCartItemList = bean.shopCartItemList;
+                     List<ShopCartItemListBean> shopCartItemList = bean.shopCartItemList;
                     for (int j = 0 ;j< shopCartItemList.size();j++){
                         shopCartItemList.get(j).setFranchiseeId(bean.franchiseeId);
                         shopCartItemList.get(j).setShoperItemSelect(false);
@@ -292,8 +289,8 @@ public class UbShopCartActivity extends TabBaseActivity {
     }
 
     private void selectedChangeHandle() {
-        Log.i("被选中的数量是：",selectedList.size()+"/总长度："+shopers.size());
         int cartNum = 0;
+        int selectNum =0;
         if (shopers != null && shopers.size() > 0) {
             for (List<ShopCartItemListBean> values :shopers.values()){
                 if (values.size() > 0){
@@ -302,7 +299,11 @@ public class UbShopCartActivity extends TabBaseActivity {
                     }
                 }
             }
-            if (cartNum == selectedList.size()){
+            for (int i = 0 ; i< selectedList.size() ; i++){
+                selectNum += selectedList.get(i).amount;
+            }
+            Log.i("被选中的数量是：",selectedList.size()+"/被选中的商品数量："+selectNum+"/商品数量:"+cartNum);
+            if (cartNum == selectNum){
                 ivSelectAll.setImageResource(R.mipmap.edit_select);
                 isSelectAll = true;
             }else {
@@ -327,8 +328,7 @@ public class UbShopCartActivity extends TabBaseActivity {
                 Gson gson = new Gson();
                 String cartListJsonString = gson.toJson(productList);
                 intent.putExtra(IntentExtraKeyConst.JSON_DATA, dataString);
-                intent.putExtra(IntentExtraKeyConst.PRODUCT_LIST, cartListJsonString);
-                intent.putExtra(IntentExtraKeyConst.SHOPCART_LIST, cartListJsonString);
+                 intent.putExtra(IntentExtraKeyConst.SHOPCART_LIST, cartListJsonString);
                 intent.putExtra(IntentExtraKeyConst.ORDER_FROM, "cart");
                 startActivity(intent);
             }
@@ -430,9 +430,9 @@ public class UbShopCartActivity extends TabBaseActivity {
                     } else {
                         imageView.setImageResource(R.mipmap.edit_select);
                         for (ShopCartItemListBean bean : mainBean.shopCartItemList) {
-                            Log.i("选中的id=",bean.franchiseeId+"");
-                            bean.setShoperItemSelect(true);
-                            addSelectedItem(bean);
+                              bean.setShoperItemSelect(true);
+                              Log.i("选中的商品数量;",bean.amount+"/添加的商品id:"+bean.franchiseeId);
+                              addSelectedItem(bean);
                         }
                     }
                     selectedChangeHandle();
@@ -455,15 +455,14 @@ public class UbShopCartActivity extends TabBaseActivity {
         }
 
         private  boolean isSelected(UbShopCartBean mainBean){
-
             boolean isSelect = false;
             for (int i = 0; i< selectedList.size() ;i++){
+                 Log.i("加入的商品id:",selectedList.get(i).getFranchiseeId()+"");
                     if (selectedList.get(i).getFranchiseeId() == mainBean.franchiseeId){
                         if (selectedList.get(i).isShoperItemSelect()){
                             isSelect = true;
                         }
                     }
-
             }
             return  isSelect;
         }
@@ -608,33 +607,6 @@ public class UbShopCartActivity extends TabBaseActivity {
                     });
                 }
             });
-//            holdeView.nsv_number.setDataChangeListener(new DataChangeListener<Integer>() {
-//                public void handle(final Integer num) {
-//                    final int value = itemBean.amount;
-//                    itemBean.amount = num;
-//
-//                    ubProductService.postShopcartCount(franchiseeId, itemBean, new ResultListener<String>() {
-//                        @Override
-//                        public void successHandle(String result) {
-//                            refreshPrice();
-//                            changeShopcartCount();
-//                        }
-//
-//                        @Override
-//                        public void failHandle(String code, String result) {
-//                            itemBean.amount = value;
-//                            holdeView.nsv_number.setValue(value);
-//                            showToast(result);
-//                        }
-//
-//                        public void errorHandle(Response response, Exception e) {
-//                            itemBean.amount = value;
-//                            holdeView.nsv_number.setValue(value);
-//                            showToast("服务器出现异常");
-//                        }
-//                    });
-//                }
-//            });
             holdeView.delete.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -686,6 +658,7 @@ public class UbShopCartActivity extends TabBaseActivity {
                         selectList.add(itemBean);
                         holdeView.iv_select.setImageResource(R.mipmap.edit_select);
                     } else {
+                        itemBean.setShoperItemSelect(false);
                         selectedList.remove(itemBean);
                         holdeView.iv_select.setImageResource(R.mipmap.edit_unselect);
                     }
