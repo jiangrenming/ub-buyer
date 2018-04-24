@@ -98,16 +98,12 @@ public class CollectionListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 ImageView imageView = (ImageView) v;
-                if (isSelected((ImageView) v)) {
-                    for (UbSellerCollectBean bean : dataList) {
-                        addSelerctItem(dataList.get(index));
-                    }
-                    imageView.setImageResource(R.mipmap.edit_select);
-                } else {
-                    for (UbSellerCollectBean bean : dataList) {
-                        removeSelectItem(dataList.get(index));
-                    }
+                if (isSelected(seller1)){
+                    removeSelectItem(seller1);
                     imageView.setImageResource(R.mipmap.edit_unselect);
+                } else {
+                    addSelerctItem(seller1);
+                    imageView.setImageResource(R.mipmap.edit_select);
                 }
 
             }
@@ -118,28 +114,33 @@ public class CollectionListAdapter extends BaseAdapter {
     public List<UbSellerCollectBean> getSelectList(){
         return selectList;
     }
-        private boolean isSelected(ImageView imageView) {
-            if (imageView.getDrawable().getCurrent().getConstantState().
-                    equals(context.getResources().getDrawable(R.mipmap.edit_unselect).getConstantState())) {
-                return true;
-            }
-            return false;
-        }
-        protected void addSelerctItem(UbSellerCollectBean bean){
-            if(selectList==null){
-                selectList=new ArrayList<>();
-            }
-            if(!selectList.contains(bean)){
-                selectList.add(bean);
+    private boolean isSelected(UbSellerCollectBean ubSeller) {
+        boolean isSelect = false;
+        if (selectList != null && selectList.size() > 0){
+            for (int i = 0; i <selectList.size() ; i++) {
+                UbSellerCollectBean ubSellerCollectBean = selectList.get(i);
+                if (ubSeller.id == ubSellerCollectBean.id){
+                    isSelect= true;
+                }
             }
         }
-        protected void removeSelectItem(UbSellerCollectBean bean){
-            if(selectList==null){
-                selectList=new ArrayList<>();
-            }
-            if(selectList.contains(bean)){
-                selectList.remove(bean);
-            }
+        return isSelect;
+    }
+    protected void addSelerctItem(UbSellerCollectBean bean){
+        if(selectList==null){
+            selectList=new ArrayList<>();
+        }
+        if(!selectList.contains(bean)){
+            selectList.add(bean);
+        }
+    }
+    protected void removeSelectItem(UbSellerCollectBean bean){
+        if(selectList==null){
+            selectList=new ArrayList<>();
+        }
+        if(selectList.contains(bean)){
+            selectList.remove(bean);
+        }
 
     }
     class HolderView {

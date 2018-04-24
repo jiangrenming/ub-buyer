@@ -57,7 +57,6 @@ public class MainActivity extends TabActivity implements OnClickListener, Viewab
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //	setStatusBar();
         getId();
         initView();
         initAction();
@@ -108,7 +107,6 @@ public class MainActivity extends TabActivity implements OnClickListener, Viewab
         bundle.putInt(IntentExtraKeyConst.FRANCHID, franchiseeId);
         bundle.putString(IntentExtraKeyConst.FRANCHNAME, franchiseeName);
         mIntent = new Intent(this, UbProductActivity.class);
-//        mIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         mIntent.addFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         mIntent.putExtras(bundle);
 

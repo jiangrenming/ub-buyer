@@ -198,6 +198,7 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
         return R.layout.ub_activity_product_alfa;
     }
 
+    @Override
     protected void initView() {
         super.initView();
         iniViews();
@@ -240,18 +241,7 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
     }
 
     @Override
-    public void onScrollChanged(int y) {
-//        if (y <= 0) {
-//            llSearch.setBackgroundColor(Color.argb(100, 255, 0, 0));
-//        } else if (y > 0 && y <= height) {
-//            float scale = (float) y / height;
-//            //修改255，控制透明度
-//            float alpha = (200 * scale);
-//            llSearch.setBackgroundColor(Color.argb((int) alpha, 255, 0, 0));
-//        } else {
-//            llSearch.setBackgroundColor(Color.argb(200, 255, 0, 0));
-//        }
-    }
+    public void onScrollChanged(int y) {}
 
 
     @Override
@@ -318,7 +308,6 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
                 initBanner();
             }
         });
-//        franchiseeChangeHandle();
     }
 
     private void initBanner() {
@@ -359,12 +348,6 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
                 if (ActivityCompat.checkSelfPermission(this, mPermission) != PackageManager.PERMISSION_GRANTED) {
                     mPermissionList.add(mPermission);
                 }
-//                if(getPackageManager().canRequestPackageInstalls()){
-//
-//                }
-
-
-
                 if (mPermissionList.isEmpty()) {//未授予的权限为空，表示都授予了
                     Log.e(TAG, "已经授权");
                     getLocation();
@@ -431,35 +414,6 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
         mLocationClient.startLocation();
         Log.e(TAG, "启动定位");
     }
-
-  /*  *//**
-     * 定位前做sha1的判断
-     * @param :context
-     * @return
-     *//*
-    public static String sHA1(Context context) {
-        try {
-            PackageInfo info = context.getPackageManager().getPackageInfo(
-                    context.getPackageName(), PackageManager.GET_SIGNATURES);
-            byte[] cert = info.signatures[0].toByteArray();
-            MessageDigest md = MessageDigest.getInstance("SHA1");
-            byte[] publicKey = md.digest(cert);
-            StringBuffer hexString = new StringBuffer();
-            for (int i = 0; i < publicKey.length; i++) {
-                String appendString = Integer.toHexString(0xFF & publicKey[i])
-                        .toUpperCase(Locale.US);
-                if (appendString.length() == 1)
-                    hexString.append("0");
-                hexString.append(appendString);
-            }
-            return hexString.toString();
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }*/
     @Override
     public void onLocationChanged(AMapLocation aMapLocation) {
         //设置当前所在的城市
@@ -614,14 +568,6 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
                         sLBean =  bean;
                     }
                 }
-//                [{"id":1,"name":"佳优保总店","distance":0.0},
-//                {"id":212,"name":"上海宝山区旗舰店","distance":0.0},
-//                {"id":257,"name":"上海普陀区行知路直营店","distance":0.0},
-//                {"id":278,"name":"上海崇明区新崇南路直营店","distance":0.0},
-//                {"id":279,"name":"上海松江区乐都西路直营店","distance":0.0},
-//                {"id":280,"name":"上海杨浦区松花江路直营店","distance":0.0},
-//                {"id":302,"name":"上海嘉定区联西路11号直营店","distance":0.0},
-//                {"id":317,"name":"羽琪二级加盟商","distance":0.0}]}
                 dataList.add(0,sLBean);
                 Object strName = JudgeObjectUtils.getFieldValueByName("name",sLBean);
                 if(strName == null){

@@ -23,13 +23,17 @@ import youbao.shopping.R;
 import static youbao.shopping.ninetop.config.AppConfig.BASE_IMAGE_URL;
 
 /**
- * Created by huangjinding on 2017/5/13.
+ *
+ * @author huangjinding
+ * @date 2017/5/13
  */
 public class CollectionProductListAdapter extends BaseAdapter {
+
     Context context;
     List<ProductFavorBean> dataList;
     UbUserService ubUserService;
-    private List<ProductFavorBean> selectList;
+    private List<ProductFavorBean> selectList = new ArrayList<>();
+
     boolean isEditStatus = false;
     public CollectionProductListAdapter(UbUserService ubUserService,Context context, List<ProductFavorBean> dataList) {
         this.context = context;
@@ -106,24 +110,29 @@ public class CollectionProductListAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 ImageView imageView=(ImageView) v;
-                if(isSelected((ImageView)v)){
-                  addSelerctItem(dataList.get(index));
-                  imageView.setImageResource(R.mipmap.edit_select);
-                }else {
-                    removeSelectItem(dataList.get(index));
+                if(isSelected(product1)){
+                    removeSelectItem(product1);
                     imageView.setImageResource(R.mipmap.edit_unselect);
+                }else {
+                    addSelerctItem(product1);
+                    imageView.setImageResource(R.mipmap.edit_select);
                 }
 
             }
         });
         return convertView;
     }
-    private boolean isSelected(ImageView imageView) {
-        if (imageView.getDrawable().getCurrent().getConstantState().
-                equals(context.getResources().getDrawable(R.mipmap.edit_unselect).getConstantState())) {
-            return true;
+    private boolean isSelected( ProductFavorBean favorBean) {
+        boolean isSelect = false;
+        if (selectList !=null && selectList.size() >0){
+            for (int i = 0; i < selectList.size(); i++) {
+                ProductFavorBean productFavorBean = selectList.get(i);
+                if (productFavorBean.product_id == favorBean.product_id){
+                    isSelect = true;
+                }
+            }
         }
-        return false;
+        return isSelect;
     }
     protected void addSelerctItem(ProductFavorBean bean){
         if(selectList==null){
@@ -131,7 +140,6 @@ public class CollectionProductListAdapter extends BaseAdapter {
         }
         if(!selectList.contains(bean)){
             selectList.add(bean);
-        //    getSelectList();
         }
     }
 
@@ -143,21 +151,7 @@ public class CollectionProductListAdapter extends BaseAdapter {
             selectList.remove(bean);
         }
     }
-//      protected void confirmCansel(){
-//             String id_list="";
-//          if(selectList!=null||selectList.size()>0){
-//              for(ProductFavorBean bean : selectList){
-//                  id_list+=bean.favor_id+",";
-//              }
-//              id_list=id_list.substring(0,id_list.length()-1);
-//          }
-//        ubUserService.postCollectionListCasel(id_list, new CommonResultListener() {
-//            @Override
-//            public void successHandle(Object result) throws JSONException {
-//
-//            }
-//        });
-//      }
+
     class HolderView {
         LinearLayout ll_seller;
         ImageView iv_seller;
