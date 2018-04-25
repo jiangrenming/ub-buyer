@@ -136,7 +136,7 @@ public class UbProductInfoActivity extends BaseActivity {
         franchiseeid = getIntentValue(IntentExtraKeyConst.FRANCHISEEID);
 
         id = Integer.parseInt(proId);
-        ubProductService.getProductDetail(id, 1, "", new CommonResultListener<UbProductDetailBean>(this) {
+        ubProductService.getProductDetail(id, 1, "",franchiseeid, new CommonResultListener<UbProductDetailBean>(this) {
             @Override
             public void successHandle(UbProductDetailBean result) throws JSONException {
                 if (result == null) {

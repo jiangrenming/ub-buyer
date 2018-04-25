@@ -259,8 +259,7 @@ public class UbProductService extends BaseService {
 
 
     //积分商城商品详情
-    public void getProductDetail(int productId, int sellerId, String userToken, ResultListener<UbProductDetailBean> resultListener) {
-        String franchiseeId = GlobalInfo.franchiseeId;
+    public void getProductDetail(int productId, int sellerId, String franchiseeId,String userToken, ResultListener<UbProductDetailBean> resultListener) {
         if (TextUtils.isEmpty(franchiseeId)) {
             franchiseeId = "\"\"";
         }

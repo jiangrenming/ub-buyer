@@ -437,7 +437,9 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
                     MySharedPreference.save(SharedKeyConstant.CITY_NAME, mCity, this);
                     mDistrict = aMapLocation.getDistrict();
                 }
+                Log.e(TAG, "经度3：" + mLatitude + "纬度：" + mLongitude + "城市名称：" + mCity + "区名：" + mDistrict);
                 //定位成功可以获取所有信息
+                setSelectedCity();
             } else {
                 String mStringToast = "定位失败" + aMapLocation.getErrorCode();
                 failNum++;
@@ -453,7 +455,6 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
             setDefaultCity();
         }
         Log.e(TAG, "经度：" + mLatitude + "纬度：" + mLongitude + "城市名称：" + mCity + "区名：" + mDistrict);
-        setSelectedCity();
     }
 
     private void setSelectedCity() {
@@ -655,6 +656,7 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
             tvProduct.setText(franchiseeName);
             tvProduct.setVisibility(View.VISIBLE);
         }
+        Log.i("获取的地址ID=",franchiseeName+"/="+franchiseeId);
         //获取店名
         ubProductService.postProductRecomentList(1, 15, franchiseeId, new CommonResultListener<List<ProductListBean>>(this) {
             @Override
