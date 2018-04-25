@@ -20,9 +20,6 @@ public class OrderFragmentFactory {
         BaseOrderFragment fragment = fragents.get(position);//从缓存中获取
         if (fragment == null) { //如果缓存中没有 创建新的对象 添加到缓存中
             switch (position) {
-//                case 0:
-//                    fragment = new OrderAllFragment();
-//                    break;
                 case 0:
                     fragment = new OrderWaitingPayFragments();
                     break;

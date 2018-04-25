@@ -114,7 +114,6 @@ public class HeadView extends RelativeLayout{
 		public void onClick(View v) {
 			((Activity)context).finish();
 		}
-		
 	}
 
 }

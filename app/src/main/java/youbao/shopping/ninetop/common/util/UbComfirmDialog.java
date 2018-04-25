@@ -3,10 +3,12 @@ package youbao.shopping.ninetop.common.util;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.view.Display;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
@@ -23,7 +25,7 @@ import static com.umeng.socialize.utils.DeviceConfig.context;
  * @date 2018/4/23
  */
 
-public class UbComfirmDialog extends Dialog implements View.OnClickListener{
+public class UbComfirmDialog extends Dialog implements View.OnClickListener,DialogInterface.OnKeyListener{
 
     private  skipAddress mAddress;
     private  Context mContext;
@@ -50,6 +52,7 @@ public class UbComfirmDialog extends Dialog implements View.OnClickListener{
     private void initView() {
         ImageView delete = (ImageView) findViewById(R.id.delete);
         delete.setOnClickListener(this);
+        this.setOnKeyListener(this);
     }
 
     @Override
@@ -73,6 +76,18 @@ public class UbComfirmDialog extends Dialog implements View.OnClickListener{
     public  void setSkipAddress(skipAddress mAddress){
         this.mAddress = mAddress;
     }
+
+    @Override
+    public boolean onKey(DialogInterface dialog, int keyCode, KeyEvent event) {
+        if (event.getAction() == KeyEvent.ACTION_UP
+                && keyCode == KeyEvent.KEYCODE_BACK
+                && event.getRepeatCount() == 0){
+            this.dismiss();
+            mAddress.changeAddress();
+        }
+        return false;
+    }
+
     public  interface  skipAddress{
         void changeAddress();
     }

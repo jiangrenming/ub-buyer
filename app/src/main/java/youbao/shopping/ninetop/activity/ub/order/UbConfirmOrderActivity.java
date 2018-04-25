@@ -561,20 +561,5 @@ public class UbConfirmOrderActivity extends BaseActivity implements UbComfirmDia
             ImageView iv_image_product;
         }
     }
-
-
-    @Override
-    public void onBackPressed() {
-        if (dialog != null && dialog.isShowing()){
-            try {
-                dialog.dismiss();
-                Log.i("是否走这里","");
-                selectTag(0);
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-        super.onBackPressed();
-    }
 }
 

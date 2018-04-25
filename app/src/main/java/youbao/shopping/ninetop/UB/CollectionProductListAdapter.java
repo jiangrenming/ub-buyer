@@ -87,7 +87,6 @@ public class CollectionProductListAdapter extends BaseAdapter {
         holderView.tv_ub_franchisee.setVisibility(View.VISIBLE);
         holderView.tv_seller_name.setText(product1.product_name);
         holderView.tv_personal_price.setText("人均消费 "+product1.price);
-     //   holderView.tv_ub_ratio.setText(seller1.getRatio());
         holderView.tv_ub_franchisee.setText(product1.franchisee_name);
         Tools.ImageLoaderShow(context, BASE_IMAGE_URL+product1.icon, holderView.iv_seller);
         if (isEditStatus) {
@@ -95,6 +94,7 @@ public class CollectionProductListAdapter extends BaseAdapter {
             holderView.ll_seller.setEnabled(false);
         } else {
             holderView.iv_select.setVisibility(View.GONE);
+            holderView.ll_seller.setEnabled(true);
         }
 
         holderView.ll_seller.setOnClickListener(new View.OnClickListener() {

@@ -86,6 +86,7 @@ public class FranchiseeAdapter extends BaseAdapter {
             holderView.ll_franchisee.setEnabled(false);
         } else {
             holderView.iv_select.setVisibility(View.GONE);
+            holderView.ll_franchisee.setEnabled(true);
         }
         holderView.ll_franchisee.setOnClickListener(new View.OnClickListener() {
             @Override

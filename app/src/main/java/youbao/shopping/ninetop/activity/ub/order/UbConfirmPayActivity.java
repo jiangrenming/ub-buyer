@@ -34,8 +34,10 @@ import static youbao.shopping.R.id.tv_total_pay;
  * Created by huangjinding on 2017/4/22.
  */
 public class UbConfirmPayActivity extends BaseActivity {
+  /*  @BindView(R.id.hv_head)
+    HeadView hvHead;*/
     @BindView(R.id.hv_head)
-    HeadView hvHead;
+    ImageView hv_head;
     @BindView(R.id.tv_order_num)
     TextView tvOrderNum;
     @BindView(tv_total_pay)
@@ -44,24 +46,6 @@ public class UbConfirmPayActivity extends BaseActivity {
     TextView tvUPay;
     @BindView(R.id.tv_balance_pay)
     TextView tvBalancePay;
-   /* @BindView(R.id.tv_need_pay)
-    TextView tvNeedPay;*/
-   /* @BindView(R.id.tv_balance_alert)
-    TextView tvBalanceAlert;*/
-   /* @BindView(R.id.rl_need_pay)
-    RelativeLayout rlNeedPay;*/
-   /* @BindView(R.id.iv_balance)
-    ImageView ivBalance;*/
-   /* @BindView(R.id.rl_pay_balance)
-    RelativeLayout rlPayBalance;*/
-   /* @BindView(R.id.iv_wechat)
-    ImageView ivWeChat;
-    @BindView(R.id.rl_wechat)
-    RelativeLayout rlWeChat;
-    @BindView(R.id.iv_alipay)
-    ImageView ivAliPay;
-    @BindView(R.id.rl_alipay)
-    RelativeLayout rlAliPay;*/
     private String jsonOrder;
     private PayBean bean;
     private String orderCode;
@@ -82,22 +66,13 @@ public class UbConfirmPayActivity extends BaseActivity {
     @Override
     protected void initView() {
         super.initView();
-        hvHead.setTitle("兑换");
+      //  hvHead.setTitle("兑换");
         getDetail();
     }
 
-    @OnClick({/*R.id.rl_pay_balance, R.id.rl_wechat, R.id.rl_alipay,*/ R.id.btn_order_confirm})
+    @OnClick({R.id.btn_order_confirm,R.id.hv_head})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-           /* case R.id.rl_pay_balance:
-                select(1);
-                break;
-            case R.id.rl_wechat:
-                select(2);
-                break;
-            case R.id.rl_alipay:
-                select(3);
-                break;*/
             case R.id.btn_order_confirm:
                 if (String.valueOf(bean.getUbPay()).equals(String.valueOf(bean.getTotalProductPay()))){
                     UbPayBean ubPayBean = new UbPayBean();
@@ -115,24 +90,14 @@ public class UbConfirmPayActivity extends BaseActivity {
                     return;
                 }
                 break;
+            case R.id.hv_head:
+                payCancelHandle();
+                break;
+
             default:
                 break;
         }
     }
-
-  /*  private void select(int index) {
-        ivBalance.setImageResource(R.mipmap.edit_unselect);
-        ivWeChat.setImageResource(R.mipmap.edit_unselect);
-        ivAliPay.setImageResource(R.mipmap.edit_unselect);
-        payType = index;
-        if (index == 1) {
-            ivBalance.setImageResource(R.mipmap.chiose);
-        } else if (index == 2) {
-            ivWeChat.setImageResource(R.mipmap.chiose);
-        } else if (index == 3) {
-            ivAliPay.setImageResource(R.mipmap.chiose);
-        }
-    }*/
 
     @SuppressLint("SetTextI18n")
     private void getDetail() {

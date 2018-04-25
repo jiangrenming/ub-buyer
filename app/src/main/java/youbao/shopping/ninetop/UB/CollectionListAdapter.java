@@ -83,6 +83,7 @@ public class CollectionListAdapter extends BaseAdapter {
             holderView.ll_seller.setEnabled(false);
         } else {
             holderView.iv_select.setVisibility(View.GONE);
+            holderView.ll_seller.setEnabled(true);
         }
         holderView.ll_seller.setOnClickListener(new View.OnClickListener() {
             @Override

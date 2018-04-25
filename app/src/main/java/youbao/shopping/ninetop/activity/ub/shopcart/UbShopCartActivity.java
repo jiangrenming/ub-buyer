@@ -115,6 +115,7 @@ public class UbShopCartActivity extends TabBaseActivity {
                         shopCartItemList.get(j).setShoperItemSelect(false);
                     }
                     shopers.put(bean.franchiseeId,shopCartItemList);
+                    Log.i("购物车数据",bean.franchiseeName+"/id="+bean.franchiseeId);
                 }
                 dataChangeHandle();
 
@@ -171,7 +172,7 @@ public class UbShopCartActivity extends TabBaseActivity {
                     productList.add(map);
                     //增加删除id
                     deleteList.add(bean.shopCartId);
-
+                    Log.i("添加的商品地址id=:",bean.getFranchiseeId()+"");
                 }
                 if ("删除".equals(tvPay.getText().toString())) {
                     removeCartList(deleteList);

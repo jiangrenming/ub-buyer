@@ -8,9 +8,9 @@ package youbao.shopping.ninetop.fragment;
  */
 public class OrderWaitingPayFragments extends BaseOrderFragment {
 
+    @Override
     public String getState() {
         return stateP;
     }
-//
 }
 
