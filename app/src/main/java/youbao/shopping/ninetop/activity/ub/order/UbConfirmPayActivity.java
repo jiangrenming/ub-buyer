@@ -114,18 +114,17 @@ public class UbConfirmPayActivity extends BaseActivity {
         ubPay = bean.getUbPay();
         payPrice = bean.getMoneyPay();
         totalPay = (long) Math.floor(bean.getTotalPay());
-        tvBalancePay.setText(bean.getBalancePay()+"");
         uBPiont = (long) Math.floor(bean.getOwnUBPoint());
         if (payPrice > 0) {
         } else if (payPrice == 0) {
             payType = 1;
         }
-        long myAll = (long) Math.floor(bean.getOwnUBPoint());
+        long myAll = (long) Math.floor(uBPiont);
         long myUb = (long) Math.floor(ubPay);
         tvOrderNum.setText(orderCode);//订单
         tvTotalPay.setText(myAll + "");//总积分
-        tvUPay.setText(totalPay + "");//
-        tvBalancePay.setText((uBPiont-totalPay)+"");//剩余积分
+        tvUPay.setText(myUb + "");// 积分兑换
+        tvBalancePay.setText((myAll-myUb)+"");//剩余积分
 
     }
 

@@ -90,7 +90,6 @@ public class UbProductService extends BaseService {
 
     //积分商城分类列表接口
     public void getProductCategory(ResultListener<List<ProductCategoryBean>> resultListener) {
-
         get(UrlConstant.PRODUCT_CATEGORY, null, new CommonResponseListener<List<ProductCategoryBean>>(context,
                 resultListener, new TypeToken<List<ProductCategoryBean>>() {
         }));
@@ -106,7 +105,6 @@ public class UbProductService extends BaseService {
         }
         params.put("page", page);
         params.put("pageSize", pageSize);
-
         params.put("franchisee_id", franchiseeId);
         postJson(UrlConstant.PRODUCT_RECOMMEND_LIST, params, new CommonResponseListener<List<ProductListBean>>(context,
                 resultListener, new TypeToken<List<ProductListBean>>() {
@@ -139,7 +137,6 @@ public class UbProductService extends BaseService {
         if (TextUtils.isEmpty(franchiseeId)) {
             franchiseeId = "1";
         }
-
         Map<String, String> params = new HashMap<>();
         params.put("page", page + "");
         params.put("pageSize", pageSize + "");

@@ -286,7 +286,7 @@ public class UbMyOrderDetailActivity extends BaseActivity {
 
         tvFranShopName.setText(result.franchiseeName);
 
-        tvProductPri.setText(TextConstant.MONEY + Math.round(Double.valueOf(result.totalPay)));
+        tvProductPri.setText(Math.round(Double.valueOf(result.totalPay))+"");
         tvUCut.setText(result.ubPay + "");
         tvBalanceCut.setText(result.balancePay + "");
 

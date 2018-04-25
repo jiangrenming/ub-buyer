@@ -168,14 +168,12 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         UpdateChecker.checkForDialog(this, Constants.APP_UPDATE_SERVER_URL);//
-
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         if(null != mLocationClient) {
-//        mLocationClient.unRegisterLocationListener(this);
             mLocationClient.onDestroy();
             mLocationClient = null;
         }
@@ -188,11 +186,6 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
             mLocationClient.stopLocation();
         }
     }
-
-    public UbProductActivity() {
-
-    }
-
     @Override
     protected int getLayoutId() {
         return R.layout.ub_activity_product_alfa;
@@ -209,9 +202,7 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
         ViewPager = (ViewPager) findViewById(R.id.viewPager);
         //初始化小圆点指示器
         points = (ViewGroup) findViewById(R.id.points);
-
         mGeocodeSearch = new GeocodeSearch(this);
-
         ubProductService = new UbProductService(this);
         listProduct = new ArrayList<>();
         dataList = new ArrayList<>();
@@ -230,13 +221,6 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
         if (franchiseeId == 0) {
             franchiseeId = 1;
         }
-
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-
 
     }
 
@@ -459,11 +443,13 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
                 failNum++;
                 firstToast(mStringToast, failNum, 1);
                 setDefaultCity();
+                Log.e(TAG, "经度2：" + mLatitude + "纬度：" + mLongitude + "城市名称：" + mCity + "区名：" + mDistrict);
             }
         } else {
             String mStringToast = "定位失败?";
             failNum++;
             firstToast(mStringToast, failNum, 1);
+            Log.e(TAG, "经度1：" + mLatitude + "纬度：" + mLongitude + "城市名称：" + mCity + "区名：" + mDistrict);
             setDefaultCity();
         }
         Log.e(TAG, "经度：" + mLatitude + "纬度：" + mLongitude + "城市名称：" + mCity + "区名：" + mDistrict);
@@ -556,10 +542,7 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
                 dataList.clear();
                 dataList = new ArrayList<>();
                 dataList.addAll(result);
-
-
                 SpinnerListBean sLBean = new SpinnerListBean();
-
                 Iterator<SpinnerListBean> it = dataList.iterator();
                 while(it.hasNext()){
                     SpinnerListBean bean = it.next();
@@ -572,11 +555,12 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
                 Object strName = JudgeObjectUtils.getFieldValueByName("name",sLBean);
                 if(strName == null){
                     dataList.remove(0);
-                     }
+                }
                 type= 0;
                 tvProduct.setText( dataList.get(0).getName());
                 franchiseeId = dataList.get(0).getId();
                 franchiseeName = dataList.get(0).getName();
+                Log.e("加盟商",result.size()+"/名称="+dataList.get(0).getName()+"/id="+dataList.get(0).getId()+"/名称="+dataList.get(0).getName());
                 getNamePop();
                 franchiseeChangeHandle();
             }
@@ -605,7 +589,6 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
             viewPagerList.add(gridView);
 
         }
-        //ViewPager.setAdapter(new MyViewPagerAdapter(viewPagerList));
         MyViewPagerAdapter adapter = new MyViewPagerAdapter(viewPagerList);
         ViewPager.setAdapter(adapter);
         setPoints();
@@ -669,14 +652,8 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
             tvProduct.setText(selectedFranchiseeName);
             tvProduct.setVisibility(View.VISIBLE);
         } else {
-            if(dataList.size()>1){
             tvProduct.setText(franchiseeName);
-                tvProduct.setVisibility(View.VISIBLE);
-            }else{
-                tvProduct.setText(franchiseeName);
-                tvProduct.setVisibility(View.VISIBLE);
-            }
-
+            tvProduct.setVisibility(View.VISIBLE);
         }
         //获取店名
         ubProductService.postProductRecomentList(1, 15, franchiseeId, new CommonResultListener<List<ProductListBean>>(this) {

@@ -75,7 +75,6 @@ public class UserCenterActivity extends TabBaseActivity implements View.OnClickL
     @Override
     protected void initView() {
         ButterKnife.bind(this);
-//        ivNotify.setVisibility(View.GONE);
     }
 
     @Override
@@ -93,65 +92,6 @@ public class UserCenterActivity extends TabBaseActivity implements View.OnClickL
             }
         });
     }
-
-//    private void initUserIcon(OrderCountBean orderCountBean) {
-//        if (textView==null){
-//            textView = new TextView[]{tvStayPay,tvSendGoods,tvReciveGoods,tvReview,tvReturnGoods};
-//        }
-//            if (orderCountBean!=null){
-//                count[0] =TextUtils.isEmpty(orderCountBean.waitPayCount)?0:Integer.valueOf(orderCountBean.waitPayCount);
-//                count[1] =TextUtils.isEmpty(orderCountBean.waitSendCount)?0:Integer.valueOf(orderCountBean.waitSendCount);
-//                count[2] =TextUtils.isEmpty(orderCountBean.waitReceiveCount)?0:Integer.valueOf(orderCountBean.waitReceiveCount);
-//                count[3] = TextUtils.isEmpty(orderCountBean.waitEvaluateCount)?0:Integer.valueOf(orderCountBean.waitEvaluateCount);
-//                count[4] =TextUtils.isEmpty(orderCountBean.returnOrChangeCount)?0:Integer.valueOf(orderCountBean.returnOrChangeCount);
-//                putValue();
-//                judgeVisiable();
-//
-//            }else {
-//                setTextGone(textView);
-//            }
-//    }
-//    private void putValue() {
-//        if(viewStringHashMap==null){
-//            viewStringHashMap = new HashMap<>();
-//        }
-//        viewStringHashMap.clear();
-//        for (int i = 0; i < textView.length; i++) {
-//            viewStringHashMap.put(textView[i],count[i]);
-//        }
-//    }
-//    public void setTextGone(TextView ...textViews){
-//        for (int i = 0; i < textViews.length; i++) {
-//            textViews[i].setVisibility(View.GONE);
-//        }
-//    }
-//    private void judgeVisiable() {
-//        Set<Map.Entry<TextView, Integer>> entries = viewStringHashMap.entrySet();
-//        for (Map.Entry<TextView, Integer> map:entries) {
-//            int value = map.getValue();
-//            int returnOrChange = judge(value);
-//            if (returnOrChange==0){
-//                map.getKey().setVisibility(View.GONE);
-//            }else if (returnOrChange==1){
-//                map.getKey().setVisibility(View.VISIBLE);
-//                map.getKey().setText(value+"");
-//                map.getKey().setVisibility(View.VISIBLE);
-//            }else if (returnOrChange==2){
-//                map.getKey().setText("99+");
-//            }
-//        }
-//    }
-//    public int judge(int count){
-//        int visiable=0;
-//        if (count>0&&count<=99){
-//            visiable=1;
-//        }else if (count>99){
-//            visiable=2;
-//        }else if (count==0){
-//           visiable=0;
-//        }
-//        return visiable;
-//    }
 
     private void iniUserInfo(UbUserInfo result) {
         if (result != null) {

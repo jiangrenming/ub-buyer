@@ -177,22 +177,28 @@ public class UbConfirmOrderActivity extends BaseActivity implements UbComfirmDia
     }
     @SuppressLint("SetTextI18n")
     private void setPriceTextValue(boolean home) {
+        //快递费
         double logisticsCost = getDoubleValue(ubBean.logisticsCost);
+        //商品总价
         double totalProductPay = getDoubleValue(ubBean.totalProductPay);
+        //ub支付金额
         double ubPay = getDoubleValue(ubBean.ubPay);
+        //余额支付金额
         double balancePay = getDoubleValue(ubBean.balancePay);
         double moneyPay = getDoubleValue(ubBean.moneyPay);
+        //订单总价
+        double totalPay = getDoubleValue(ubBean.totalPay);
         if (!home) {
             logisticsCost = 0;
             balancePay = getBalancePayForSelf(ubBean);
             moneyPay = getMoneyPayForSelf(ubBean);
         }
-
         tvEms.setText(Math.round(Double.valueOf(logisticsCost))+"");
-        tvTotalPrice.setText(Math.round(Double.valueOf(totalProductPay))+"");
+        //积分总额
+        tvTotalPrice.setText(totalPay+"");
         tvUCut.setText(Math.round(Double.valueOf(ubPay))+"");
         tvBalance.setText(Math.round(Double.valueOf(balancePay))+"");
-        tvNeedPay.setText(Math.round(Double.valueOf(totalProductPay))+"");
+        tvNeedPay.setText(totalPay+"");
     }
 
     private void getOrderInfo() {
@@ -372,6 +378,7 @@ public class UbConfirmOrderActivity extends BaseActivity implements UbComfirmDia
                     intent.putExtra(IntentExtraKeyConst.JSON_ORDER, dataString);
                     intent.putExtra(IntentExtraKeyConst.GET_STYLE, "0");
                     startActivity(intent);
+                    finish();
                 }
             });
         } else {
@@ -385,6 +392,7 @@ public class UbConfirmOrderActivity extends BaseActivity implements UbComfirmDia
                     intent.putExtra(IntentExtraKeyConst.JSON_ORDER, dataString);
                     intent.putExtra(IntentExtraKeyConst.GET_STYLE, "1");
                     startActivity(intent);
+                    finish();
                 }
             });
         }

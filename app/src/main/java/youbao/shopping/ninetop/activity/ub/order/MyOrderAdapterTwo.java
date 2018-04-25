@@ -108,6 +108,7 @@ public class MyOrderAdapterTwo extends DefaultBaseAdapter {
             holderView.tv_right = (TextView) convertView.findViewById(R.id.tv_right);
             holderView.listView = (ChildListView) convertView.findViewById(R.id.listview);
             holderView.llPay = (LinearLayout) convertView.findViewById(R.id.ll_pay1);
+            holderView.shopers_price = (TextView)convertView.findViewById(R.id.shopers_price);
             convertView.setTag(holderView);
         } else {
             holderView = (HolderView) convertView.getTag();
@@ -118,8 +119,8 @@ public class MyOrderAdapterTwo extends DefaultBaseAdapter {
         franchiseeId = bean.franchiseeId;
         holderView.tv_address.setText("取货地址 ：" + bean.detailAdress);
         String mTotalPrice =Math.round(bean.totalPrice)+"";
-//        String mTotalPrice = mPrice.substring(0, mPrice.indexOf("."));
-        holderView.tv_price_total.setText("总价   " + TextConstant.MONEY + mTotalPrice);
+        holderView.tv_price_total.setText("总价   "+ mTotalPrice);
+        holderView.shopers_price.setText(mTotalPrice);
         for (int i = 0; i < detailList.size(); i++) {
             MyOrderDetailBean detailBean = detailList.get(i);
             skuId = detailBean.productSkuId;
@@ -211,7 +212,7 @@ public class MyOrderAdapterTwo extends DefaultBaseAdapter {
         TextView tv_left;
         TextView tv_right;
         LinearLayout llPay;
-        TextView tv_address;
+        TextView tv_address,shopers_price;
     }
 
 

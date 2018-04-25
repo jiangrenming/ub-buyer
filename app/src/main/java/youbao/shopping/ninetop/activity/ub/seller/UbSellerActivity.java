@@ -544,16 +544,6 @@ public class UbSellerActivity extends HuangChangeActivity implements ViewPager.O
 
     @Override
     public void onScrollChanged(int y) {
-//        if (y <= 0) {
-//            llSearch.setBackgroundColor(Color.argb(100, 255, 0, 0));
-//        } else if (y > 0 && y <= height) {
-//            float scale = (float) y / height;
-//            //修改255，控制透明度
-//            float alpha = (200 * scale);
-//            llSearch.setBackgroundColor(Color.argb((int) alpha, 255, 0, 0));
-//        } else {
-//            llSearch.setBackgroundColor(Color.argb(200, 255, 0, 0));
-//        }
     }
 
 
