@@ -142,7 +142,6 @@ public class ResetQuestionActivity extends BaseActivity {
             public void successHandle(Object result) throws JSONException {
                 showToast("提交成功");
                 finish();
-//                setPwdNow();
             }
         });
 

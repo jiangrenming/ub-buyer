@@ -45,6 +45,7 @@ public class UbProductAllCategoryActivity extends PullRefreshBaseActivity implem
     private int itemId;
     private int searchUpDown = 0;
     private int searchNum = 3;
+    private  String freID;
 
     @Override
     protected int getLayoutId() {
@@ -63,7 +64,9 @@ public class UbProductAllCategoryActivity extends PullRefreshBaseActivity implem
 
     }
 
+    @Override
     protected void initData() {
+        freID = getIntentValue(IntentExtraKeyConst.FRANCHISEEID);
         getServerData();
         psbBar.setSelectChangedListener(new SelectChangedListener<SortBean>() {
             @Override
@@ -79,6 +82,7 @@ public class UbProductAllCategoryActivity extends PullRefreshBaseActivity implem
         });
     }
 
+    @Override
     protected void getServerData() {
         //category_id分类id（是：显示分类列表；否：显示所有商品列表）
         //当进入分类是，默认排序：sort_type=3，sort_method=0,默认月销量，由大到小
@@ -123,9 +127,7 @@ public class UbProductAllCategoryActivity extends PullRefreshBaseActivity implem
     public void onItemClick(int pos) {
         if (pos >= 0 && pos <= categoryDataList.size()) {
             itemId = categoryDataList.get(pos).id;
-            //   etProductSearch.setText(categoryDataList.get(pos).name);
             getServerData();
-            // handleSearch(categoryDataList.get(pos).name);
         }
     }
 
@@ -141,9 +143,9 @@ public class UbProductAllCategoryActivity extends PullRefreshBaseActivity implem
                     showToast("搜索参数为空！");
                     return;
                 }
-                // handleSearch(name);
                 Map<String, String> map = new HashMap<>();
                 map.put(IntentExtraKeyConst.SEARCH_KEY, name);
+                map.put(IntentExtraKeyConst.FRANCHISEEID, freID);
                 startActivity(UbProductSearchResultActivity.class, map);
                 break;
             case R.id.iv_more_btn1:
@@ -151,11 +153,13 @@ public class UbProductAllCategoryActivity extends PullRefreshBaseActivity implem
                 break;
             case R.id.ll_search_edit:
                 break;
+            default:
+                break;
         }
     }
 
     private void handleSearch(String key) {
-        ubProductService.getSearch(key, new CommonResultListener<List<ProductSearchBean>>(this) {
+        ubProductService.getSearch(key, freID,new CommonResultListener<List<ProductSearchBean>>(this) {
             @Override
             public void successHandle(List<ProductSearchBean> result) throws JSONException {
                 dataList.clear();

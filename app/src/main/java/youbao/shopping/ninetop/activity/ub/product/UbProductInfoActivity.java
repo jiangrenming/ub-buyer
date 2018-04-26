@@ -134,7 +134,6 @@ public class UbProductInfoActivity extends BaseActivity {
     private void getProductDetail() {
         String proId = getIntentValue(IntentExtraKeyConst.PRODUCT_ID);
         franchiseeid = getIntentValue(IntentExtraKeyConst.FRANCHISEEID);
-
         id = Integer.parseInt(proId);
         ubProductService.getProductDetail(id, 1, "",franchiseeid, new CommonResultListener<UbProductDetailBean>(this) {
             @Override
@@ -265,7 +264,7 @@ public class UbProductInfoActivity extends BaseActivity {
 
     private void changeStatusHandle() {
         if (!isSelect) {
-            ubProductService.postCollection(id, new CommonResultListener(this) {
+            ubProductService.postCollection(id,franchiseeid, new CommonResultListener(this) {
                 @Override
                 public void successHandle(Object result) throws JSONException {
                     ivMyCollection.setImageResource(R.mipmap.collection_red);
@@ -275,7 +274,7 @@ public class UbProductInfoActivity extends BaseActivity {
             });
 
         } else {
-            ubProductService.postCollectionCansel(id, new CommonResultListener(this) {
+            ubProductService.postCollectionCansel(id,franchiseeid, new CommonResultListener(this) {
                 @Override
                 public void successHandle(Object result) throws JSONException {
                     ivMyCollection.setImageResource(R.mipmap.shoucang_grey);
@@ -294,7 +293,7 @@ public class UbProductInfoActivity extends BaseActivity {
             //    showToast("请选择商品规格");
             return;
         }
-        ubProductService.postShopcartAdd("", id, 1, skuId, amount, skuprice, new CommonResultListener<String>(this) {
+        ubProductService.postShopcartAdd("", id, 1, franchiseeid,skuId, amount, skuprice, new CommonResultListener<String>(this) {
             @Override
             public void successHandle(String result) throws JSONException {
 
@@ -320,7 +319,6 @@ public class UbProductInfoActivity extends BaseActivity {
         //报服务器数据返回异常，采用第二种方案，用json
         Gson gson = new Gson();
         final String jsonBeanString = gson.toJson(productList);
-
         ubProductService.postEMSOrder(0, 0, 0, "", productList, new CommonResultListener<JSONObject>(this) {
             @Override
             public void successHandle(JSONObject result) throws JSONException {
@@ -353,7 +351,6 @@ public class UbProductInfoActivity extends BaseActivity {
             @Override
             public void onDismiss(DialogInterface dialog) {
                 singleProductSkuBean = detailDialog.getSelectedSkuBean();
-                //tvPrice.setText(singleProductSkuBean.getSalePrice());
                 amount = detailDialog.getSelectedCount();
                 skuId = singleProductSkuBean.skuId;
                 skuprice = Math.round(Double.valueOf(singleProductSkuBean.salePrice));

@@ -10,8 +10,15 @@ public class UbPayBean {
     public double balancePay;
     public double payPrice;
     public int payType;
+    public  double totalPay;
 
+    public double getTotalPay() {
+        return totalPay;
+    }
 
+    public void setTotalPay(double totalPay) {
+        this.totalPay = totalPay;
+    }
 
     public String getOrderCode() {
         return orderCode;

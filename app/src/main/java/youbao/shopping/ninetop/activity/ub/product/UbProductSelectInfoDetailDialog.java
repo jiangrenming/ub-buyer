@@ -129,7 +129,7 @@ public class UbProductSelectInfoDetailDialog {
             return;
         }
         amount = nsv_number.getValue();
-        ubProductService.postShopcartAdd("", id, 1, skuId, amount, SKUPPice, new CommonResultListener<String>(activity) {
+        ubProductService.postShopcartAdd("", id, 1, freeId,skuId, amount, SKUPPice, new CommonResultListener<String>(activity) {
             @Override
             public void successHandle(String result) throws JSONException {
 
@@ -182,7 +182,7 @@ public class UbProductSelectInfoDetailDialog {
 
     private void initData() {
         String idNew = id + "";
-        ubProductService.getProductSpecifications(idNew, new CommonResultListener<List<SingleProductSkuBean>>(activity) {
+        ubProductService.getProductSpecifications(idNew,freeId, new CommonResultListener<List<SingleProductSkuBean>>(activity) {
             @Override
             public void successHandle(List<SingleProductSkuBean> result) throws JSONException {
                 skuBeanList = result;

@@ -69,14 +69,13 @@ public class UbPayOrderUnite {
 
     public void toPay() {
         int payType = ubPayBean.payType;
-        GlobalInfo.ubLastPayItem = ubPayBean;
         if (payType == 1) {
             ubProductService.getPwdIsSet(new CommonResultListener<QuesIsSetBean>(activity) {
                 @Override
                 public void successHandle(QuesIsSetBean result) throws JSONException {
                     pwdIsSet = result.is_set;
                     if (pwdIsSet == 0) {
-                        //余额支付，设置支付密码
+                        //未设置支付密码
                         toSettingPWD();
                     }else if(pwdIsSet == 1){
                         showBalancePayDialog();
@@ -89,12 +88,6 @@ public class UbPayOrderUnite {
             aliPay();
         }
     }
-
-
-//    public void toReceipt(int orderCode) {
-//        showReceiptDialog(orderCode);
-//    }
-
 
     private void toSettingPWD() {
         new MyDialog(activity, MyDialog.DIALOG_TWOOPTION, "温馨提示", "您需要先去设置支付密码", new MyDialogOnClick() {
@@ -146,56 +139,6 @@ public class UbPayOrderUnite {
         window.setBackgroundDrawableResource(R.color.transparent);
     }
 
-//    private  Dialog dialog;
-//    private void showReceiptDialog(final int code) {
-//        dialog = new Dialog(activity);
-//        dialog.show();
-//        View view = View.inflate(activity.getApplicationContext(), R.layout.activity_pay_enter_password, null);
-//        final GridPasswordView psdView = (GridPasswordView) view.findViewById(R.id.gps_view);
-//        View closeView = view.findViewById(R.id.iv_close);
-//        View button = view.findViewById(R.id.btn_submit);
-//
-//        Window window = dialog.getWindow();
-//        window.setGravity(Gravity.BOTTOM);
-//        window.setContentView(view);
-//        WindowManager windowManager = activity.getWindowManager();
-//        Display display = windowManager.getDefaultDisplay();
-//        WindowManager.LayoutParams lp = dialog.getWindow().getAttributes();
-//        lp.width = (int) (display.getWidth());
-//        window.setAttributes(lp);
-//        window.setBackgroundDrawableResource(R.color.transparent);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                String password = psdView.getPassWord();
-//                if (password.length() < 6) {
-//                    activity.showToast("请输入6位支付密码");
-//                    return;
-//                }
-//                confirmationOfReceipt(code,password);
-//                dialog.dismiss();
-//                Log.i("收货结果=======",code+"");
-//            }
-//        });
-//        closeView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                dialog.dismiss();
-//            }
-//        });
-//
-//    }
-//
-//        private void confirmationOfReceipt(int code,String password){
-//            ubProductService.postConfirmReceive(code,password,new CommonResultListener(activity) {
-//                @Override
-//                public void successHandle(Object result) throws JSONException {
-//                    activity.startActivity(MyOrderActivity.class);
-//                    ToastUtils.showCenter(activity,"确认收货成功");
-//                }
-//            });
-//    }
-
     private void balancePay(String pwd) {
         ubProductService.postBalancePay(ubPayBean, pwd, new CommonResultListener(activity) {
             @Override
@@ -203,14 +146,12 @@ public class UbPayOrderUnite {
                 Intent intent = new Intent();
                 Bundle bundle = new Bundle();
                 intent.putExtras(bundle);
-                UbPayBean payItem = GlobalInfo.ubLastPayItem;
                 Map<String, String> map = new HashMap<String, String>();
-                if (payItem != null) {
-                    map.put(IntentExtraKeyConst.ORDER_CODE, payItem.orderCode);
-                    map.put(IntentExtraKeyConst.ORDER_TOTAL, String.valueOf(payItem.payPrice));
-                    map.put(IntentExtraKeyConst.ORDER_U, String.valueOf(payItem.ubPay));
-                    map.put(IntentExtraKeyConst.ORDER_BALANCE,String.valueOf(payItem.balancePay));
-                }
+                map.put(IntentExtraKeyConst.ORDER_CODE, ubPayBean.orderCode);
+                map.put(IntentExtraKeyConst.ORDER_TOTAL, String.valueOf(ubPayBean.payPrice));
+                map.put(IntentExtraKeyConst.ORDER_U, String.valueOf(ubPayBean.ubPay));
+                map.put(IntentExtraKeyConst.PAY_MONEY, String.valueOf(ubPayBean.getTotalPay()));
+                map.put(IntentExtraKeyConst.ORDER_BALANCE,String.valueOf(ubPayBean.balancePay));
                 activity.startActivity(UbPaySuccessActivity.class, map);
             }
         });

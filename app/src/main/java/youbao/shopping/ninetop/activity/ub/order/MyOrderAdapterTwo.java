@@ -21,6 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.hykj.dialoglib.MyDialog;
 import com.hykj.dialoglib.MyDialogOnClick;
 import com.hykj.myviewlib.gridview.GridPasswordView;
@@ -28,6 +29,7 @@ import com.hykj.myviewlib.gridview.GridPasswordView;
 import youbao.shopping.ninetop.UB.cartshop.ChildListView;
 import youbao.shopping.ninetop.UB.order.MyOrderListBean;
 import youbao.shopping.ninetop.UB.order.MyOrderDetailBean;
+import youbao.shopping.ninetop.UB.product.UbOrder.PayBean;
 import youbao.shopping.ninetop.UB.product.UbProductService;
 import youbao.shopping.ninetop.activity.order.ExpressQueryActivity;
 import youbao.shopping.ninetop.activity.product.MyOrderActivity;
@@ -134,7 +136,6 @@ public class MyOrderAdapterTwo extends DefaultBaseAdapter {
                 Intent intent = new Intent(activity, UbMyOrderDetailActivity.class);
                 intent.putExtra(IntentExtraKeyConst.ORDER_ID, bean.orderId + "");
                 intent.putExtra(IntentExtraKeyConst.ORDER_TYPE, bean.status);
-//                activity.startActivity(intent);
                 activity.startActivityForResult(intent, 1);
 
             }
@@ -187,7 +188,6 @@ public class MyOrderAdapterTwo extends DefaultBaseAdapter {
         } else if (status.equals("G")) {
             holderView.tv_style.setText("待自取");
             holderView.llPay.setVisibility(View.GONE);
-            // holderView.tv_price_total.setVisibility(View.GONE);
             holderView.tv_address.setVisibility(View.VISIBLE);
             setGetDetail();
         } else {
@@ -232,7 +232,6 @@ public class MyOrderAdapterTwo extends DefaultBaseAdapter {
     //去兑换
     private void goChange(int orderId) {
         if (skuId == 0 || franchiseeId == 0) {
-            // ctx.showToast("请选择商品规格");
             return;
         }
         final List<Map> productList = new ArrayList<>();
@@ -241,29 +240,18 @@ public class MyOrderAdapterTwo extends DefaultBaseAdapter {
         map.put("skuId", skuId);
         map.put("amount", amount);
         productList.add(map);
-        Gson gson = new Gson();
-        final String jsonBeanString = gson.toJson(productList);
-
-//        ubProductService.postEMSOrder(0, 0, 0, "", productList, new CommonResultListener<JSONObject>((Viewable) ctx) {
-//            @Override
-//            public void successHandle(JSONObject result) throws JSONException {
-//                String dataString = result.getString("data");
-//                Intent intent = new Intent(ctx, UbConfirmOrderActivity.class);
-//                intent.putExtra(IntentExtraKeyConst.PRODUCT_LIST, jsonBeanString);
-//                intent.putExtra(IntentExtraKeyConst.JSON_DATA, dataString);
-//                intent.putExtra(IntentExtraKeyConst.ORDER_FROM, "buy");
-//                intent.putExtra(IntentExtraKeyConst.ORDER_SKUID, skuId + "");
-//                intent.putExtra(IntentExtraKeyConst.ORDER_AMOUNT, amount + "");
-//                ctx.startActivity(intent);
-//
-//            }
-//        });
+        final  Gson gson = new Gson();
         ubProductService.getOrderPay(orderId, new CommonResultListener<JSONObject>((Viewable) ctx) {
             @Override
             public void successHandle(JSONObject result) throws JSONException {
                 String dataString = result.getString("data");
                 Intent intent = new Intent(ctx, UbConfirmPayActivity.class);
                 intent.putExtra(IntentExtraKeyConst.JSON_ORDER, dataString);
+                TypeToken<PayBean> typeToken = new TypeToken<PayBean>() {};
+                PayBean  bean = gson.fromJson(dataString, typeToken.getType());
+                if (bean != null){
+                    intent.putExtra(IntentExtraKeyConst.PAY_MONEY, String.valueOf(bean.getTotalPay()));
+                }
                 ctx.startActivity(intent);
             }
         });

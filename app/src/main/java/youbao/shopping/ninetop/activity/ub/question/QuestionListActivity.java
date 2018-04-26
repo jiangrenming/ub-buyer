@@ -123,17 +123,6 @@ public class QuestionListActivity extends BaseActivity {
             }
             final QuestionBean bean=dataList.get(position);
             holderView.tv_question.setText(bean.safe_question);
-//            holderView.ll_question.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    Intent intent=new Intent(activity,QuestionActivity.class);
-//                    intent.putExtra(IntentExtraKeyConst.QUESTION_NO, index);
-//                    intent.putExtra(IntentExtraKeyConst.QUESTION_INFO, bean.safe_question);
-//                    startActivity(intent);
-
-//                    activity.finish();
-//                }
-//            });
             return convertView;
         }
         class HolderView{

@@ -42,7 +42,7 @@ public class IntentExtraKeyConst {
 
     public static final String JSON_DATA = "jsonData";
     public static final String JSON_ORDER = "jsonOrder";
-
+    public static final String PAY_MONEY = "pay_money";
     public static final String GET_STYLE = "getStyle";
 
     public static final String JSON_QUESTION = "jsonQuestion";

@@ -80,7 +80,10 @@ public class UbConfirmPayActivity extends BaseActivity {
                     ubPayBean.setUbPay(bean.getUbPay());
                     ubPayBean.setPayPrice(bean.getMoneyPay());
                     ubPayBean.setBalancePay(bean.getBalancePay());
+                    ubPayBean.setTotalPay(bean.getPay_money());
                     ubPayBean.setPayType(payType);
+                    Log.i("消费的金额:",ubPayBean.getTotalPay()+"/="+ubPayBean.getUbPay()+"/=="+ubPayBean.getBalancePay());
+                    Log.i("消费的金额=:",bean.getTotalPay()+"/="+bean.getUbPay()+"/=="+bean.getBalancePay());
                     UbPayOrderUnite ubPayOrderUnite = new UbPayOrderUnite(ubPayBean, this);
                     ubPayOrderUnite.toPay();
 
@@ -102,29 +105,30 @@ public class UbConfirmPayActivity extends BaseActivity {
     @SuppressLint("SetTextI18n")
     private void getDetail() {
         jsonOrder = getIntentValue(IntentExtraKeyConst.JSON_ORDER);
+        long pay_money=  Long.valueOf(getIntentValue(IntentExtraKeyConst.PAY_MONEY));
         if (jsonOrder == null || jsonOrder.length() == 0) {
             return;
         }
         Gson gson = new Gson();
-        TypeToken<PayBean> typeToken = new TypeToken<PayBean>() {
-        };
+        TypeToken<PayBean> typeToken = new TypeToken<PayBean>() {};
         //余额支付1，微信2，支付宝3
         bean = gson.fromJson(jsonOrder, typeToken.getType());
+        bean.setPay_money(pay_money);
         orderCode = bean.getOrderCode();
         ubPay = bean.getUbPay();
         payPrice = bean.getMoneyPay();
         totalPay = (long) Math.floor(bean.getTotalPay());
         uBPiont = (long) Math.floor(bean.getOwnUBPoint());
+        Log.i("解析的数据=",bean.getBalancePay()+"/="+bean.getMoneyPay()+"/--"+bean.getOwnUBPoint()+"/~"+bean.getTotalPay()+"/"+bean.getTotalProductPay()+"=="+bean.getUbPay());
         if (payPrice > 0) {
         } else if (payPrice == 0) {
             payType = 1;
         }
         long myAll = (long) Math.floor(uBPiont);
-        long myUb = (long) Math.floor(ubPay);
         tvOrderNum.setText(orderCode);//订单
         tvTotalPay.setText(myAll + "");//总积分
-        tvUPay.setText(myUb + "");// 积分兑换
-        tvBalancePay.setText((myAll-myUb)+"");//剩余积分
+        tvUPay.setText(pay_money + "");// 积分兑换
+        tvBalancePay.setText((myAll-pay_money)+"");//剩余积分
 
     }
 

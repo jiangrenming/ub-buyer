@@ -69,16 +69,12 @@ public class SelectedCityActivity extends BaseActivity {
 
     private List<HotCityBean> dataList;
     private CityAdapter cityAdapter;
-
-    public SelectedCityActivity() {
-
-    }
-
     @Override
     protected int getLayoutId() {
         return R.layout.ub_activity_selectcity;
     }
 
+    @Override
     protected void initView() {
         super.initView();
         ubProductService = new UbProductService(this);
@@ -206,9 +202,9 @@ public class SelectedCityActivity extends BaseActivity {
             case R.id.tv_city_name:
                 String cityNameLocal = MySharedPreference.get(SharedKeyConstant.CITY_NAME, "", SelectedCityActivity.this);
                 if ("".equals(cityNameLocal)) {
-                    tvCityDingWei.setText("杭州市");
+                    tvCityNameNow.setText("杭州市");
                 } else {
-                    tvCityDingWei.setText(cityNameLocal);
+                    tvCityNameNow.setText(cityNameLocal);
                 }
                 changeSearchTag(tvCityNameNow.getText().toString());
                 goMainActivity();

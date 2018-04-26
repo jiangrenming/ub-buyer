@@ -18,6 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.hykj.dialoglib.MyDialog;
 import com.hykj.dialoglib.MyDialogOnClick;
 import com.hykj.myviewlib.gridview.GridPasswordView;
@@ -26,6 +27,7 @@ import youbao.shopping.ninetop.UB.ChangeCodeBean;
 import youbao.shopping.ninetop.UB.cartshop.ChildListView;
 import youbao.shopping.ninetop.UB.order.MyOrderDetailBean;
 import youbao.shopping.ninetop.UB.order.MyOrderListBean;
+import youbao.shopping.ninetop.UB.product.UbOrder.PayBean;
 import youbao.shopping.ninetop.UB.product.UbProductService;
 import youbao.shopping.ninetop.activity.order.ExpressQueryActivity;
 import youbao.shopping.ninetop.activity.product.MyOrderActivity;
@@ -126,7 +128,6 @@ public class UbMyOrderDetailActivity extends BaseActivity {
         ubProductService = new UbProductService(this);
         orderId = getIntentValue(IntentExtraKeyConst.ORDER_ID);
         status = getIntent().getStringExtra(ORDER_TYPE);
-
         RequestOrderDetails(orderId);
         handlerDetail();
     }
@@ -324,29 +325,31 @@ public class UbMyOrderDetailActivity extends BaseActivity {
     private void goChange(int orderId) {
         final List<Map> productList = new ArrayList<>();
         final Map<String, Integer> map = new HashMap<>();
-        String franchiseeId = GlobalInfo.franchiseeId;
-        if (TextUtils.isEmpty(franchiseeId)) {
-            franchiseeId = "\"\"";
+        if (TextUtils.isEmpty(String.valueOf(franchiseeId))) {
+            franchiseeId = 1;
         }
-        map.put("franchiseeId", Integer.parseInt(franchiseeId));
+        map.put("franchiseeId", franchiseeId);
         map.put("skuId", skuId);
         map.put("amount", amount);
         productList.add(map);
-        Gson gson = new Gson();
+        final Gson gson = new Gson();
         ubProductService.getOrderPay(orderId, new CommonResultListener<JSONObject>(this) {
             @Override
             public void successHandle(JSONObject result) throws JSONException {
                 String dataString = result.getString("data");
                 Intent intent = new Intent(UbMyOrderDetailActivity.this, UbConfirmPayActivity.class);
+                TypeToken<PayBean> typeToken = new TypeToken<PayBean>() {};
                 intent.putExtra(IntentExtraKeyConst.JSON_ORDER, dataString);
+                PayBean  bean = gson.fromJson(dataString, typeToken.getType());
+                if (bean != null){
+                    intent.putExtra(IntentExtraKeyConst.PAY_MONEY, String.valueOf(bean.getTotalPay()));
+                }
                 startActivity(intent);
             }
         });
     }
 
-    private void setGetDetail() {
-
-    }
+    private void setGetDetail() {}
 
     //查看物流
     private void checkMES() {

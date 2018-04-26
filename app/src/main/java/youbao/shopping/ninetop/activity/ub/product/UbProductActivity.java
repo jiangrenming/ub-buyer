@@ -448,7 +448,7 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
                 Log.e(TAG, "经度2：" + mLatitude + "纬度：" + mLongitude + "城市名称：" + mCity + "区名：" + mDistrict);
             }
         } else {
-            String mStringToast = "定位失败?";
+            String mStringToast = "定位失败";
             failNum++;
             firstToast(mStringToast, failNum, 1);
             Log.e(TAG, "经度1：" + mLatitude + "纬度：" + mLongitude + "城市名称：" + mCity + "区名：" + mDistrict);
@@ -459,12 +459,13 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
 
     private void setSelectedCity() {
         mSelectCity = GlobalInfo.ubSelectCity;
-        if (TextUtils.isEmpty(mSelectCity)) {
+        if (TextUtils.isEmpty(mSelectCity) || "".equals(mSelectCity)) {
             mSelectCity = mCity;
             if (TextUtils.isEmpty(mCity)) {
                 mSelectCity = "杭州市";
             }
         }
+        Log.i("定位的城市为:",mSelectCity+"/="+mCity);
         tvSelectCity.setText(mSelectCity);
         citySelectChangeHandle();
         handler.sendEmptyMessageDelayed(0, 50000);
@@ -640,7 +641,6 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
             ubProductService.postAddFranchisee(franchiseeId, new CommonResultListener(this) {
                 @Override
                 public void successHandle(Object result) throws JSONException {
-                    //    showToast("加盟商添加成功！");
                 }
             });
 
@@ -797,13 +797,13 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
             String franchiseeName = bean.name;
             holder.proName.setText(franchiseeName.length() > 4 ? franchiseeName.substring(0, 4) + "..." : franchiseeName);
             if (pos == (listData.size() - 1)) {
-//                UbProductMainListBean allBean= listData.get(listData.size()-1);
-//                ImageView view=allBean.icon_url.;
                 ImageView imageView = (ImageView) convertView.findViewById(R.id.iv_category_gridview_image);
                 imageView.setImageResource(R.mipmap.pro_all);
                 holder.parent.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        Map<String, String> map = new HashMap<>();
+                        map.put(IntentExtraKeyConst.FRANCHISEEID, String.valueOf(franchiseeId));
                         startActivity(UbProductAllCategoryActivity.class);
 
                     }

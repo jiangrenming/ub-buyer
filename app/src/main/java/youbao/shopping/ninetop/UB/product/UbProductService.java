@@ -158,8 +158,8 @@ public class UbProductService extends BaseService {
         if (localCity == null || localCity.length() == 0) {
             localCity = "杭州市";
         }
-        if (localCounty == null)
-            localCounty = "";
+        if (localCounty == null  || localCity.length() == 0)
+            localCounty = "西湖区";
         Map<String, Object> params = new HashMap<>();
         params.put("city", localCity);
         params.put("county", "");
@@ -198,10 +198,9 @@ public class UbProductService extends BaseService {
     }
 
     //积分商城商品搜索
-    public void getSearch(String name, ResultListener<List<ProductSearchBean>> resultListener) {
-        String franchiseeId = GlobalInfo.franchiseeId;
+    public void getSearch(String name, String franchiseeId,ResultListener<List<ProductSearchBean>> resultListener) {
         if (TextUtils.isEmpty(franchiseeId)) {
-            franchiseeId = "\"\"";
+            franchiseeId = "1";
         }
 
         Map<String, Object> params = new HashMap<>();
@@ -213,8 +212,7 @@ public class UbProductService extends BaseService {
     }
 
     //添加商品收藏
-    public void postCollection(int productId, ResultListener resultListener) {
-        String franchiseeId = GlobalInfo.franchiseeId;
+    public void postCollection(int productId,String franchiseeId, ResultListener resultListener) {
         if (TextUtils.isEmpty(franchiseeId)) {
             franchiseeId = "\"\"";
         }
@@ -231,8 +229,7 @@ public class UbProductService extends BaseService {
     }
 
     //取消商品收藏
-    public void postCollectionCansel(int productId, ResultListener resultListener) {
-        String franchiseeId = GlobalInfo.franchiseeId;
+    public void postCollectionCansel(int productId,String franchiseeId, ResultListener resultListener) {
         if (TextUtils.isEmpty(franchiseeId)) {
             franchiseeId = "\"\"";
         }
@@ -261,7 +258,7 @@ public class UbProductService extends BaseService {
     //积分商城商品详情
     public void getProductDetail(int productId, int sellerId, String franchiseeId,String userToken, ResultListener<UbProductDetailBean> resultListener) {
         if (TextUtils.isEmpty(franchiseeId)) {
-            franchiseeId = "\"\"";
+            franchiseeId = "1";
         }
         userToken = GlobalInfo.userToken;
         if (TextUtils.isEmpty(userToken)) {
@@ -278,18 +275,15 @@ public class UbProductService extends BaseService {
 
     //积分商城商品参数
     public void getProductParameter(int id, ResultListener<List<UbProductParameterBean>> resultListener) {
-//        Map<String, String> params = new HashMap<>();
-//        params.put("id", id+"");
         get(UrlConstant.PRODUCT_PARAMETER + id, null, new CommonResponseListener<List<UbProductParameterBean>>(context,
                 resultListener, new TypeToken<List<UbProductParameterBean>>() {
         }));
     }
 
     //积分商城商品规格
-    public void getProductSpecifications(String id, ResultListener<List<SingleProductSkuBean>> resultListener) {
-        String franchiseeId = GlobalInfo.franchiseeId;
+    public void getProductSpecifications(String id,String franchiseeId , ResultListener<List<SingleProductSkuBean>> resultListener) {
         if (TextUtils.isEmpty(franchiseeId)) {
-            franchiseeId = "\"\"";
+            franchiseeId = "1";
         }
         Map<String, Object> params = new HashMap<>();
         params.put("product_id", id);
@@ -298,25 +292,6 @@ public class UbProductService extends BaseService {
                 resultListener, new TypeToken<List<SingleProductSkuBean>>() {
         }));
     }
-
-    //    //商品详情立即兑换,
-//    public void postEMSOrder(int orderFrom,int takeType,int receiverId,String remark,
-//                             List<Map> productList,ResultListener<List<UbPreOrderBean>> resultListener ){
-//        String token=GlobalInfo.userToken;
-//        if(TextUtils.isEmpty(token)){
-//            token="\"\"";
-//        }
-//
-//        Map<String,Object> params=new HashMap<>();
-//        params.put("orderFrom",orderFrom);
-//        params.put("takeType",takeType);
-//        params.put("receiverId",receiverId);
-//        params.put("remark",remark);
-//        params.put("productList",productList);
-//
-//        postJson(UrlConstant.UB_ORDER_EMS,params,new CommonResponseListener<>(context,
-//                resultListener, new TypeToken<List<UbPreOrderBean>>(){}));
-//    }
     //商品详情立即兑换,
     public void postEMSOrder(int orderFrom, int takeType, int receiverId, String remark,
                              List<Map> productList, ResultListener<JSONObject> resultListener) {
@@ -362,10 +337,9 @@ public class UbProductService extends BaseService {
     }
 
     //添加购物车
-    public void postShopcartAdd(String token, int id, int providerNum, int skuId, int amount, double price, ResultListener<String> resultListener) {
-        String franchiseeId = GlobalInfo.franchiseeId;
+    public void postShopcartAdd(String token, int id, int providerNum, String franchiseeId,int skuId, int amount, double price, ResultListener<String> resultListener) {
         if (TextUtils.isEmpty(franchiseeId)) {
-            franchiseeId = "\"\"";
+            franchiseeId = "1";
         }
         Map<String, Object> map = new HashMap<>();
         token = GlobalInfo.userToken;
@@ -405,13 +379,12 @@ public class UbProductService extends BaseService {
     }
 
     //增减购物车商品数量
-    public void postShopcartCount(int id, ShopCartItemListBean bean, final ResultListener<String> resultListener) {
-        String franchiseeId = GlobalInfo.franchiseeId;
-        if (TextUtils.isEmpty(franchiseeId)) {
-            franchiseeId = "\"\"";
+    public void postShopcartCount(String id, ShopCartItemListBean bean, final ResultListener<String> resultListener) {
+        if (TextUtils.isEmpty(id)) {
+            id = "\"\"";
         }
         Map<String, Object> params = new HashMap<>();
-        params.put("franchiseeId", franchiseeId);
+        params.put("franchiseeId", id);
         params.put("id", bean.shopCartId);
         params.put("amount", bean.amount);
         params.put("skuId", bean.skuId);
@@ -429,8 +402,6 @@ public class UbProductService extends BaseService {
         if (TextUtils.isEmpty(token)) {
             token = "\"\"";
         }
-//        List<Integer> idList=new ArrayList<>();
-//        idList.add(itemBean.shopCartId);
         Map<String, Object> params = new HashMap<>();
         params.put("idList", idList);
         postJson(UrlConstant.UB_SHOP_DELETE, params, new BaseResponseListener(context, resultListener) {
@@ -459,18 +430,6 @@ public class UbProductService extends BaseService {
         });
     }
 
-    //
-//    public void postFrnchiseeInfo(ResultListener<UbConfirmOrderAddressChangeBean> resultListener) {
-//        Map<String, Object> params = new HashMap<>();
-//
-//        params.put("franchisee_id", 5);
-//        postJson(UrlConstant.UB_ORDER_EMS,params,new BaseResponseListener(context, resultListener) {
-//            @Override
-//            public void success(JSONObject jsonObject) throws JsonSyntaxException, JSONException {
-//                resultListener.successHandle(jsonObject);
-//            }
-//        });
-//    }
     //到店自取获取商家信息
     public void postFrnchiseeInfo(String franchiseeId,ResultListener<UbConfirmOrderAddressChangeBean> resultListener) {
         if (TextUtils.isEmpty(franchiseeId)) {
@@ -640,11 +599,6 @@ public class UbProductService extends BaseService {
 
     public void postFranchiseeCategory(int themeId, int franchisee_id, int page, int pageSize, ResultListener<List<ProductSearchBean>> resultListener) {
         Map<String, Object> params = new HashMap<>();
-      //  String franchiseeId = GlobalInfo.franchiseeId;
-        /*if (TextUtils.isEmpty(franchisee_id)) {
-            franchisee_id = "\"\"";
-        }*/
-
         params.put("theme_id", themeId);
         params.put("franchisee_id", franchisee_id);
         params.put("page", page);

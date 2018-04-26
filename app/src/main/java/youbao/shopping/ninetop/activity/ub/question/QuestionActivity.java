@@ -65,25 +65,12 @@ public class QuestionActivity extends BaseActivity {
         return R.layout.ub_safe_quetion;
     }
 
+    @Override
     protected void initView() {
         super.initView();
         hvHead.setTitle("安全问题");
         ubProductService=new UbProductService(this);
         getUserPassWordSet();
-        isSetViewable();
-        //先判断
-    }
-
-    private void isSetViewable() {
-        if(pwdIsSet==0){
-            findViewById(R.id.rl_click11).setEnabled (false);
-            findViewById(R.id.rl_click22).setEnabled(false);
-            findViewById(R.id.rl_click33).setEnabled(false);
-        }else{
-            findViewById(R.id.rl_click11).setEnabled (true);
-            findViewById(R.id.rl_click22).setEnabled(true);
-            findViewById(R.id.rl_click33).setEnabled(true);
-        }
     }
 
     private void getUserPassWordSet(){
@@ -98,47 +85,19 @@ public class QuestionActivity extends BaseActivity {
 
     //判断是否设置密码并执行下一步
     private void isSetPassword( int pwdIsSet){
-        if(pwdIsSet==0){
-            initQuestionList();
-        }else {
+        if(pwdIsSet== 1){
             //已设置
+            findViewById(R.id.rl_click11).setEnabled (false);
+            findViewById(R.id.rl_click22).setEnabled(false);
+            findViewById(R.id.rl_click33).setEnabled(false);
             setUserQuestionList();
-        }
-    }
-
-    private void initQuestionList() {
-        if (pwdIsSet == 0) {
-//            new MyDialog(this, MyDialog.DIALOG_TWOOPTION, "温馨提示", "您需要设置支付密码", new MyDialogOnClick() {
-//                @Override
-//                public void sureOnClick(View v) {
-//
-//                }
-//                @Override
-//                public void cancelOnClick(View v) {
-//                    finish();
-//                }
-//            }).show();
-        }
-    }
-     //1是0否
-    private void setPwd(){
-        if(pwdIsSet==0){
-            new MyDialog(this, MyDialog.DIALOG_TWOOPTION, "温馨提示", "您需要设置支付密码", new MyDialogOnClick() {
-                @Override
-                public void sureOnClick(View v) {
-                  // setPwdNow();
-
-                }
-                @Override
-                public void cancelOnClick(View v) {
-
-                }
-            }).show();
         }else {
-            //展示已选择问题
-            setUserQuestionList();
+            findViewById(R.id.rl_click11).setEnabled (true);
+            findViewById(R.id.rl_click22).setEnabled(true);
+            findViewById(R.id.rl_click33).setEnabled(true);
         }
     }
+
 
      private void setPwdNow(){
         final Dialog dialog = new Dialog(this);
@@ -155,7 +114,6 @@ public class QuestionActivity extends BaseActivity {
                     showToast("请输入6位支付密码");
                     return;
                 }
-                //  balancePay(password);
                 postPwd(password);
             }
         });
@@ -187,8 +145,6 @@ public class QuestionActivity extends BaseActivity {
                  questionIdMap.put(tvQuestion3, result.q3_id);
              }
          });
-
-
      }
 
     @OnClick({R.id.rl_click11, R.id.rl_click22, R.id.rl_click33, R.id.btn_confirm,R.id.ll_reset_pwd})
@@ -214,13 +170,15 @@ public class QuestionActivity extends BaseActivity {
                 confirmQuestion();
                 break;
             case R.id.ll_reset_pwd:
-//                setUserQuestionList();
                 resetQuestionList();
+                break;
+            default:
                 break;
         }
     }
 
     private void resetQuestionList() {
+
         String q1=etQ1.getText().toString().trim();
         String q2=etQ2.getText().toString().trim();
         String q3=etQ3.getText().toString().trim();
@@ -238,7 +196,6 @@ public class QuestionActivity extends BaseActivity {
         if(questionIdMap.containsKey(tvQuestion3)) {
             newQId3=questionIdMap.get(tvQuestion3);
         }
-        //setPwdNow();
         //下拉框判断
         if(newQId1==-1){
             showToast("您的第一个问题不能为空");
@@ -269,14 +226,10 @@ public class QuestionActivity extends BaseActivity {
         ubProductService.postAlreadyAnswer(q1, q2, q3, new CommonResultListener(this) {
             @Override
             public void successHandle(Object result) throws JSONException {
-
-                finish();
                 startActivity(ResetQuestionActivity.class);
-
+                finish();
             }
         });
-
-
     }
 
     private void confirmQuestion(){
@@ -297,7 +250,6 @@ public class QuestionActivity extends BaseActivity {
               if(questionIdMap.containsKey(tvQuestion3)) {
                   newQId3=questionIdMap.get(tvQuestion3);
               }
-              //setPwdNow();
               //下拉框判断
               if(newQId1==-1){
                   showToast("您的第一个问题不能为空");
@@ -328,7 +280,6 @@ public class QuestionActivity extends BaseActivity {
 
               //1表示已经设置过问题
               if(pwdIsSet==1){
-
                   ubProductService.postAlreadyAnswer(q1, q2, q3, new CommonResultListener(this) {
                      @Override
                      public void successHandle(Object result) throws JSONException {
@@ -356,10 +307,6 @@ public class QuestionActivity extends BaseActivity {
               }
           }
 
-          private void rechageQuestion(){
-
-
-          }
           public void postPwd(String num){
               ubProductService.postSetPwd(num, new CommonResultListener(this) {
                   @Override

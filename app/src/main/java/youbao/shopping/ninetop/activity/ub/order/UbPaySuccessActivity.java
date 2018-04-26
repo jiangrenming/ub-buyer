@@ -55,9 +55,10 @@ public class UbPaySuccessActivity extends BaseActivity {
     private void getDetail() {
         String orderCode = getIntentValue(IntentExtraKeyConst.ORDER_CODE);
         String orderU = getIntentValue(IntentExtraKeyConst.ORDER_U);
+        String total = getIntentValue(IntentExtraKeyConst.PAY_MONEY);
         String orderTotal = getIntentValue(IntentExtraKeyConst.ORDER_TOTAL);
         String orderBalance = getIntentValue(IntentExtraKeyConst.ORDER_BALANCE);
-        tvUCut.setText(orderU.substring(0,orderU.indexOf(".")));
+        tvUCut.setText(total.substring(0,total.indexOf(".")));
         tvOrderCode.setText(orderCode);
         tvPayTotal.setText("￥"+orderTotal.substring(0,orderTotal.indexOf(".")));
         tvBalance.setText("￥"+orderBalance.substring(0,orderBalance.indexOf(".")));

@@ -99,6 +99,7 @@ public class UbShopCartActivity extends TabBaseActivity {
         initData();
     }
 
+    @Override
     protected void initData() {
         super.initData();
         selectedList.clear();
@@ -460,9 +461,9 @@ public class UbShopCartActivity extends TabBaseActivity {
             for (int i = 0; i< selectedList.size() ;i++){
                  Log.i("加入的商品id:",selectedList.get(i).getFranchiseeId()+"");
                     if (selectedList.get(i).getFranchiseeId() == mainBean.franchiseeId){
-                        if (selectedList.get(i).isShoperItemSelect()){
-                            isSelect = true;
-                        }
+                       if (selectedList.get(i).isShoperItemSelect()){
+                                isSelect = true;
+                            }
                     }
             }
             return  isSelect;
@@ -558,6 +559,7 @@ public class UbShopCartActivity extends TabBaseActivity {
                     public void onClick(View v) {
                         Map<String, String> map = new HashMap<>();
                         map.put(IntentExtraKeyConst.PRODUCT_ID, itemBean.productId + "");
+                        map.put(IntentExtraKeyConst.FRANCHISEEID, itemBean.franchiseeId + "");
                         activity.startActivity(UbProductInfoActivity.class, map);
                     }
                 });
@@ -585,8 +587,8 @@ public class UbShopCartActivity extends TabBaseActivity {
                 public void handle(final Integer num) {
                     final int value = itemBean.amount;
                     itemBean.amount = num;
-
-                    ubProductService.postShopcartCount(itemBean.franchiseeId, itemBean, new ResultListener<String>() {
+                    String  franchiseeId = String.valueOf(itemBean.franchiseeId);
+                    ubProductService.postShopcartCount(franchiseeId, itemBean, new ResultListener<String>() {
                         @Override
                         public void successHandle(String result) {
                             refreshPrice();

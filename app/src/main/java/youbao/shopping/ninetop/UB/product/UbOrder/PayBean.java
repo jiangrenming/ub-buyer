@@ -24,6 +24,15 @@ public class PayBean {
     private double ownUBPoint;
     private double logisticsCost;
     private String orderCode;
+    private  long pay_money;
+
+    public long getPay_money() {
+        return pay_money;
+    }
+
+    public void setPay_money(long pay_money) {
+        this.pay_money = pay_money;
+    }
 
     public double getTotalProductPay() {
         return totalProductPay;

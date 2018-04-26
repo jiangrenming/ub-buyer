@@ -342,6 +342,7 @@ public class UbConfirmOrderActivity extends BaseActivity implements UbComfirmDia
                     Intent intent = new Intent(UbConfirmOrderActivity.this, UbConfirmPayActivity.class);
                     intent.putExtra(IntentExtraKeyConst.JSON_ORDER, dataString);
                     intent.putExtra(IntentExtraKeyConst.GET_STYLE, "0");
+                    intent.putExtra(IntentExtraKeyConst.PAY_MONEY, ubBean.totalPay);
                     startActivity(intent);
                     finish();
                 }
@@ -357,6 +358,7 @@ public class UbConfirmOrderActivity extends BaseActivity implements UbComfirmDia
                     Intent intent = new Intent(UbConfirmOrderActivity.this, UbConfirmPayActivity.class);
                     intent.putExtra(IntentExtraKeyConst.JSON_ORDER, dataString);
                     intent.putExtra(IntentExtraKeyConst.GET_STYLE, "1");
+                    intent.putExtra(IntentExtraKeyConst.PAY_MONEY, ubBean.totalPay);
                     startActivity(intent);
                     finish();
                 }
@@ -377,6 +379,7 @@ public class UbConfirmOrderActivity extends BaseActivity implements UbComfirmDia
                     Intent intent = new Intent(UbConfirmOrderActivity.this, UbConfirmPayActivity.class);
                     intent.putExtra(IntentExtraKeyConst.JSON_ORDER, dataString);
                     intent.putExtra(IntentExtraKeyConst.GET_STYLE, "0");
+                    intent.putExtra(IntentExtraKeyConst.PAY_MONEY, ubBean.totalPay);
                     startActivity(intent);
                     finish();
                 }
@@ -390,6 +393,7 @@ public class UbConfirmOrderActivity extends BaseActivity implements UbComfirmDia
                     Log.i("获取订单的数据=",dataString);
                     Intent intent = new Intent(UbConfirmOrderActivity.this, UbConfirmPayActivity.class);
                     intent.putExtra(IntentExtraKeyConst.JSON_ORDER, dataString);
+                    intent.putExtra(IntentExtraKeyConst.PAY_MONEY, ubBean.totalPay);
                     intent.putExtra(IntentExtraKeyConst.GET_STYLE, "1");
                     startActivity(intent);
                     finish();

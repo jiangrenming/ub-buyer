@@ -25,7 +25,7 @@ public class UbProductSearchResultActivity extends PullRefreshBaseActivity {
     HeadView hvHead;
     private UbProductService productService;
     private String searchKey ;
-
+    private  String freeId;
     @Override
     protected int getLayoutId() {
         return R.layout.activity_product_search_result_info;
@@ -46,13 +46,15 @@ public class UbProductSearchResultActivity extends PullRefreshBaseActivity {
     protected void initData() {
         super.initData();
         searchKey = getIntentValue(IntentExtraKeyConst.SEARCH_KEY);
+        freeId = getIntentValue(IntentExtraKeyConst.FRANCHISEEID);
         getServerData();
 
     }
    //商品搜索
 
+    @Override
     protected void getServerData() {
-        productService.getSearch(searchKey,new CommonResultListener<List<ProductSearchBean>>(this) {
+        productService.getSearch(searchKey,freeId,new CommonResultListener<List<ProductSearchBean>>(this) {
             @Override
            public void successHandle(List<ProductSearchBean> result) throws JSONException {
                 dataList.addAll(result);

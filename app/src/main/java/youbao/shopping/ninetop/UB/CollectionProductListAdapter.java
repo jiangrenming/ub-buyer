@@ -102,6 +102,7 @@ public class CollectionProductListAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Intent intent = new Intent(context,UbProductInfoActivity.class);
                 intent.putExtra(IntentExtraKeyConst.PRODUCT_ID, product1.product_id+"");
+                intent.putExtra(IntentExtraKeyConst.FRANCHISEEID, product1.franchisee_id+"");
                 context.startActivity(intent);
             }
         });

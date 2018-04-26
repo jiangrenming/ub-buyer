@@ -123,6 +123,7 @@ public class UbProductSearchListAdapter extends BaseAdapter{
                 public void onClick(View v) {
                     Intent intent = new Intent(context, UbProductInfoActivity.class);
                     intent.putExtra(IntentExtraKeyConst.PRODUCT_ID, product2.product_id+"");
+                    intent.putExtra(IntentExtraKeyConst.FRANCHISEEID, product2.getFranchisee_id()+"");
                     context.startActivity(intent);
                 }
             });
@@ -134,6 +135,7 @@ public class UbProductSearchListAdapter extends BaseAdapter{
             public void onClick(View v) {
                 Intent intent = new Intent(context, UbProductInfoActivity.class);
                 intent.putExtra(IntentExtraKeyConst.PRODUCT_ID, product1.product_id+"");
+                intent.putExtra(IntentExtraKeyConst.FRANCHISEEID, product1.getFranchisee_id()+"");
                 context.startActivity(intent);
             }
         });
