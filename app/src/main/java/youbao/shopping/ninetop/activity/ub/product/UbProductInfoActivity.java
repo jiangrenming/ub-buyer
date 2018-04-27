@@ -25,6 +25,7 @@ import youbao.shopping.ninetop.UB.product.UbProductService;
 import youbao.shopping.ninetop.activity.ub.order.UbConfirmOrderActivity;
 import youbao.shopping.ninetop.activity.ub.shopcart.UbShopCartActivity;
 import youbao.shopping.ninetop.activity.ub.util.StatusBarUtil;
+import youbao.shopping.ninetop.activity.user.LoginActivity;
 import youbao.shopping.ninetop.base.BaseActivity;
 import youbao.shopping.ninetop.bean.MessageEvent;
 import youbao.shopping.ninetop.common.AssembleHelper;
@@ -246,13 +247,25 @@ public class UbProductInfoActivity extends BaseActivity {
                 }).show();
                 break;
             case R.id.ll_shoucang:
-                changeStatusHandle();
+                if (isLogin()){
+                    changeStatusHandle();
+                }else {
+                    startActivity(new Intent(UbProductInfoActivity.this, LoginActivity.class));
+                }
                 break;
             case R.id.ll_add_shop_cart:
-                addShopCart();
+                if (isLogin()){
+                    addShopCart();
+                }else {
+                    startActivity(new Intent(UbProductInfoActivity.this, LoginActivity.class));
+                }
                 break;
             case R.id.ll_change_now:
-                changeNow();
+                if (isLogin()){
+                    changeNow();
+                }else {
+                    startActivity(new Intent(UbProductInfoActivity.this, LoginActivity.class));
+                }
                 break;
             case R.id.rl_select_product_info:
                 showDialog1();

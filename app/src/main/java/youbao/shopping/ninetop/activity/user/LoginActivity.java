@@ -208,21 +208,11 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             if (!isMobile) {
                 message = "手机号码格式不正确";
             } else {
-//                try {
-//                    btn_login.setBackgroundResource(R.drawable.bg_radius_red);
-//                    iv_login_we_chat.setImageResource(R.mipmap.login_wechat);
-//                    iv_login_qq.setImageResource(R.mipmap.login_qq);
-//                    iv_login_sina.setImageResource(R.mipmap.login_weibo);
-//                } catch (Exception e) {
-//                    e.printStackTrace();
-//                }
                 userService.login(number, password, new CommonResultListener<String>(this) {
                     @Override
                     public void successHandle(String result) {
                         LoginAction.login(result, LoginActivity.this);
                         finish();
-//                        ActivityActionHelper.goToMain(LoginActivity.this);
-                        // finish();
                     }
                 });
             }
