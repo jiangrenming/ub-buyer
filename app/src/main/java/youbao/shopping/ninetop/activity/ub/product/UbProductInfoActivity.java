@@ -118,21 +118,18 @@ public class UbProductInfoActivity extends BaseActivity {
         StatusBarUtil.setColor(this, mColor);
     }
 
-
-    public UbProductInfoActivity() {
-
-    }
-
     @Override
     protected int getLayoutId() {
         return R.layout.ub_activity_product_detail;
     }
 
+    @Override
     protected void initView() {
         super.initView();
         ubProductService = new UbProductService(this);
         getProductDetail();
     }
+
 
     private void getProductDetail() {
         String proId = getIntentValue(IntentExtraKeyConst.PRODUCT_ID);
@@ -173,9 +170,7 @@ public class UbProductInfoActivity extends BaseActivity {
             return;
         }
         String style = "";
-//        if(!isHtmlContentHasStyle(html)){
         style = TextConstant.HTTP_STYLE;
-//        }
         String url = TextConstant.HTTP_BODY_START + html + style + TextConstant.HTTP_BODY_END;
         wvDetail.setScrollbarFadingEnabled(true);
         wvDetail.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
@@ -250,21 +245,24 @@ public class UbProductInfoActivity extends BaseActivity {
                 if (isLogin()){
                     changeStatusHandle();
                 }else {
-                    startActivity(new Intent(UbProductInfoActivity.this, LoginActivity.class));
+                    Intent intent = new Intent(UbProductInfoActivity.this, LoginActivity.class);
+                    startActivity(intent);
                 }
                 break;
             case R.id.ll_add_shop_cart:
                 if (isLogin()){
                     addShopCart();
                 }else {
-                    startActivity(new Intent(UbProductInfoActivity.this, LoginActivity.class));
+                    Intent intent = new Intent(UbProductInfoActivity.this, LoginActivity.class);
+                    startActivity(intent);
                 }
                 break;
             case R.id.ll_change_now:
                 if (isLogin()){
                     changeNow();
                 }else {
-                    startActivity(new Intent(UbProductInfoActivity.this, LoginActivity.class));
+                    Intent intent = new Intent(UbProductInfoActivity.this, LoginActivity.class);
+                    startActivity(intent);
                 }
                 break;
             case R.id.rl_select_product_info:

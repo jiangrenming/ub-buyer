@@ -58,10 +58,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private UMShareAPI mShareAPI = null;
     private ProgressDialog dialog;
     private boolean isHasPermission = true;
-
-    public LoginActivity() {
-
-    }
+    private  int type =0;
 
     private UMAuthListener umAuthListener = new UMAuthListener() {
 
@@ -114,10 +111,12 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
     //填充数据
+    @Override
     protected void initData() {
     }
 
     //初始化监听
+    @Override
     protected void initListener() {
         iv_close.setOnClickListener(this);
         btn_login.setOnClickListener(this);
