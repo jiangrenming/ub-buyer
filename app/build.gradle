@@ -75,6 +75,7 @@ android {
         compile files('libs/AMap3DMap_5.6.0_AMapNavi_5.5.0_AMapLocation_3.6.1_20171130.jar')
         compile 'com.githang:status-bar-compat:latest.integration'
         compile 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:1.1.6'
+        compile 'org.greenrobot:eventbus:3.0.0'
     }
     productFlavors {
     }

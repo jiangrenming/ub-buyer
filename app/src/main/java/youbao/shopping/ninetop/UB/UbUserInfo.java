@@ -8,14 +8,14 @@ public class UbUserInfo {
     public String avatar;
     public String mobile;
     public String nick_name;
-    public Double balance;
-    public Double ub_point;
+    public double balance;
+    public double ub_point;
 
-    public Double getBalance() {
+    public double getBalance() {
         return balance;
     }
 
-    public void setBalance(Double balance) {
+    public void setBalance(double balance) {
         this.balance = balance;
     }
 

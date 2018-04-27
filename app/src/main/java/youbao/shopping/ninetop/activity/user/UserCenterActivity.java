@@ -9,6 +9,9 @@ import android.widget.TextView;
 import com.hykj.dialoglib.MyDialog;
 import com.hykj.dialoglib.MyDialogOnClick;
 
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+
 import youbao.shopping.ninetop.UB.UbUserCenterService;
 import youbao.shopping.ninetop.UB.UbUserInfo;
 import youbao.shopping.ninetop.activity.TabBaseActivity;
@@ -59,10 +62,6 @@ public class UserCenterActivity extends TabBaseActivity implements View.OnClickL
     @BindView(R.id.tv_account_balance)
     TextView tvAccountBalance;
     private final UbUserCenterService ubUserCenterService;
-//    private int count[]=new int[5];
-//    private HashMap<TextView, Integer> viewStringHashMap;
-//    private TextView[] textView;
-
     public UserCenterActivity() {
         ubUserCenterService = new UbUserCenterService(this);
     }
@@ -95,15 +94,22 @@ public class UserCenterActivity extends TabBaseActivity implements View.OnClickL
 
     private void iniUserInfo(UbUserInfo result) {
         if (result != null) {
-            String U_Balance = String.valueOf(result.ub_point);
-            String u_balance = Math.round(Double.valueOf(result.ub_point))+"";
-            String account_balance = String.valueOf(result.balance);
             tvNiMeiUserName.setText(result.nick_name);
             tvNiMeiUserName.setEnabled(false);
             tvMobile.setText(result.mobile);
             LoginAction.saveMobile(result.mobile, UserCenterActivity.this);
-            tvUBalance.setText(u_balance);
-            tvAccountBalance.setText(account_balance);
+            String ubPoint = String.valueOf(result.ub_point);
+            String amount = String.valueOf(result.balance);
+            Log.i("账户信息2",ubPoint+"/="+amount);
+            if (ubPoint.contains("E")){
+                ubPoint = BigDecimal.valueOf(result.ub_point).toPlainString();
+            }
+            if (amount.contains("E")){
+                amount = BigDecimal.valueOf(result.balance).toPlainString();
+            }
+            tvUBalance.setText(ubPoint);
+            tvAccountBalance.setText(amount);
+            Log.i("账户信息",ubPoint+"/="+amount);
             if (result.avatar != null) {
                 try {
                     Log.i("路径", BASE_IMAGE_URL + result.avatar);
@@ -119,13 +125,14 @@ public class UserCenterActivity extends TabBaseActivity implements View.OnClickL
 
     }
 
+    @Override
     @OnClick({R.id.rlm_user_icon, R.id.tv_nimei_username, R.id.rl_u, R.id.rl_balance, R.id.iv_notify, R.id.rl_myOrder, R.id.rl_stay_pay_money,
             R.id.rl_stay_deliver, R.id.rl_stay_receive, R.id.rl_review,
             R.id.rl_back_goods, R.id.ll_xiaofeizhangdan, R.id.ll_lianxikefu,
             R.id.ll_address_manage, R.id.ll_woayaohezuo, R.id.ll_system_setting
             , R.id.ll_blance, R.id.ll_guanyupingtai, R.id.rl_kuaisu_chongzhi1, R.id.rl_shoucang1, R.id.rl_fuli_duihuan1
     })
-    //rl_stay_pay_money
+
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.rlm_user_icon:
@@ -244,10 +251,9 @@ public class UserCenterActivity extends TabBaseActivity implements View.OnClickL
             case R.id.ll_woayaohezuo:
                 startActivity(ConnectWithActivity.class);
                 break;
+            default:
+                break;
         }
     }
 
-//    private void showDialog() {
-//        new WXAttentionDialog(this).creatDialog().show();
-//    }
 }

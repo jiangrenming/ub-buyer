@@ -6,12 +6,16 @@ import android.os.Bundle;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import youbao.shopping.ninetop.UB.cartshop.UbShopCartBean;
+import youbao.shopping.ninetop.UB.product.New.ShopCartItemListBean;
+import youbao.shopping.ninetop.UB.product.UbProductService;
 import youbao.shopping.ninetop.activity.ub.product.UbProductActivity;
 import youbao.shopping.ninetop.activity.ub.seller.UbSellerActivity;
 import youbao.shopping.ninetop.activity.ub.shopcart.UbShopCartActivity;
@@ -19,14 +23,19 @@ import youbao.shopping.ninetop.activity.user.UserCenterActivity;
 import youbao.shopping.ninetop.base.BaseActivity;
 import youbao.shopping.ninetop.base.GlobalInfo;
 import youbao.shopping.ninetop.base.Viewable;
+import youbao.shopping.ninetop.bean.MessageEvent;
 import youbao.shopping.ninetop.common.IntentExtraKeyConst;
 import youbao.shopping.ninetop.common.util.ClickUtils;
 import youbao.shopping.ninetop.service.impl.ProductService;
 import youbao.shopping.ninetop.service.listener.CommonResultListener;
 
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 import org.json.JSONException;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import youbao.shopping.R;
@@ -57,10 +66,11 @@ public class MainActivity extends TabActivity implements OnClickListener, Viewab
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        EventBus.getDefault().register(this);
         getId();
         initView();
         initAction();
-
+        getShopCartCount();
     }
 
 
@@ -72,9 +82,9 @@ public class MainActivity extends TabActivity implements OnClickListener, Viewab
         franchiseeId = bundle.getInt(IntentExtraKeyConst.FRANCHID);
         franchiseeName = bundle.getString(IntentExtraKeyConst.FRANCHNAME);
     }
+    @Override
     protected void onResume() {
         super.onResume();
-        getShopCartCount();
         overridePendingTransition(0, 0);
     }
 
@@ -141,6 +151,7 @@ public class MainActivity extends TabActivity implements OnClickListener, Viewab
         }
     }
 
+    @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         setIntent(intent);
@@ -183,21 +194,31 @@ public class MainActivity extends TabActivity implements OnClickListener, Viewab
         if (count <= 0) {
             tv_cart_num.setVisibility(View.GONE);
         } else {
-            tv_cart_num.setText(count + "");
             tv_cart_num.setVisibility(View.VISIBLE);
+            tv_cart_num.setText(String.valueOf(count));
         }
     }
 
     private void getShopCartCount() {
-        ProductService productService = new ProductService(getTargetActivity());
-
-        productService.getShopCartNum(new CommonResultListener<Integer>(this) {
+        UbProductService ubProductService = new UbProductService(MainActivity.this);
+        ubProductService.getShopList("", new CommonResultListener<List<UbShopCartBean>>(this) {
             @Override
-            public void successHandle(Integer result) throws JSONException {
-                GlobalInfo.shopCartCount = result;
-                setShopCartCount(result);
+            public void successHandle(List<UbShopCartBean> result) throws JSONException {
+                int count = 0 ;
+                if (result != null && result.size() >0){
+                    for (int i = 0; i < result.size(); i++) {
+                        UbShopCartBean ubShopCartBean = result.get(i);
+                        List<ShopCartItemListBean> shopCartItemList =  ubShopCartBean.getShopCartItemList();
+                        for (int j = 0; j < shopCartItemList.size(); j++) {
+                            count += shopCartItemList.get(i).amount;
+                        }
+                    }
+                }
+                Log.i("获取购物车数据",count+"");
+                setShopCartCount(count);
             }
         });
+
     }
 
     @Override
@@ -234,5 +255,46 @@ public class MainActivity extends TabActivity implements OnClickListener, Viewab
         return (BaseActivity) getCurrentActivity();
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.i("是否注销","已经注销");
+        EventBus.getDefault().unregister(this);
+    }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void messageEvent(MessageEvent event){
+        Log.i("商品数量2",event.nCount+"");
+        if (event != null){
+            if (event.nCount >0 ){
+                tv_cart_num.setVisibility(View.VISIBLE);
+                if (event.type ==0 ){   //--->代表购物车里总数量
+                    tv_cart_num.setText(String.valueOf(event.nCount));
+                }else if (event.type == 1 ){  //删除单个商品
+                    String str = tv_cart_num.getText().toString();
+                    int mCount = Integer.valueOf(str);
+                    if (mCount <= 0){
+                        tv_cart_num.setText(String.valueOf(0));
+                        tv_cart_num.setVisibility(View.GONE);
+                    }else {
+                        tv_cart_num.setText(String.valueOf(mCount-event.nCount));
+                    }
+                }else if (event.type == 2){  //购物车里减
+                    String str = tv_cart_num.getText().toString();
+                    int mCount = Integer.valueOf(str);
+                    tv_cart_num.setText(String.valueOf(mCount-event.nCount));
+                }else  if (event.type == 3){  //购物车里的增
+                    String str = tv_cart_num.getText().toString();
+                    int mCount = Integer.valueOf(str);
+                    tv_cart_num.setText(String.valueOf(mCount+event.nCount));
+                }else  if (event.type == 4){  //添加购物车
+                    String str = tv_cart_num.getText().toString();
+                    int mCount = Integer.valueOf(str);
+                    tv_cart_num.setText(String.valueOf(mCount+event.nCount));
+                }
+            }else {
+                tv_cart_num.setVisibility(View.GONE);
+            }
+        }
+    }
 }

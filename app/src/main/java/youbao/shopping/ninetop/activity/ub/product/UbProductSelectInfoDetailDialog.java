@@ -18,6 +18,7 @@ import youbao.shopping.ninetop.UB.product.New.SingleSkuBean;
 import youbao.shopping.ninetop.UB.product.UbProductService;
 import youbao.shopping.ninetop.activity.ub.order.UbConfirmOrderActivity;
 import youbao.shopping.ninetop.activity.ub.util.StatusBarUtil;
+import youbao.shopping.ninetop.bean.MessageEvent;
 import youbao.shopping.ninetop.common.AssembleHelper;
 import youbao.shopping.ninetop.common.IntentExtraKeyConst;
 import youbao.shopping.ninetop.common.constant.SkuPropStatusEnum;
@@ -29,6 +30,7 @@ import youbao.shopping.ninetop.common.view.FlowLayout;
 import youbao.shopping.ninetop.common.view.NumericStepperView;
 import youbao.shopping.ninetop.service.listener.CommonResultListener;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 

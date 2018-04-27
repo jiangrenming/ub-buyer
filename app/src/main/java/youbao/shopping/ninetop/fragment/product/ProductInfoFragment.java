@@ -18,6 +18,7 @@ import youbao.shopping.ninetop.activity.order.OrderConfirmActivity;
 import youbao.shopping.ninetop.activity.product.ProductDetailActivity;
 import youbao.shopping.ninetop.base.BaseActivity;
 import youbao.shopping.ninetop.base.Viewable;
+import youbao.shopping.ninetop.bean.MessageEvent;
 import youbao.shopping.ninetop.bean.product.PictureBean;
 import youbao.shopping.ninetop.bean.product.ProductBannerListBean;
 import youbao.shopping.ninetop.bean.product.ProductCommentBean;
@@ -36,6 +37,7 @@ import youbao.shopping.ninetop.fragment.product.dialog.ProductPropSelectDialog;
 import youbao.shopping.ninetop.service.impl.ProductService;
 import youbao.shopping.ninetop.service.listener.CommonResultListener;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -47,10 +49,6 @@ import butterknife.OnClick;
 import youbao.shopping.R;
 
 import static youbao.shopping.R.id.tv_price;
-
-/**
- * Created by jill on 2016/11/25.
- */
 
 public class ProductInfoFragment extends BaseFragment {
 
@@ -402,11 +400,10 @@ public class ProductInfoFragment extends BaseFragment {
 
     private void setShopCartCount(){
         ((ProductDetailActivity)getContext()).setShopCartCount(shopCartCount);
-
-        if(propSelectDialog != null)
+        if(propSelectDialog != null){
             propSelectDialog.setShopCartCount(shopCartCount);
-
-        ActivityActionHelper.changeMainCartNum(getContext(), shopCartCount);
+        }
+        EventBus.getDefault().post(new MessageEvent(shopCartCount,4));
     }
 
 }

@@ -23,6 +23,7 @@ import youbao.shopping.ninetop.UB.product.New.SpinnerListBean;
 import youbao.shopping.ninetop.UB.product.UbOrder.UbPreOrderBean;
 import youbao.shopping.ninetop.base.GlobalInfo;
 import youbao.shopping.ninetop.base.Viewable;
+import youbao.shopping.ninetop.bean.MessageEvent;
 import youbao.shopping.ninetop.bean.order.WeChatPayInfoBean;
 import youbao.shopping.ninetop.common.constant.UrlConstant;
 import youbao.shopping.ninetop.service.BaseService;
@@ -30,6 +31,7 @@ import youbao.shopping.ninetop.service.listener.BaseResponseListener;
 import youbao.shopping.ninetop.service.listener.CommonResponseListener;
 import youbao.shopping.ninetop.service.listener.ResultListener;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -337,7 +339,7 @@ public class UbProductService extends BaseService {
     }
 
     //添加购物车
-    public void postShopcartAdd(String token, int id, int providerNum, String franchiseeId,int skuId, int amount, double price, ResultListener<String> resultListener) {
+    public void postShopcartAdd(String token, int id, int providerNum, String franchiseeId,int skuId,final int amount, double price, ResultListener<String> resultListener) {
         if (TextUtils.isEmpty(franchiseeId)) {
             franchiseeId = "1";
         }
@@ -357,6 +359,7 @@ public class UbProductService extends BaseService {
                 String code = jsonObject.getString("code");
                 if ("200".equals(code)) {
                     context.showToast("添加成功");
+                    EventBus.getDefault().post(new MessageEvent(amount,4));
                 } else {
                     context.showToast("失败");
                 }
@@ -658,9 +661,8 @@ public class UbProductService extends BaseService {
     }
 
     //商品上新，销量，价格     当进入分类是，默认排序：sort_type=3，sort_method=0,
-    public void postProductInfoSelect(int categoryId, int sortType, int sortMethod, int page, int pageSize, ResultListener<List<ProductSearchBean>> resultListener) {
+    public void postProductInfoSelect(String franchiseeId ,int categoryId, int sortType, int sortMethod, int page, int pageSize, ResultListener<List<ProductSearchBean>> resultListener) {
         Map<String, Object> params = new HashMap<>();
-        String franchiseeId = GlobalInfo.franchiseeId;
         if (TextUtils.isEmpty(franchiseeId)) {
             franchiseeId = "\"\"";
         }

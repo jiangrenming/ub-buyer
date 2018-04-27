@@ -19,9 +19,8 @@ import java.util.List;
 
 import youbao.shopping.R;
 
-/**
- * Created by jill on 2016/12/2.
- */
+
+
 
 public class ProductCouponSelectDialog {
 

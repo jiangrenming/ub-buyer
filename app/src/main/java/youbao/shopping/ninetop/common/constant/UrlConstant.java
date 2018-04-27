@@ -305,7 +305,7 @@ public class UrlConstant {
     //积分商城首页推荐列表
     public static final String PRODUCT_RECOMMEND_LIST = "ubstore/franchisee/product/recommend";
     //商品具体分类入口,S上新，销量，价格
-    public static final String PRODUCT__CATEGORY_SELECT = "ubstore/product/category/detail";
+    public static final String PRODUCT__CATEGORY_SELECT = "u";
 
 
     //积分商城首页推荐列表

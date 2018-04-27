@@ -2,25 +2,31 @@ package youbao.shopping.ninetop.activity.ub.question;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Display;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.hykj.dialoglib.MyDialog;
 import com.hykj.dialoglib.MyDialogOnClick;
 import com.hykj.myviewlib.gridview.GridPasswordView;
+
+import okhttp3.Response;
 import youbao.shopping.ninetop.UB.QuesIsSetBean;
 import youbao.shopping.ninetop.UB.QuestionAskBean;
 import youbao.shopping.ninetop.UB.product.UbProductService;
 import youbao.shopping.ninetop.UB.question.QuestionBean;
 import youbao.shopping.ninetop.activity.user.ResetQuestionActivity;
 import youbao.shopping.ninetop.base.BaseActivity;
+import youbao.shopping.ninetop.bean.BaseBean;
 import youbao.shopping.ninetop.common.IntentExtraKeyConst;
 import youbao.shopping.ninetop.common.view.HeadView;
 import youbao.shopping.ninetop.service.listener.CommonResultListener;
@@ -55,6 +61,9 @@ public class QuestionActivity extends BaseActivity {
     EditText etQ2;
     @BindView(R.id.et_q3)
     EditText etQ3;
+    @BindView(R.id.ll_reset_pwd)
+    LinearLayout ll_reset_pwd;
+
     private int pwdIsSet;
     private static final int SELECT_QUESTION = 1;
     private UbProductService ubProductService;
@@ -85,6 +94,7 @@ public class QuestionActivity extends BaseActivity {
 
     //判断是否设置密码并执行下一步
     private void isSetPassword( int pwdIsSet){
+        ll_reset_pwd.setVisibility(View.GONE);
         if(pwdIsSet== 1){
             //已设置
             findViewById(R.id.rl_click11).setEnabled (false);
@@ -170,7 +180,10 @@ public class QuestionActivity extends BaseActivity {
                 confirmQuestion();
                 break;
             case R.id.ll_reset_pwd:
-                resetQuestionList();
+
+                if (ll_reset_pwd.getVisibility() == View.VISIBLE){
+                 //   resetQuestionList();
+                }
                 break;
             default:
                 break;
@@ -281,18 +294,57 @@ public class QuestionActivity extends BaseActivity {
               //1表示已经设置过问题
               if(pwdIsSet==1){
                   ubProductService.postAlreadyAnswer(q1, q2, q3, new CommonResultListener(this) {
-                     @Override
-                     public void successHandle(Object result) throws JSONException {
-                         new MyDialog(QuestionActivity.this, MyDialog.DIALOG_TWOOPTION, "回答成功", "重新设置支付密码", new MyDialogOnClick() {
-                             @Override
-                             public void sureOnClick(View v) {
-                                 setPwdNow();
-                             }
+                      @Override
+                      public void failHandle(String code, String message) {
+                          super.failHandle(code, message);
+                          Log.e("错误码:",code+"/"+message);
+                          new MyDialog(QuestionActivity.this, MyDialog.DIALOG_TWOOPTION, "回答错误", "重置安全提示问题", new MyDialogOnClick() {
+                              @Override
+                              public void sureOnClick(View v) {
+                                  startActivity(ResetQuestionActivity.class);
+                                  finish();
+                              }
 
-                             @Override
-                             public void cancelOnClick(View v) {
-                             }
-                         }).show();
+                              @Override
+                              public void cancelOnClick(View v) {
+                              }
+                          }).show();
+                      }
+
+                      @Override
+                      public void errorHandle(Response response, Exception e) {
+                          super.errorHandle(response, e);
+                      }
+
+                      @Override
+                     public void successHandle(Object result) throws JSONException {
+                         BaseBean baseBean = (BaseBean) result;
+                         if (baseBean != null &&baseBean.getCode() == 200){
+                             new MyDialog(QuestionActivity.this, MyDialog.DIALOG_TWOOPTION, "回答成功", "重新设置支付密码", new MyDialogOnClick() {
+                                 @Override
+                                 public void sureOnClick(View v) {
+                                     setPwdNow();
+                                 }
+
+                                 @Override
+                                 public void cancelOnClick(View v) {
+                                 }
+                             }).show();
+
+
+                         }else {
+                             new MyDialog(QuestionActivity.this, MyDialog.DIALOG_TWOOPTION, "回答错误:", "是否重置安全提示问题", new MyDialogOnClick() {
+                                 @Override
+                                 public void sureOnClick(View v) {
+                                     startActivity(ResetQuestionActivity.class);
+                                     finish();
+                                 }
+
+                                 @Override
+                                 public void cancelOnClick(View v) {
+                                 }
+                             }).show();
+                         }
                      }
                  });
 

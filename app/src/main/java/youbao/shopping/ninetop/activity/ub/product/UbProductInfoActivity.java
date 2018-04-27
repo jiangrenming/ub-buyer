@@ -26,11 +26,13 @@ import youbao.shopping.ninetop.activity.ub.order.UbConfirmOrderActivity;
 import youbao.shopping.ninetop.activity.ub.shopcart.UbShopCartActivity;
 import youbao.shopping.ninetop.activity.ub.util.StatusBarUtil;
 import youbao.shopping.ninetop.base.BaseActivity;
+import youbao.shopping.ninetop.bean.MessageEvent;
 import youbao.shopping.ninetop.common.AssembleHelper;
 import youbao.shopping.ninetop.common.IntentExtraKeyConst;
 import youbao.shopping.ninetop.common.constant.TextConstant;
 import youbao.shopping.ninetop.service.listener.CommonResultListener;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -154,12 +156,13 @@ public class UbProductInfoActivity extends BaseActivity {
         tvPrice.setText(mUbNum);
         tvKuaiDiPrice.setText(result.getBase_freight() + "");
         phone = result.getMobile() + "";
+        Log.i("查看收藏状态",result.getIs_favor()+"");
         if (result.getIs_favor() == 1) {
             ivMyCollection.setImageResource(R.mipmap.collection_red);
         } else {
             ivMyCollection.setImageResource(R.mipmap.shoucang_grey);
         }
-        isSelect = result.getIs_favor() == 1 ? true : false;
+         isSelect = result.getIs_favor() == 1 ? true : false;
         initBanner(result.getIcon());
         initWebView(result.getHtml_content());
     }
@@ -278,7 +281,7 @@ public class UbProductInfoActivity extends BaseActivity {
                 @Override
                 public void successHandle(Object result) throws JSONException {
                     ivMyCollection.setImageResource(R.mipmap.shoucang_grey);
-                    isSelect = false;
+                   isSelect = false;
                     showToast("取消成功");
                 }
             });
@@ -290,13 +293,11 @@ public class UbProductInfoActivity extends BaseActivity {
     public void addShopCart() {
         if (id == 0 || skuId == 0 || skuprice == 0) {
             showDialog2();
-            //    showToast("请选择商品规格");
             return;
         }
         ubProductService.postShopcartAdd("", id, 1, franchiseeid,skuId, amount, skuprice, new CommonResultListener<String>(this) {
             @Override
             public void successHandle(String result) throws JSONException {
-
             }
         });
     }

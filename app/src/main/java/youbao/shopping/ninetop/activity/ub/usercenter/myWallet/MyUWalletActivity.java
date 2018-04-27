@@ -14,6 +14,8 @@ import youbao.shopping.ninetop.service.listener.CommonResultListener;
 
 import org.json.JSONException;
 
+import java.math.BigDecimal;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import youbao.shopping.R;
@@ -29,12 +31,6 @@ public class MyUWalletActivity extends BaseActivity {
     private UbUserCenterService ubUserCenterService;
     private String uMoney;
 
-    public MyUWalletActivity(String uMoney) {
-        this.uMoney = uMoney;
-    }
-
-    public MyUWalletActivity() {
-    }
 
     @Override
     protected int getLayoutId() {
@@ -60,9 +56,12 @@ public class MyUWalletActivity extends BaseActivity {
         ubUserCenterService.getUserCenter(new CommonResultListener<UbUserInfo>(this) {
             @Override
             public void successHandle(UbUserInfo result) throws JSONException {
-                String mUbAccount = result.ub_point + "";
-                String mUbNum = mUbAccount.substring(0,mUbAccount.indexOf("."));
-                tvCountNumber.setText(mUbNum);
+                String ubPoint = String.valueOf(result.ub_point);
+                if (ubPoint.contains("E")){
+                    ubPoint = BigDecimal.valueOf(result.ub_point).toPlainString();
+                }
+                uMoney = ubPoint;
+                tvCountNumber.setText(ubPoint);
             }
         });
     }

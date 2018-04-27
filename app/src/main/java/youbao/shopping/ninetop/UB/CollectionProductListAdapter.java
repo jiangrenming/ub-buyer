@@ -2,6 +2,7 @@ package youbao.shopping.ninetop.UB;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,6 +85,7 @@ public class CollectionProductListAdapter extends BaseAdapter {
             holderView = (HolderView) convertView.getTag();
         }
         final ProductFavorBean product1 = dataList.get(index);
+        Log.e("商品的信息:",product1.franchisee_name+"/id="+product1.product_id+"/加盟商id="+product1.franchisee_id);
         holderView.tv_ub_franchisee.setVisibility(View.VISIBLE);
         holderView.tv_seller_name.setText(product1.product_name);
         holderView.tv_personal_price.setText("人均消费 "+product1.price);
@@ -128,7 +130,7 @@ public class CollectionProductListAdapter extends BaseAdapter {
         if (selectList !=null && selectList.size() >0){
             for (int i = 0; i < selectList.size(); i++) {
                 ProductFavorBean productFavorBean = selectList.get(i);
-                if (productFavorBean.product_id == favorBean.product_id){
+                if (productFavorBean.franchisee_id == favorBean.franchisee_id){
                     isSelect = true;
                 }
             }

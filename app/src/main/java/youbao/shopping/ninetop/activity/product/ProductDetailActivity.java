@@ -5,21 +5,23 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
+
 import youbao.shopping.ninetop.activity.order.shopcart.ShopcartActivity;
 import youbao.shopping.ninetop.base.BaseActivity;
+import youbao.shopping.ninetop.bean.MessageEvent;
 import youbao.shopping.ninetop.common.IntentExtraKeyConst;
 import youbao.shopping.ninetop.common.util.Tools;
 import youbao.shopping.ninetop.fragment.FragmentContext;
 import youbao.shopping.ninetop.fragment.product.ProductDetailFragment;
 import youbao.shopping.ninetop.fragment.product.ProductFragmentPagerAdapter;
-import youbao.shopping.ninetop.fragment.product.ProductInfoFragment;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import youbao.shopping.R;
+import youbao.shopping.ninetop.fragment.product.ProductInfoFragment;
 
 
 /**
@@ -162,5 +164,10 @@ public class ProductDetailActivity extends BaseActivity implements FragmentConte
             tvCartNum.setVisibility(View.VISIBLE);
         }
     }
-
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void messageEvent(MessageEvent event){
+        if (event != null){
+            setShopCartCount(event.nCount);
+        }
+    }
 }

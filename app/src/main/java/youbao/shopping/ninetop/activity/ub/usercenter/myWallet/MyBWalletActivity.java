@@ -14,6 +14,8 @@ import youbao.shopping.ninetop.service.listener.CommonResultListener;
 
 import org.json.JSONException;
 
+import java.math.BigDecimal;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import youbao.shopping.R;
@@ -53,8 +55,12 @@ public class MyBWalletActivity extends BaseActivity {
         ubUserCenterService.getUserCenter(new CommonResultListener<UbUserInfo>(this) {
             @Override
             public void successHandle(UbUserInfo result) throws JSONException {
-                uBalance=result.balance + "";
-                tvCountNumber.setText(uBalance);
+                String amount = String.valueOf(result.balance);
+                if (amount.contains("E")){
+                    amount = BigDecimal.valueOf(result.balance).toPlainString();
+                }
+                uBalance = amount;
+                tvCountNumber.setText(amount);
             }
         });
     }

@@ -52,14 +52,11 @@ public class ResetQuestionActivity extends BaseActivity {
     private UbProductService ubProductService;
     private Map<TextView, Integer> questionIdMap = new HashMap<>();
 
+    @Override
     protected void initView() {
         super.initView();
         hvHead.setTitle("安全问题");
         ubProductService=new UbProductService(this);
-//        getUserPassWordSet();
-//        isSetViewable();
-//        setUserQuestionList();
-        //先判断
     }
 
     @OnClick({R.id.rl_click11, R.id.rl_click22, R.id.rl_click33, R.id.btn_confirm,R.id.ll_reset_pwd})
@@ -83,6 +80,8 @@ public class ResetQuestionActivity extends BaseActivity {
                 break;
             case R.id.btn_confirm:
                 confirmQuestion();
+                break;
+            default:
                 break;
 
         }

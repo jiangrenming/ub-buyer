@@ -1,5 +1,6 @@
 package youbao.shopping.ninetop.activity.ub.product;
 
+import android.util.Log;
 import android.widget.ListView;
 
 import youbao.shopping.ninetop.UB.product.ProductSearchBean;
@@ -25,7 +26,8 @@ public class UbProductSearchResultActivity extends PullRefreshBaseActivity {
     HeadView hvHead;
     private UbProductService productService;
     private String searchKey ;
-    private  String freeId;
+    private String franchiseeId ;
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_product_search_result_info;
@@ -35,6 +37,8 @@ public class UbProductSearchResultActivity extends PullRefreshBaseActivity {
     protected void initView() {
         super.initView();
         hvHead.setTitle("搜索结果");
+        searchKey = getIntentValue(IntentExtraKeyConst.SEARCH_KEY);
+        franchiseeId = getIntentValue(IntentExtraKeyConst.FRANCHISEE_ID);
         productService = new UbProductService(this);
         ListView list = (ListView) refreshLayout.getPullableView();
         list.setDividerHeight(0);
@@ -45,16 +49,14 @@ public class UbProductSearchResultActivity extends PullRefreshBaseActivity {
     @Override
     protected void initData() {
         super.initData();
-        searchKey = getIntentValue(IntentExtraKeyConst.SEARCH_KEY);
-        freeId = getIntentValue(IntentExtraKeyConst.FRANCHISEEID);
         getServerData();
-
     }
-   //商品搜索
 
-    @Override
+
+    //商品搜索
+
     protected void getServerData() {
-        productService.getSearch(searchKey,freeId,new CommonResultListener<List<ProductSearchBean>>(this) {
+        productService.getSearch(searchKey,franchiseeId,new CommonResultListener<List<ProductSearchBean>>(this) {
             @Override
            public void successHandle(List<ProductSearchBean> result) throws JSONException {
                 dataList.addAll(result);

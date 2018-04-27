@@ -167,7 +167,7 @@ public class UbProductActivity extends HuangChangeActivity implements ViewPager.
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UpdateChecker.checkForDialog(this, Constants.APP_UPDATE_SERVER_URL);//
+       // UpdateChecker.checkForDialog(this, Constants.APP_UPDATE_SERVER_URL);//
     }
 
     @Override

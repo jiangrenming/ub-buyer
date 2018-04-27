@@ -1,6 +1,7 @@
 package youbao.shopping.ninetop.common.view;
 
 import youbao.shopping.R;
+import youbao.shopping.ninetop.bean.MessageEvent;
 import youbao.shopping.ninetop.common.util.Tools;
 import youbao.shopping.ninetop.common.view.listener.DataChangeListener;
 
@@ -10,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import static android.R.attr.data;
 import static android.R.attr.radius;
@@ -46,8 +49,8 @@ public class NumericStepperView extends LinearLayout{
 			public void onClick(View v) {
 				int number = getNumberValue();
 				if (number > minValue) {
+					EventBus.getDefault().post(new MessageEvent(1,2));
 					tv_number.setText(String.valueOf(number - 1));
-
 					int currentNumber = number - 1;
 					initDiv();
 
@@ -65,8 +68,8 @@ public class NumericStepperView extends LinearLayout{
 			public void onClick(View v) {
 				int number = getNumberValue();
 				if(maxValue > 0 && number < maxValue){
+					EventBus.getDefault().post(new MessageEvent(1,3));
 					tv_number.setText(String.valueOf(number + 1));
-
 					int currentNumber = number + 1;
 					initDiv();
 

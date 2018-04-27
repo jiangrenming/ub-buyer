@@ -79,7 +79,6 @@ public class MyUInfoWalletActivity extends BaseActivity {
         yearStr = yearStr.substring(0, yearStr.length() -1);
         String monthStr = tvMonth.getText().toString();
         monthStr = monthStr.substring(0, monthStr.length() -1);
-     //   showToast(yearStr + "-" + monthStr);
         return yearStr + "-" + monthStr;
     }
 
@@ -106,10 +105,7 @@ public class MyUInfoWalletActivity extends BaseActivity {
                 String month = format.format(date).substring(5, 7);
                 tvYear.setText(year + "年");
                 tvMonth.setText(month + "月");
-//                String lastTime=year+ "-" + month;
-//               showToast(lastTime);
                 getServerData();
-                //  showToast(time);
             }
 
         });

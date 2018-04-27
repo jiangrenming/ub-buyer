@@ -33,9 +33,12 @@ import android.widget.TextView;
 import com.bigkoo.pickerview.TimePickerView;
 import com.hykj.dialoglib.MyDialog;
 import com.hykj.dialoglib.MyDialogOnClick;
+
+import youbao.shopping.ninetop.UB.QuesIsSetBean;
 import youbao.shopping.ninetop.UB.UbUserCenterService;
 import youbao.shopping.ninetop.UB.UbUserDetail;
 import youbao.shopping.ninetop.UB.UbUserInfo;
+import youbao.shopping.ninetop.UB.product.UbProductService;
 import youbao.shopping.ninetop.activity.ub.question.QuestionActivity;
 import youbao.shopping.ninetop.activity.ub.usercenter.Camera.ClipImageActivity;
 import youbao.shopping.ninetop.activity.ub.usercenter.Camera.view.CircleImageView;
@@ -108,14 +111,18 @@ public class UbSystemSetActivity extends BaseActivity {
     RelativeLayout ubRlXiuGaiMiMa;
     @BindView(R.id.ub_rl_wentiyanzheng)
     RelativeLayout ubRlWentiYanZheng;
+    @BindView(R.id.txt_name)
+    TextView txt_name;
 
     private List<File> fileList = new ArrayList<>();
     private int maxLen = 8;
     private String mBirthday;
     private String mNickName;
+    private UbProductService ubProductService;
 
     public UbSystemSetActivity() {
         ubUserCenterService = new UbUserCenterService(this);
+        ubProductService=new UbProductService(this);
     }
 
     @Override
@@ -123,11 +130,13 @@ public class UbSystemSetActivity extends BaseActivity {
         return R.layout.ub_activity_gerenshezhi;
     }
 
+    @Override
     protected void initView() {
         super.initView();
         hvHead.setTitle("设置");
     }
 
+    @Override
     protected void initData() {
         super.initData();
         initUserInfo();
@@ -160,6 +169,18 @@ public class UbSystemSetActivity extends BaseActivity {
                         }
                     }
                 }
+            }
+        });
+        ubProductService.getPwdIsSet(new CommonResultListener<QuesIsSetBean>(this) {
+            @Override
+            public void successHandle(QuesIsSetBean result) throws JSONException {
+               if (null != result){
+                   if (result.is_set == 0){
+                       txt_name.setText("设置支付密码");
+                   }else {
+                       txt_name.setText("修改支付密码");
+                   }
+               }
             }
         });
     }
@@ -206,6 +227,8 @@ public class UbSystemSetActivity extends BaseActivity {
                     public void cancelOnClick(View v) {
                     }
                 }).show();
+                break;
+            default:
                 break;
         }
     }

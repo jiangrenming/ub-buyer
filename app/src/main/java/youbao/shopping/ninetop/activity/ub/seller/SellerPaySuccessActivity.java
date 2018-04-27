@@ -54,7 +54,7 @@ public class SellerPaySuccessActivity extends BaseActivity {
         String orderU = GlobalInfo.saveUB.substring(0, GlobalInfo.saveUB.indexOf("."));
         tvUGet.setText(orderU);
         String orderTotal = GlobalInfo.savePay;
-        tvPayTotal.setText("￥" + orderTotal);
+        tvPayTotal.setText(orderTotal);
     }
 
     @Override

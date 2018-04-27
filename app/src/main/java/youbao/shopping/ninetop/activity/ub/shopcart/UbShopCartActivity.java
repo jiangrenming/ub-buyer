@@ -10,15 +10,21 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.google.gson.annotations.Since;
+
 import youbao.shopping.ninetop.UB.cartshop.ChildListView;
 import youbao.shopping.ninetop.UB.cartshop.UbShopCartBean;
 import youbao.shopping.ninetop.UB.product.New.ShopCartItemListBean;
 import youbao.shopping.ninetop.UB.product.UbProductService;
+import youbao.shopping.ninetop.activity.MainActivity;
 import youbao.shopping.ninetop.activity.TabBaseActivity;
 import youbao.shopping.ninetop.activity.ub.order.UbConfirmOrderActivity;
 import youbao.shopping.ninetop.activity.ub.product.UbProductInfoActivity;
+import youbao.shopping.ninetop.base.GlobalInfo;
+import youbao.shopping.ninetop.bean.MessageEvent;
 import youbao.shopping.ninetop.common.ActivityActionHelper;
 import youbao.shopping.ninetop.common.AssembleHelper;
 import youbao.shopping.ninetop.common.IntentExtraKeyConst;
@@ -26,12 +32,15 @@ import youbao.shopping.ninetop.common.constant.TextConstant;
 import youbao.shopping.ninetop.common.util.BigDecimalUtil;
 import youbao.shopping.ninetop.common.util.FormatUtil;
 import youbao.shopping.ninetop.common.util.Tools;
+import youbao.shopping.ninetop.common.util.UbComfirmDialog;
 import youbao.shopping.ninetop.common.view.NumericStepperView;
 import youbao.shopping.ninetop.common.view.SwipeListView;
 import youbao.shopping.ninetop.common.view.listener.DataChangeListener;
+import youbao.shopping.ninetop.service.impl.ProductService;
 import youbao.shopping.ninetop.service.listener.CommonResultListener;
 import youbao.shopping.ninetop.service.listener.ResultListener;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -49,6 +58,7 @@ import youbao.shopping.R;
 
 import static android.R.attr.borderlessButtonStyle;
 import static android.R.attr.key;
+import static android.R.attr.scaleGravity;
 import static android.R.attr.value;
 import static youbao.shopping.ninetop.adatper.product.OrderFragmentEnum.map;
 import static youbao.shopping.ninetop.config.AppConfig.BASE_IMAGE_URL;
@@ -108,18 +118,20 @@ public class UbShopCartActivity extends TabBaseActivity {
             @Override
             public void successHandle(List<UbShopCartBean> result) throws JSONException {
                 mainList = result;
+                int count  = 0 ;
                 for (int i = 0; i < result.size(); i++) {
                       UbShopCartBean bean = result.get(i);
                      List<ShopCartItemListBean> shopCartItemList = bean.shopCartItemList;
                     for (int j = 0 ;j< shopCartItemList.size();j++){
                         shopCartItemList.get(j).setFranchiseeId(bean.franchiseeId);
                         shopCartItemList.get(j).setShoperItemSelect(false);
+                        count += shopCartItemList.get(j).amount;
                     }
                     shopers.put(bean.franchiseeId,shopCartItemList);
-                    Log.i("购物车数据",bean.franchiseeName+"/id="+bean.franchiseeId);
+                    Log.i("购物车数据",bean.franchiseeName+"/id="+bean.franchiseeId+"/count="+count);
                 }
                 dataChangeHandle();
-
+                EventBus.getDefault().post(new MessageEvent(count,0));
                 shopcartMainAdapter = new ShopCartMainAdapter(UbShopCartActivity.this, mainList);
                 lvCartList.setRightViewWidth(Tools.dip2px(UbShopCartActivity.this, 0));
                 lvCartList.setAdapter(shopcartMainAdapter);
@@ -184,6 +196,8 @@ public class UbShopCartActivity extends TabBaseActivity {
             case R.id.iv_back:
                 finish();
                 break;
+            default:
+                break;
         }
     }
 
@@ -234,7 +248,7 @@ public class UbShopCartActivity extends TabBaseActivity {
         if (!isEdit) {
             ivEdit.setImageResource(R.mipmap.shopcar_delete_grey);
             //暂时结算。删除批量有问题
-            tvPay.setText("结算");
+            tvPay.setText("删除");
             llTotalPrice.setVisibility(View.GONE);
             shopcartMainAdapter.setIsEditStatus(true);
             isEdit = true;
@@ -249,7 +263,7 @@ public class UbShopCartActivity extends TabBaseActivity {
     }
 
     private void dataChangeHandle() {
-        if (shopers == null || shopers.size() == 0) {
+        if ((mainList == null || mainList.size() ==0)) {
             llNoData.setVisibility(View.VISIBLE);
             llPay.setVisibility(View.GONE);
             lvCartList.setVisibility(View.GONE);
@@ -258,7 +272,6 @@ public class UbShopCartActivity extends TabBaseActivity {
             llPay.setVisibility(View.VISIBLE);
             lvCartList.setVisibility(View.VISIBLE);
         }
-        changeShopcartCount();
         selectedChangeHandle();
     }
 
@@ -274,20 +287,6 @@ public class UbShopCartActivity extends TabBaseActivity {
     @Override
     public boolean intercept() {
         return ivBack.getVisibility() == View.GONE;
-    }
-
-    private void changeShopcartCount() {
-        int cartNum = 0;
-        if (shopers != null && shopers.size() > 0) {
-            for (List<ShopCartItemListBean> values :shopers.values()){
-                if (values.size() > 0){
-                    for (int i =0 ;i <values.size() ;i++){
-                        cartNum += values.get(i).amount;
-                    }
-                }
-            }
-        }
-        ActivityActionHelper.changeMainCartNum(this, cartNum);
     }
 
     private void selectedChangeHandle() {
@@ -342,9 +341,15 @@ public class UbShopCartActivity extends TabBaseActivity {
         ubProductService.postShopcartDelete(deleteList, new CommonResultListener<String>(UbShopCartActivity.this) {
             @Override
             public void successHandle(String result) throws JSONException {
-
-
-                //
+                if (result != null){
+                    Toast.makeText(UbShopCartActivity.this,"删除成功",Toast.LENGTH_SHORT).show();
+                    initData();
+                    ivEdit.setImageResource(R.mipmap.shopcar_delete_grey_copy);
+                    tvPay.setText("结算");
+                    llTotalPrice.setVisibility(View.VISIBLE);
+                    shopcartMainAdapter.setIsEditStatus(false);
+                    isEdit = false;
+                }
             }
 
         });
@@ -540,8 +545,6 @@ public class UbShopCartActivity extends TabBaseActivity {
                 holdeView = new HolderView();
                 convertView = LayoutInflater.from(activity).inflate(R.layout.item_shopcart, parent, false);
                 holdeView.iv_select = (ImageView) convertView.findViewById(R.id.iv_select);
-
-                //  holdeView.nsv_number = (NumericStepperView) convertView.findViewById(R.id.nsv_number);
                 holdeView.nsv_number_edit = (NumericStepperView) convertView.findViewById(R.id.nsv_number_edit);
                 holdeView.tv_num = (TextView) convertView.findViewById(R.id.tv_number);
                 holdeView.tv_name = (TextView) convertView.findViewById(R.id.tv_name);
@@ -584,6 +587,7 @@ public class UbShopCartActivity extends TabBaseActivity {
 
             //输入状态件数
             holdeView.nsv_number_edit.setDataChangeListener(new DataChangeListener<Integer>() {
+                @Override
                 public void handle(final Integer num) {
                     final int value = itemBean.amount;
                     itemBean.amount = num;
@@ -592,7 +596,6 @@ public class UbShopCartActivity extends TabBaseActivity {
                         @Override
                         public void successHandle(String result) {
                             refreshPrice();
-                            changeShopcartCount();
                         }
 
                         @Override
@@ -602,6 +605,7 @@ public class UbShopCartActivity extends TabBaseActivity {
                             showToast(result);
                         }
 
+                        @Override
                         public void errorHandle(Response response, Exception e) {
                             itemBean.amount = value;
                             holdeView.nsv_number_edit.setValue(value);
@@ -621,14 +625,12 @@ public class UbShopCartActivity extends TabBaseActivity {
                         public void successHandle(String result) throws JSONException {
                             dataList.remove(position);
                             if (selectedList != null) {
-                                for (ShopCartItemListBean bean : selectedList) {
-                                    if (bean == itemBean) {
-                                        selectedList.remove(bean);
-                                        break;
-                                    }
+                                if (selectedList.contains(itemBean)){
+                                    selectedList.remove(itemBean);
                                 }
                             }
                             notifyDataSetChanged();
+                            EventBus.getDefault().post(new MessageEvent(1,1));
                             dataChangeHandle();
                             lvCartList.hideAll();
                         }
@@ -640,6 +642,7 @@ public class UbShopCartActivity extends TabBaseActivity {
                             showToast(result);
                         }
 
+                        @Override
                         public void errorHandle(Response response, Exception e) {
                             itemBean.amount = value;
                             holdeView.nsv_number_edit.setValue(value);
