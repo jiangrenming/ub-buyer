@@ -121,7 +121,7 @@ public class UbProductListTwoAdapter extends BaseAdapter{
             holderView.ll_product2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("点击列表项的id=", product2.getFranchisee_id()+"");
+                    Log.i("点击列表项的id=", product2.getFranchisee_id()+"/="+product1.getProduct_id());
                     Intent intent = new Intent(context, UbProductInfoActivity.class);
                     intent.putExtra(IntentExtraKeyConst.PRODUCT_ID, product2.product_id+"");
                     intent.putExtra(IntentExtraKeyConst.FRANCHISEEID, product2.getFranchisee_id()+"");
@@ -134,7 +134,7 @@ public class UbProductListTwoAdapter extends BaseAdapter{
 
             @Override
             public void onClick(View v) {
-                Log.i("点击列表项的id1=",product1.getFranchisee_id()+"");
+                Log.i("点击列表项的id1=",product1.getFranchisee_id()+"/="+product1.getProduct_id());
                 Intent intent = new Intent(context, UbProductInfoActivity.class);
                 intent.putExtra(IntentExtraKeyConst.PRODUCT_ID, product1.product_id+"");
                 intent.putExtra(IntentExtraKeyConst.FRANCHISEEID, product1.getFranchisee_id()+"");

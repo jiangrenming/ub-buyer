@@ -132,16 +132,15 @@ public class UbProductInfoActivity extends BaseActivity {
 
 
     private void getProductDetail() {
-        String proId = getIntentValue(IntentExtraKeyConst.PRODUCT_ID);
+       final String proId = getIntentValue(IntentExtraKeyConst.PRODUCT_ID);
         franchiseeid = getIntentValue(IntentExtraKeyConst.FRANCHISEEID);
         id = Integer.parseInt(proId);
-        ubProductService.getProductDetail(id, 1, "",franchiseeid, new CommonResultListener<UbProductDetailBean>(this) {
+        ubProductService.getProductDetail(id, 1, franchiseeid,"", new CommonResultListener<UbProductDetailBean>(this) {
             @Override
             public void successHandle(UbProductDetailBean result) throws JSONException {
                 if (result == null) {
                     return;
                 }
-
                 ubProductDetailBean = result;
                 onProductDetailHandle(result);
             }
@@ -154,13 +153,12 @@ public class UbProductInfoActivity extends BaseActivity {
         tvPrice.setText(mUbNum);
         tvKuaiDiPrice.setText(result.getBase_freight() + "");
         phone = result.getMobile() + "";
-        Log.i("查看收藏状态",result.getIs_favor()+"");
         if (result.getIs_favor() == 1) {
             ivMyCollection.setImageResource(R.mipmap.collection_red);
         } else {
             ivMyCollection.setImageResource(R.mipmap.shoucang_grey);
         }
-         isSelect = result.getIs_favor() == 1 ? true : false;
+        isSelect = result.getIs_favor() == 1 ? true : false;
         initBanner(result.getIcon());
         initWebView(result.getHtml_content());
     }
@@ -292,7 +290,7 @@ public class UbProductInfoActivity extends BaseActivity {
                 @Override
                 public void successHandle(Object result) throws JSONException {
                     ivMyCollection.setImageResource(R.mipmap.shoucang_grey);
-                   isSelect = false;
+                    isSelect = false;
                     showToast("取消成功");
                 }
             });
